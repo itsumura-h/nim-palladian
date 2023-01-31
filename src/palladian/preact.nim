@@ -3,7 +3,10 @@ import std/dom
 
 {.emit: """
 import { html, render } from 'https://unpkg.com/htm/preact/index.mjs?module';
-import { useState, useEffect } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module'
+import { useState, useEffect, useMemo } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module';
+import {Router, Link} from 'https://cdn.jsdelivr.net/npm/preact-router@4.1.0/+esm';
+
+import { Signal } from 'https://cdn.jsdelivr.net/npm/@preact/signals@1.1.3/+esm';
 """.}
 
 
@@ -39,10 +42,9 @@ proc useEffect*(cb: proc(), dependency:seq[States]) {.importcpp: "useEffect(#, #
   ## Whether you want to fetch some data from an API or trigger an effect on the document, you'll find that the useEffect fits nearly all your needs.
   ## It's one of the main advantages of the hooks API, that it reshapes your mind into thinking in effects instead of a component's lifecycle.
 
-
+proc renderImpl(innerArg: string): string =
+  "return html``" & innerArg & "``"
 template render*(arg: string) =
-  proc renderImpl(innerArg: string): string =
-    "return html``" & innerArg & "``"
   {.emit: renderImpl(arg).}
 
 

@@ -13,18 +13,18 @@ var NTI33555164 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI33555112 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555113 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555130 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI956301350 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI956301348 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI956301353 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956301318 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI956301316 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI956301321 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NNI956301321 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI956301316, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI956301318, name: "Field1", sons: null}]};
-NTI956301321.node = NNI956301321;
-var NNI956301353 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI956301348, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI956301350, name: "Field1", sons: null}]};
-NTI956301353.node = NNI956301353;
+var NTI939524134 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI939524132 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI939524137 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI939524102 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI939524100 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI939524105 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NNI939524105 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI939524100, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI939524102, name: "Field1", sons: null}]};
+NTI939524105.node = NNI939524105;
+var NNI939524137 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI939524132, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI939524134, name: "Field1", sons: null}]};
+NTI939524137.node = NNI939524137;
 var NNI33555130 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI33555130.node = NNI33555130;
 var NNI33555113 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
@@ -298,7 +298,7 @@ if (!Math.trunc) {
   };
 }
 
-var objectID_671088802 = [0];
+var objectID_687866018 = [0];
 import { render } from "https://cdn.skypack.dev/solid-js/web";
 import html from "https://cdn.skypack.dev/solid-js/html";
 import {
@@ -308,11 +308,36 @@ import {
   For,
   Show,
 } from "https://cdn.skypack.dev/solid-js";
+// https://github.com/solidjs/solid-router
+// https://www.jsdelivr.com/package/npm/@solidjs/router
+import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.6/+esm";
+// import { Router, Routes, Route, Link } from "https://cdn.jsdelivr.net/npm/solid-app-router@0.1.14/+esm";
 
 function renderApp(component, dom){
   render(()=>component, dom)
 }
 
+
+function Page1() {
+    return html`    <h2>page1</h2>
+  `
+
+  
+}
+
+function Page2() {
+    return html`    <h2>page2</h2>
+  `
+
+  
+}
+
+function Page3() {
+    return html`    <h2>page3</h2>
+  `
+
+  
+}
 
 function isFatPointer_33557131(ti_33557132) {
   var result_33557133 = false;
@@ -352,64 +377,73 @@ function nimCopyAux(dest_33557144, src_33557145, n_33557146) {
   
 }
 
-function createSignal_956301324(arg_956301325) {
-  var result_956301326 = {Field0: null, Field1: null};
+function createSignal_939524108(arg_939524109) {
+  var result_939524110 = {Field0: null, Field1: null};
 
   BeforeRet: do {
-    var state_956301327 = createSignal(arg_956301325);
-    var value_956301332 = (state_956301327[0]);
-    var setter_956301337 = (state_956301327[1]);
-    var colontmp__469762082 = value_956301332;
-    var colontmp__469762083 = setter_956301337;
-    result_956301326 = nimCopy(result_956301326, {Field0: colontmp__469762082, Field1: colontmp__469762083}, NTI956301321);
+    var state_939524111 = createSignal(arg_939524109);
+    var value_939524116 = (state_939524111[0]);
+    var setter_939524121 = (state_939524111[1]);
+    var colontmp__956301354 = value_939524116;
+    var colontmp__956301355 = setter_939524121;
+    result_939524110 = nimCopy(result_939524110, {Field0: colontmp__956301354, Field1: colontmp__956301355}, NTI939524105);
     break BeforeRet;
   } while (false);
 
-  return result_956301326;
+  return result_939524110;
 
 }
 
-function createSignal_956301374(arg_956301375) {
-  var result_956301376 = {Field0: null, Field1: null};
+function createSignal_939524158(arg_939524159) {
+  var result_939524160 = {Field0: null, Field1: null};
 
   BeforeRet: do {
-    var state_956301377 = createSignal(arg_956301375);
-    var value_956301382 = (state_956301377[0]);
-    var setter_956301387 = (state_956301377[1]);
-    var colontmp__469762085 = value_956301382;
-    var colontmp__469762086 = setter_956301387;
-    result_956301376 = nimCopy(result_956301376, {Field0: colontmp__469762085, Field1: colontmp__469762086}, NTI956301353);
+    var state_939524161 = createSignal(arg_939524159);
+    var value_939524166 = (state_939524161[0]);
+    var setter_939524171 = (state_939524161[1]);
+    var colontmp__956301357 = value_939524166;
+    var colontmp__956301358 = setter_939524171;
+    result_939524160 = nimCopy(result_939524160, {Field0: colontmp__956301357, Field1: colontmp__956301358}, NTI939524137);
     break BeforeRet;
   } while (false);
 
-  return result_956301376;
+  return result_939524160;
 
 }
 
-function child(props_469762054) {
+function Parent(props_956301321) {
     
-function setMsgFunc(e_469762074) {
-        setMsg_469762070(e_469762074.target.value);
+function propsName() {
+      var result_956301323 = null;
+
+        result_956301323 = (props_956301321.name);
+
+      return result_956301323;
+
+    }
+    
+function setMsgFunc(e_956301346) {
+        setMsg_956301342(e_956301346.target.value);
 
       
     }
     
-function HEX3Aanonymous_469762075() {
+function HEX3Aanonymous_956301347() {
         var Temporary1;
 
-        setMsgLen_469762072((((Temporary1 = msg(), Temporary1)) == null ? 0 : (Temporary1).length));
+        setMsgLen_956301344((((Temporary1 = msg(), Temporary1)) == null ? 0 : (Temporary1).length));
 
       
     }
 
-    var propsName = props_469762054.name;
-    var colontmp__469762081 = createSignal_956301324("message");
-    var msg = colontmp__469762081["Field0"];
-    var setMsg_469762070 = colontmp__469762081["Field1"];
-    var colontmp__469762084 = createSignal_956301374(0);
-    var msgLen = colontmp__469762084["Field0"];
-    var setMsgLen_469762072 = colontmp__469762084["Field1"];
-    createEffect(HEX3Aanonymous_469762075);
+    var colontmp__956301353 = createSignal_939524108("message");
+    var msg = colontmp__956301353["Field0"];
+    var setMsg_956301342 = colontmp__956301353["Field1"];
+    var colontmp__956301356 = createSignal_939524158(0);
+    var msgLen = colontmp__956301356["Field0"];
+    var setMsgLen_956301344 = colontmp__956301356["Field1"];
+    createEffect(HEX3Aanonymous_956301347);
+    console.log("=== re-render");
     return html`    <h1>Hello ${()=>propsName}!</h1>
     <form>
       <input type="text" oninput=${setMsgFunc} value=${msg} />
@@ -419,6 +453,14 @@ function HEX3Aanonymous_469762075() {
       <p>this is a ${msg}</p>
       <p>message count is ${msgLen}</p>
     </form>
+    <a href="/page1">page1<//>
+    <a href="/page2">page2<//>
+    <a href="/page3">page3<//>
+    <${Routes}>
+      <${Route} path="/page1" element=${html`<${Page1} />`} />
+      <${Route} path="/page2" element=${html`<${Page2} />`} />
+      <${Route} path="/page3" element=${html`<${Page3} />`} />
+    <//>
   `
 
   
@@ -494,13 +536,13 @@ function addChars_251658415(result_251658417, result_251658417_Idx, x_251658418,
     (result_251658417[result_251658417_Idx].length = chckRange(addInt(old_251658421, n_251658420), 0, 2147483647));
     Label1: do {
       var iHEX60gensym4_251658435 = 0;
-      var i_469762170 = 0;
+      var i_1040187480 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469762170 < n_251658420)) break Label3;
-            iHEX60gensym4_251658435 = i_469762170;
+          if (!(i_1040187480 < n_251658420)) break Label3;
+            iHEX60gensym4_251658435 = i_1040187480;
             result_251658417[result_251658417_Idx][chckIndx(addInt(old_251658421, iHEX60gensym4_251658435), 0, (result_251658417[result_251658417_Idx]).length - 1)] = x_251658418.charCodeAt(chckIndx(addInt(start_251658419, iHEX60gensym4_251658435), 0, (x_251658418).length - 1));
-            i_469762170 = addInt(i_469762170, 1);
+            i_1040187480 = addInt(i_1040187480, 1);
           }
       } while (false);
     } while (false);
@@ -550,44 +592,44 @@ function raiseIndexError(i_33556754, a_33556755, b_33556756) {
   
 }
 
-function map_469762097(s_469762100, op_469762102) {
-  var result_469762103 = [];
+function map_1040187407(s_1040187410, op_1040187412) {
+  var result_1040187413 = [];
 
-    result_469762103 = new Array(chckRange((s_469762100).length, 0, 2147483647)); for (var i = 0 ; i < chckRange((s_469762100).length, 0, 2147483647) ; ++i) { result_469762103[i] = null; }    Label1: do {
-      var i_469762118 = 0;
-      var colontmp__469762161 = 0;
-      colontmp__469762161 = (s_469762100).length;
-      var i_469762162 = 0;
+    result_1040187413 = new Array(chckRange((s_1040187410).length, 0, 2147483647)); for (var i = 0 ; i < chckRange((s_1040187410).length, 0, 2147483647) ; ++i) { result_1040187413[i] = null; }    Label1: do {
+      var i_1040187428 = 0;
+      var colontmp__1040187471 = 0;
+      colontmp__1040187471 = (s_1040187410).length;
+      var i_1040187472 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469762162 < colontmp__469762161)) break Label3;
-            i_469762118 = i_469762162;
-            result_469762103[chckIndx(i_469762118, 0, (result_469762103).length - 1)] = op_469762102(s_469762100[chckIndx(i_469762118, 0, (s_469762100).length - 1)]);
-            i_469762162 = addInt(i_469762162, 1);
+          if (!(i_1040187472 < colontmp__1040187471)) break Label3;
+            i_1040187428 = i_1040187472;
+            result_1040187413[chckIndx(i_1040187428, 0, (result_1040187413).length - 1)] = op_1040187412(s_1040187410[chckIndx(i_1040187428, 0, (s_1040187410).length - 1)]);
+            i_1040187472 = addInt(i_1040187472, 1);
           }
       } while (false);
     } while (false);
 
-  return result_469762103;
+  return result_1040187413;
 
 }
 
-function loop() {
+function Loop() {
     
-function HEX3Aanonymous_469762093(row_469762094) {
-      var result_469762095 = null;
+function HEX3Aanonymous_1040187403(row_1040187404) {
+      var result_1040187405 = null;
 
       BeforeRet: do {
-        result_469762095 = toJSStr(row_469762094);
+        result_1040187405 = toJSStr(row_1040187404);
         break BeforeRet;
       } while (false);
 
-      return result_469762095;
+      return result_1040187405;
 
     }
 
-    var values_469762092 = [makeNimstrLit("a"), makeNimstrLit("b"), makeNimstrLit("c"), makeNimstrLit("d"), makeNimstrLit("e")];
-    var cvalues = map_469762097(values_469762092, HEX3Aanonymous_469762093);
+    var values_1040187402 = [makeNimstrLit("a"), makeNimstrLit("b"), makeNimstrLit("c"), makeNimstrLit("d"), makeNimstrLit("e")];
+    var cvalues = map_1040187407(values_1040187402, HEX3Aanonymous_1040187403);
     return html`    <hr>
     <p>loop</p>
     <ul>
@@ -601,8 +643,10 @@ function HEX3Aanonymous_469762093(row_469762094) {
 }
 
 function App() {
-    return html`    <${child} name="Solid" />
-    <${loop} />
+    return html`    <${Router}>
+      <${Parent} name="Solid" />
+      <${Loop} />
+    <//>
   `
 
   
