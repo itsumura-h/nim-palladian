@@ -23,7 +23,7 @@ proc Parent*(props: JsObject) {.exportc.} =
   console.log("=== re-render")
 
   render("""
-    <h1>Hello ${()=>propsName}!</h1>
+    <h1>Hello ${propsName}!</h1>
     <form>
       <input type="text" oninput=${setMsgFunc} value=${msg} />
       <${Show} when=${()=> msgLen() === 0} fallback=${html``<p>message filled</p>``} >
@@ -32,12 +32,12 @@ proc Parent*(props: JsObject) {.exportc.} =
       <p>this is a ${msg}</p>
       <p>message count is ${msgLen}</p>
     </form>
-    <a href="/page1">page1<//>
-    <a href="/page2">page2<//>
-    <a href="/page3">page3<//>
+    <${A} href="/page1">page1<//>
+    <${A} href="/page2">page2<//>
+    <${A} href="/page3">page3<//>
     <${Routes}>
-      <${Route} path="/page1" element=${html``<${Page1} />``} />
-      <${Route} path="/page2" element=${html``<${Page2} />``} />
-      <${Route} path="/page3" element=${html``<${Page3} />``} />
+      <${Route} path="/" component=${Page1} />
+      <${Route} path="/page2" component=${Page2} />
+      <${Route} path="/page3" component=${Page3} />
     <//>
   """)

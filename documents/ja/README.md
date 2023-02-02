@@ -1,13 +1,10 @@
 *―― Palladianはギリシャ・ローマ建築の現代的な解釈であり、複雑な古典的なデザインをシンプルでコンパクトに表現している。*
 
-PalladianはPreactに基づいたNim製フロントエンドフレームワークです。
+PalladianはPreactにをベースにしてラップしたNim製フロントエンドフレームワークです。
 
 ## なぜPreactか？
 Nim製フロントエンドフレームワークを作るにあたって、NodeJSの環境やBabelなどを使ったトランスパイルが不要であることが必要でした。
 PreactはCDN呼び出してその機能の全てを使うことができ、またライブラリサイズも3KBと非常にコンパクトです。
-
-Signal map  
-https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
 
 ### VS React
 ReactのJSXを使うとHTMLを宣言的に書けるが、`className`や要素をキャメルケースにしていることなど本来のHTMLとは異なる独自のDSLです。
@@ -15,16 +12,13 @@ Preactで使用している[`HTM`](https://github.com/developit/htm)は他に依
 ReactのイベントはReact独自の合成イベントですが、PreactではブラウザネイティブのJavaScriptイベントなので、Nimの`std/dom`をそのまま使うことができます。
 
 ### VS SolidJS
-SolidJSは仮想DOMを使わずPreactよりも高速に動作しますが、そのJSXは`<For>`など独自記法が含まれ、学習コストになります。
-JavaScriptのセマンティクスから逸脱した
+SolidJSは仮想DOMを使わずPreactよりも高速に動作しますが、そのJSXに埋め込むオブジェクトは必ず関数として呼ばなければならず、そのおかげで再レンダリングを防ぎ高いパフォーマンスが得られますが、Nimから呼び出す都合上、メンタルモデルと異なる動きによりデバッグの手間やコストがかかります。
 コンポーネントを超えて変数の変更を感知するためにReactではReduxやRecoilなど3rdパーティライブラリが必要で、SolidJSではSignalという機能によってよりシンプルに実現しているが、PreactもSignalの機能を持っています。
+更にPreact作者であるJason Millerによって、[SoidJSの独自コントロールフローである`For`と`Show`](https://www.solidjs.com/docs/latest/api#for)がPreactでも使えるように用意されています。
 
-https://qiita.com/uhyo/items/ff243a5771077aaf4b5b#4%E4%BD%8D-solidjs
-
-コンパイルなし  
-https://www.solidjs.com/guides/getting-started#%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%AA%E3%81%97%EF%BC%9F
-
-Solid html  
-https://github.com/solidjs/solid/tree/main/packages/solid/html
+https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
 
 ### VS Karax
+現代のフロントエンド開発はサーバーサイドエンジニアが単体で行うのではなく、デザイナーがFigmaやTereportHQで作ったHTMLを利用し、そこにフロントエンドエンジニアが処理を実装していくことがほとんどです。
+Karaxは独自のNimの関数でHTMLを作るので、デザイナーやツールとの協業や移植性に大変なコストがかかり、実用的ではないでしょう。
+また独自の仮想DOMの実装は目を引くものがありますが、フロントエンドの世界でより効率の良い仮想DOMの実装や仮想DOMを使わないリアクティブなUIを実現する研究に追従して、フロントエンドの世界で他のフレームワークと比べて高いクオリティを維持しているとは言い難いです。

@@ -1,13 +1,15 @@
 import std/dom
-import std/jsffi
 import ../../src/palladian/preact
-import ./components/parent
-import ./components/loop
+import ./pages/home
+import ./pages/about
 
-proc App() {.exportc.} =
-  render("""
-    <${Parent} name="Preact" />
-    <${Loop} />
+proc App():Component {.exportc.} =
+  return html("""
+    <${Router}>
+      <${Home} path="/" />
+      <${About} path="/about" />
+    <//>
   """)
+
 
 renderApp(App, document.getElementById("app"))

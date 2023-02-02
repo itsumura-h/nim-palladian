@@ -2,54 +2,12 @@
 var framePtr = null;
 var excHandler = 0;
 var lastJSError = null;
-var NTI33555128 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555120 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555122 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555083 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555165 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI33554439 = {size: 0,kind: 28,base: null,node: null,finalizer: null};
-var NTI33555164 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI33555112 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555113 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33555130 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI939524124 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI620757020 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI33554456 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI939524127 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI939524100 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI33554440 = {size: 0,kind: 29,base: null,node: null,finalizer: null};
-var NTI939524103 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NNI939524103 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554440, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI939524100, name: "Field1", sons: null}]};
-NTI939524103.node = NNI939524103;
-var NNI939524127 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554456, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI939524124, name: "Field1", sons: null}]};
-NTI939524127.node = NNI939524127;
-var NNI33555130 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555130.node = NNI33555130;
-var NNI33555113 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555113.node = NNI33555113;
-NTI33555164.base = NTI33555112;
-NTI33555165.base = NTI33555112;
-var NNI33555112 = {kind: 2, len: 5, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "parent", len: 0, typ: NTI33555164, name: "parent", sons: null}, 
-{kind: 1, offset: "name", len: 0, typ: NTI33554440, name: "name", sons: null}, 
-{kind: 1, offset: "message", len: 0, typ: NTI33554439, name: "msg", sons: null}, 
-{kind: 1, offset: "trace", len: 0, typ: NTI33554439, name: "trace", sons: null}, 
-{kind: 1, offset: "up", len: 0, typ: NTI33555165, name: "up", sons: null}]};
-NTI33555112.node = NNI33555112;
-var NNI33555083 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555083.node = NNI33555083;
-NTI33555112.base = NTI33555083;
-NTI33555113.base = NTI33555112;
-NTI33555130.base = NTI33555113;
-var NNI33555122 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555122.node = NNI33555122;
-var NNI33555120 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555120.node = NNI33555120;
-NTI33555120.base = NTI33555113;
-NTI33555122.base = NTI33555120;
-var NNI33555128 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555128.node = NNI33555128;
-NTI33555128.base = NTI33555113;
+var NTI620757023 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NNI620757023 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554456, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI620757020, name: "Field1", sons: null}]};
+NTI620757023.node = NNI620757023;
 
 function setConstr() {
         var result = {};
@@ -144,151 +102,6 @@ function nimCopy(dest_33557140, src_33557141, ti_33557142) {
   return result_33557151;
 
 }
-
-function makeNimstrLit(c_33556801) {
-      var result = [];
-  for (var i = 0; i < c_33556801.length; ++i) {
-    result[i] = c_33556801.charCodeAt(i);
-  }
-  return result;
-  
-
-  
-}
-
-function toJSStr(s_33556807) {
-                    var Temporary5;
-            var Temporary7;
-
-  var result_33556808 = null;
-
-    var res_33556842 = newSeq_33556825((s_33556807).length);
-    var i_33556843 = 0;
-    var j_33556844 = 0;
-    Label1: do {
-        Label2: while (true) {
-        if (!(i_33556843 < (s_33556807).length)) break Label2;
-          var c_33556845 = s_33556807[i_33556843];
-          if ((c_33556845 < 128)) {
-          res_33556842[j_33556844] = String.fromCharCode(c_33556845);
-          i_33556843 += 1;
-          }
-          else {
-            var helper_33556857 = newSeq_33556825(0);
-            Label3: do {
-                Label4: while (true) {
-                if (!true) break Label4;
-                  var code_33556858 = c_33556845.toString(16);
-                  if ((((code_33556858) == null ? 0 : (code_33556858).length) == 1)) {
-                  helper_33556857.push("%0");;
-                  }
-                  else {
-                  helper_33556857.push("%");;
-                  }
-                  
-                  helper_33556857.push(code_33556858);;
-                  i_33556843 += 1;
-                    if (((s_33556807).length <= i_33556843)) Temporary5 = true; else {                      Temporary5 = (s_33556807[i_33556843] < 128);                    }                  if (Temporary5) {
-                  break Label3;
-                  }
-                  
-                  c_33556845 = s_33556807[i_33556843];
-                }
-            } while (false);
-++excHandler;
-            Temporary7 = framePtr;
-            try {
-            res_33556842[j_33556844] = decodeURIComponent(helper_33556857.join(""));
---excHandler;
-} catch (EXCEPTION) {
- var prevJSError = lastJSError;
- lastJSError = EXCEPTION;
- --excHandler;
-            framePtr = Temporary7;
-            res_33556842[j_33556844] = helper_33556857.join("");
-            lastJSError = prevJSError;
-            } finally {
-            framePtr = Temporary7;
-            }
-          }
-          
-          j_33556844 += 1;
-        }
-    } while (false);
-    if (res_33556842.length < j_33556844) { for (var i = res_33556842.length ; i < j_33556844 ; ++i) res_33556842.push(null); }
-               else { res_33556842.length = j_33556844; };
-    result_33556808 = res_33556842.join("");
-
-  return result_33556808;
-
-}
-
-function raiseException(e_33556667, ename_33556668) {
-    e_33556667.name = ename_33556668;
-    if ((excHandler == 0)) {
-    unhandledException(e_33556667);
-    }
-    
-    throw e_33556667;
-
-  
-}
-
-function chckRange(i_33557189, a_33557190, b_33557191) {
-      var Temporary1;
-
-  var result_33557192 = 0;
-
-  BeforeRet: do {
-      if (!(a_33557190 <= i_33557189)) Temporary1 = false; else {        Temporary1 = (i_33557189 <= b_33557191);      }    if (Temporary1) {
-    result_33557192 = i_33557189;
-    break BeforeRet;
-    }
-    else {
-    raiseRangeError();
-    }
-    
-  } while (false);
-
-  return result_33557192;
-
-}
-
-function mnewString(len_33556893) {
-        return new Array(len_33556893);
-  
-
-  
-}
-
-function addInt(a_33556940, b_33556941) {
-        var result = a_33556940 + b_33556941;
-    checkOverflowInt(result);
-    return result;
-  
-
-  
-}
-
-function chckIndx(i_33557184, a_33557185, b_33557186) {
-      var Temporary1;
-
-  var result_33557187 = 0;
-
-  BeforeRet: do {
-      if (!(a_33557185 <= i_33557184)) Temporary1 = false; else {        Temporary1 = (i_33557184 <= b_33557186);      }    if (Temporary1) {
-    result_33557187 = i_33557184;
-    break BeforeRet;
-    }
-    else {
-    raiseIndexError(i_33557184, a_33557185, b_33557186);
-    }
-    
-  } while (false);
-
-  return result_33557187;
-
-}
 if (!Math.trunc) {
   Math.trunc = function(v) {
     v = +v;
@@ -297,38 +110,36 @@ if (!Math.trunc) {
   };
 }
 
-var objectID_687866018 = [0];
-import { html, render } from 'https://unpkg.com/htm/preact/index.mjs?module';
-import { useState, useEffect, useMemo } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module';
+var objectID_704643234 = [0];
+import { h, render } from 'https://cdn.jsdelivr.net/npm/preact@10.11.3/+esm';
+import htm from 'https://cdn.jsdelivr.net/npm/htm@3.1.1/+esm'
+import { useState, useEffect, useMemo } from 'https://cdn.jsdelivr.net/npm/preact@10.11.3/hooks/+esm';
 import {Router, Link} from 'https://cdn.jsdelivr.net/npm/preact-router@4.1.0/+esm';
+import { signal, Signal } from 'https://cdn.jsdelivr.net/npm/@preact/signals@1.1.3/+esm';
 
-import { Signal } from 'https://cdn.jsdelivr.net/npm/@preact/signals@1.1.3/+esm';
+const html = htm.bind(h);
+
+// https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
+Signal.prototype.map = function(fn) { return html`<For each=${this} children=${fn} />` };
+
+export function For({ each, children: f }) {
+  let c = useMemo(() => new Map, []);
+  let value = each.value;
+  if (!Array.isArray(value)) return html`<Item v=${value} f=${f} />`;
+  return value.map((v, k, x) => c.get(v) || (c.set(v, x = html`<Item v=${v} k=${k} f=${f} />`), x));
+}
+let Item = ({ v, k, f }) => f(v, k);
+
+export function Show({ when, fallback, children: f }) {
+  let v = when.value;
+  return v ? typeof f === 'function' ? html`<Item v=${v} f=${f} />` : f : fallback;
+}
 
 function renderApp(component, dom){
   render(html`<${component} />`, dom)
 }
 
-
-function Page1() {
-    return html`    <h2>page1</h2>
-  `
-
-  
-}
-
-function Page2() {
-    return html`    <h2>page2</h2>
-  `
-
-  
-}
-
-function Page3() {
-    return html`    <h2>page3</h2>
-  `
-
-  
-}
+var msg = signal("message");
 
 function isFatPointer_33557131(ti_33557132) {
   var result_33557133 = false;
@@ -368,264 +179,87 @@ function nimCopyAux(dest_33557144, src_33557145, n_33557146) {
   
 }
 
-function useState_939524105(arg_939524106) {
-  var result_939524107 = {Field0: null, Field1: null};
+function useState_620757040(arg_620757041) {
+  var result_620757042 = {Field0: 0, Field1: null};
 
   BeforeRet: do {
-    var state_939524108 = useState(arg_939524106);
-    var value_939524113 = (state_939524108[0]);
-    var setter_939524118 = (state_939524108[1]);
-    var colontmp__956301332 = value_939524113;
-    var colontmp__956301333 = setter_939524118;
-    result_939524107 = nimCopy(result_939524107, {Field0: colontmp__956301332, Field1: colontmp__956301333}, NTI939524103);
+    var state_620757043 = useState(arg_620757041);
+    var value_620757048 = (state_620757043[0]);
+    var setter_620757053 = (state_620757043[1]);
+    var colontmp__989855770 = value_620757048;
+    var colontmp__989855771 = setter_620757053;
+    result_620757042 = nimCopy(result_620757042, {Field0: colontmp__989855770, Field1: colontmp__989855771}, NTI620757023);
     break BeforeRet;
   } while (false);
 
-  return result_939524107;
+  return result_620757042;
 
 }
 
-function useState_939524143(arg_939524144) {
-  var result_939524145 = {Field0: 0, Field1: null};
-
-  BeforeRet: do {
-    var state_939524146 = useState(arg_939524144);
-    var value_939524151 = (state_939524146[0]);
-    var setter_939524156 = (state_939524146[1]);
-    var colontmp__956301335 = value_939524151;
-    var colontmp__956301336 = setter_939524156;
-    result_939524145 = nimCopy(result_939524145, {Field0: colontmp__956301335, Field1: colontmp__956301336}, NTI939524127);
-    break BeforeRet;
-  } while (false);
-
-  return result_939524145;
-
-}
-
-function Parent(props_956301321) {
+function Parent(props_989855759) {
     
-function setMsgFunc(e_956301328) {
-        setMsg_956301324(e_956301328.target.value);
+function setMsgFunc(e_989855766) {
+        msg.value = e_989855766.target.value;
 
       
     }
     
-function HEX3Aanonymous_956301329() {
-        setMsgLen_956301326(((msg) == null ? 0 : (msg).length));
+function HEX3Aanonymous_989855767() {
+        setMsgLen_989855764(((msgValue) == null ? 0 : (msgValue).length));
 
       
     }
 
-    var props = props_956301321;
-    var colontmp__956301331 = useState_939524105("message");
-    var msg = colontmp__956301331["Field0"];
-    var setMsg_956301324 = colontmp__956301331["Field1"];
-    var colontmp__956301334 = useState_939524143(0);
-    var msgLen = colontmp__956301334["Field0"];
-    var setMsgLen_956301326 = colontmp__956301334["Field1"];
-    useEffect(HEX3Aanonymous_956301329);
-    console.log("=== re-render");
-    return html`    <h1>Hello ${props.name}!</h1>
-    <form>
-      <input type="text" oninput=${setMsgFunc} value=${msg} />
-      ${msgLen === 0? html`<p>fill message</p>` : html`<p>message filled</p>` }
-      <p>this is a ${msg}</p>
-      <p>message count is ${msgLen}</p>
-    </form>
-    <${Link} href="/">page1<//>
-    <${Link} href="/page2">page2<//>
-    <${Link} href="/page3">page3<//>
-    <${Router}>
-      <${Page1} path="/" />
-      <${Page2} path="/page2" />
-      <${Page3} path="/page3" />
-    <//>
-  `
+  var result_989855760 = null;
 
-  
-}
+  BeforeRet: do {
+    var props = props_989855759;
+    var msgValue = msg.value;
+    var colontmp__989855769 = useState_620757040(0);
+    var msgLen = colontmp__989855769["Field0"];
+    var setMsgLen_989855764 = colontmp__989855769["Field1"];
+    useEffect(HEX3Aanonymous_989855767);
+    result_989855760 = eval('html`' + "    <div>\n      <h1>Hello ${props.name}!</h1>\n      <form>\n        <input type=\"text\" oninput=${setMsgFunc} value=${msg} />\n        <${Show} when=${msg} fallback=${html`<p>fill message</p>`}>\n          ${html`<p>message filled</p>`}\n        <//>\n        <p>this is a ${msg}</p>\n        <p>message count is ${msgLen}</p>\n      </form>\n    </div>\n  " + '`');
+    break BeforeRet;
+  } while (false);
 
-function add_33556419(x_33556420, x_33556420_Idx, y_33556421) {
-          if (x_33556420[x_33556420_Idx] === null) { x_33556420[x_33556420_Idx] = []; }
-      var off = x_33556420[x_33556420_Idx].length;
-      x_33556420[x_33556420_Idx].length += y_33556421.length;
-      for (var i = 0; i < y_33556421.length; ++i) {
-        x_33556420[x_33556420_Idx][off+i] = y_33556421.charCodeAt(i);
-      }
-    
-
-  
-}
-
-function newSeq_33556825(len_33556827) {
-  var result_33556828 = [];
-
-    result_33556828 = new Array(len_33556827); for (var i = 0 ; i < len_33556827 ; ++i) { result_33556828[i] = null; }
-  return result_33556828;
+  return result_989855760;
 
 }
 
-function unhandledException(e_33556663) {
-    var buf_33556664 = [[]];
-    if (!(((e_33556663.message).length == 0))) {
-    buf_33556664[0].push.apply(buf_33556664[0], makeNimstrLit("Error: unhandled exception: "));;
-    buf_33556664[0].push.apply(buf_33556664[0], e_33556663.message);;
-    }
-    else {
-    buf_33556664[0].push.apply(buf_33556664[0], makeNimstrLit("Error: unhandled exception"));;
-    }
-    
-    buf_33556664[0].push.apply(buf_33556664[0], makeNimstrLit(" ["));;
-    add_33556419(buf_33556664, 0, e_33556663.name);
-    buf_33556664[0].push.apply(buf_33556664[0], makeNimstrLit("]\x0A"));;
-    var cbuf_33556665 = toJSStr(buf_33556664[0]);
-    framePtr = null;
-      if (typeof(Error) !== "undefined") {
-    throw new Error(cbuf_33556665);
-  }
-  else {
-    throw cbuf_33556665;
-  }
-  
+function Home() {
+  var result_973078532 = null;
 
-  
-}
+  BeforeRet: do {
+    result_973078532 = eval('html`' + "    <div>\n      <h1>Home</h1>\n      <${Link} href=\"/about\">about<//>\n      <hr/>\n      <${Parent} name=\"preact\" />\n    </div>\n  " + '`');
+    break BeforeRet;
+  } while (false);
 
-function raiseRangeError() {
-    raiseException({message: makeNimstrLit("value out of range"), parent: null, m_type: NTI33555130, name: null, trace: [], up: null}, "RangeDefect");
-
-  
-}
-
-function raiseOverflow() {
-    raiseException({message: makeNimstrLit("over- or underflow"), parent: null, m_type: NTI33555122, name: null, trace: [], up: null}, "OverflowDefect");
-
-  
-}
-
-function checkOverflowInt(a_33556938) {
-        if (a_33556938 > 2147483647 || a_33556938 < -2147483648) raiseOverflow();
-  
-
-  
-}
-
-function addChars_251658415(result_251658417, result_251658417_Idx, x_251658418, start_251658419, n_251658420) {
-    var old_251658421 = (result_251658417[result_251658417_Idx]).length;
-    (result_251658417[result_251658417_Idx].length = chckRange(addInt(old_251658421, n_251658420), 0, 2147483647));
-    Label1: do {
-      var iHEX60gensym4_251658435 = 0;
-      var i_1040187476 = 0;
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_1040187476 < n_251658420)) break Label3;
-            iHEX60gensym4_251658435 = i_1040187476;
-            result_251658417[result_251658417_Idx][chckIndx(addInt(old_251658421, iHEX60gensym4_251658435), 0, (result_251658417[result_251658417_Idx]).length - 1)] = x_251658418.charCodeAt(chckIndx(addInt(start_251658419, iHEX60gensym4_251658435), 0, (x_251658418).length - 1));
-            i_1040187476 = addInt(i_1040187476, 1);
-          }
-      } while (false);
-    } while (false);
-
-  
-}
-
-function addChars_251658411(result_251658413, result_251658413_Idx, x_251658414) {
-    addChars_251658415(result_251658413, result_251658413_Idx, x_251658414, 0, ((x_251658414) == null ? 0 : (x_251658414).length));
-
-  
-}
-
-function addInt_251658436(result_251658437, result_251658437_Idx, x_251658438) {
-    addChars_251658411(result_251658437, result_251658437_Idx, ((x_251658438) + ""));
-
-  
-}
-
-function addInt_251658457(result_251658458, result_251658458_Idx, x_251658459) {
-    addInt_251658436(result_251658458, result_251658458_Idx, x_251658459);
-
-  
-}
-
-function HEX24_335544323(x_335544324) {
-  var result_335544325 = [[]];
-
-    addInt_251658457(result_335544325, 0, x_335544324);
-
-  return result_335544325[0];
+  return result_973078532;
 
 }
 
-function raiseIndexError(i_33556754, a_33556755, b_33556756) {
-    var Temporary1;
+function About() {
+  var result_1006632963 = null;
 
-    if ((b_33556756 < a_33556755)) {
-    Temporary1 = makeNimstrLit("index out of bounds, the container is empty");
-    }
-    else {
-    Temporary1 = (makeNimstrLit("index ") || []).concat(HEX24_335544323(i_33556754) || [],makeNimstrLit(" not in ") || [],HEX24_335544323(a_33556755) || [],makeNimstrLit(" .. ") || [],HEX24_335544323(b_33556756) || []);
-    }
-    
-    raiseException({message: nimCopy(null, Temporary1, NTI33554439), parent: null, m_type: NTI33555128, name: null, trace: [], up: null}, "IndexDefect");
+  BeforeRet: do {
+    result_1006632963 = eval('html`' + "    <div>\n      <h1>About</h1>\n      <${Link} href=\"/\">home<//>\n    </div>\n  " + '`');
+    break BeforeRet;
+  } while (false);
 
-  
-}
+  return result_1006632963;
 
-function map_1040187407(s_1040187410, op_1040187412) {
-  var result_1040187413 = [];
-
-    result_1040187413 = new Array(chckRange((s_1040187410).length, 0, 2147483647)); for (var i = 0 ; i < chckRange((s_1040187410).length, 0, 2147483647) ; ++i) { result_1040187413[i] = null; }    Label1: do {
-      var i_1040187428 = 0;
-      var colontmp__1040187467 = 0;
-      colontmp__1040187467 = (s_1040187410).length;
-      var i_1040187468 = 0;
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_1040187468 < colontmp__1040187467)) break Label3;
-            i_1040187428 = i_1040187468;
-            result_1040187413[chckIndx(i_1040187428, 0, (result_1040187413).length - 1)] = op_1040187412(s_1040187410[chckIndx(i_1040187428, 0, (s_1040187410).length - 1)]);
-            i_1040187468 = addInt(i_1040187468, 1);
-          }
-      } while (false);
-    } while (false);
-
-  return result_1040187413;
-
-}
-
-function Loop() {
-    
-function HEX3Aanonymous_1040187403(row_1040187404) {
-      var result_1040187405 = null;
-
-      BeforeRet: do {
-        result_1040187405 = toJSStr(row_1040187404);
-        break BeforeRet;
-      } while (false);
-
-      return result_1040187405;
-
-    }
-
-    var values_1040187402 = [makeNimstrLit("a"), makeNimstrLit("b"), makeNimstrLit("c"), makeNimstrLit("d"), makeNimstrLit("e")];
-    var cvalues = map_1040187407(values_1040187402, HEX3Aanonymous_1040187403);
-    return html`    <hr />
-    <p>loop</p>
-    <ul>
-      ${cvalues.map(value=>{
-        return html`<li>${value}</li>`
-      })}
-    </ul>
-  `
-
-  
 }
 
 function App() {
-    return html`    <${Parent} name="Preact" />
-    <${Loop} />
-  `
+  var result_469762054 = null;
 
-  
+  BeforeRet: do {
+    result_469762054 = eval('html`' + "    <${Router}>\n      <${Home} path=\"/\" />\n      <${About} path=\"/about\" />\n    <//>\n  " + '`');
+    break BeforeRet;
+  } while (false);
+
+  return result_469762054;
+
 }
 renderApp(App, document.getElementById("app"));

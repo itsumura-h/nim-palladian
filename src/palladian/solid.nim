@@ -14,8 +14,8 @@ import {
 } from "https://cdn.skypack.dev/solid-js";
 // https://github.com/solidjs/solid-router
 // https://www.jsdelivr.com/package/npm/@solidjs/router
-import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.6/+esm";
-// import { Router, Routes, Route, Link } from "https://cdn.jsdelivr.net/npm/solid-app-router@0.1.14/+esm";
+import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.7/+esm";
+// import {Router, Link} from 'https://cdn.jsdelivr.net/npm/preact-router@4.1.0/+esm';
 """.}
 
 

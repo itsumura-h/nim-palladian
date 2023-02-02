@@ -1,7 +1,7 @@
 import std/dom
 import std/jsconsole
 import std/jsffi
-import ../../../src/palladian/preact
+import ../../../src/palladian/solid
 
 proc Page1*() {.exportc.} =
   render("""

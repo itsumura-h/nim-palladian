@@ -310,8 +310,8 @@ import {
 } from "https://cdn.skypack.dev/solid-js";
 // https://github.com/solidjs/solid-router
 // https://www.jsdelivr.com/package/npm/@solidjs/router
-import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.6/+esm";
-// import { Router, Routes, Route, Link } from "https://cdn.jsdelivr.net/npm/solid-app-router@0.1.14/+esm";
+import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.7/+esm";
+// import {Router, Link} from 'https://cdn.jsdelivr.net/npm/preact-router@4.1.0/+esm';
 
 function renderApp(component, dom){
   render(()=>component, dom)
@@ -444,7 +444,7 @@ function HEX3Aanonymous_956301347() {
     var setMsgLen_956301344 = colontmp__956301356["Field1"];
     createEffect(HEX3Aanonymous_956301347);
     console.log("=== re-render");
-    return html`    <h1>Hello ${()=>propsName}!</h1>
+    return html`    <h1>Hello ${propsName}!</h1>
     <form>
       <input type="text" oninput=${setMsgFunc} value=${msg} />
       <${Show} when=${()=> msgLen() === 0} fallback=${html`<p>message filled</p>`} >
@@ -453,13 +453,13 @@ function HEX3Aanonymous_956301347() {
       <p>this is a ${msg}</p>
       <p>message count is ${msgLen}</p>
     </form>
-    <a href="/page1">page1<//>
-    <a href="/page2">page2<//>
-    <a href="/page3">page3<//>
+    <${A} href="/page1">page1<//>
+    <${A} href="/page2">page2<//>
+    <${A} href="/page3">page3<//>
     <${Routes}>
-      <${Route} path="/page1" element=${html`<${Page1} />`} />
-      <${Route} path="/page2" element=${html`<${Page2} />`} />
-      <${Route} path="/page3" element=${html`<${Page3} />`} />
+      <${Route} path="/" component=${Page1} />
+      <${Route} path="/page2" component=${Page2} />
+      <${Route} path="/page3" component=${Page3} />
     <//>
   `
 
@@ -643,7 +643,7 @@ function HEX3Aanonymous_1040187403(row_1040187404) {
 }
 
 function App() {
-    return html`    <${Router}>
+    return html`    <${Router} />
       <${Parent} name="Solid" />
       <${Loop} />
     <//>

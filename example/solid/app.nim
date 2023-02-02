@@ -6,7 +6,7 @@ import ./components/loop
 
 proc App() {.exportc.} =
   render("""
-    <${Router}>
+    <${Router} />
       <${Parent} name="Solid" />
       <${Loop} />
     <//>

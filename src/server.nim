@@ -25,6 +25,9 @@ proc serve*(routes:seq[Route], port=8080) {.async.} =
           await req.respond(Http200, data, headers)
       let headers = {"Content-type": "text/html; charset=utf-8"}
       for route in routes:
+        if route.path == "*":
+          await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
+          break
         if req.reqMethod == route.httpMethod and req.url.path == route.path:
           await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
           break
