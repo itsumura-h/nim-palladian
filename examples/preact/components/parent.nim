@@ -1,8 +1,14 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian/preact
+import std/jsconsole
+import std/json
+import ../../../src/palladian
+import ../../../src/palladian/strformat
+import ../../../src/palladian/hooks
+import ../../../src/palladian/router
+import ../../../src/palladian/controll_flow
 
-let msg {.exportc.} = signal("message")
+let msg* {.exportc.} = signal("message")
 
 proc Parent*(props: JsObject):Component {.exportc.} =
   let props {.exportc.} = props
@@ -16,7 +22,7 @@ proc Parent*(props: JsObject):Component {.exportc.} =
     setMsgLen(msgValue.len)
   )
 
-  return html("""
+  return html(fmt"""
     <div>
       <h1>Hello ${props.name}!</h1>
       <form>
@@ -29,5 +35,3 @@ proc Parent*(props: JsObject):Component {.exportc.} =
       </form>
     </div>
   """)
-
-# <p>${msgLen == 0? "fill message" : "message filled" }</p>
