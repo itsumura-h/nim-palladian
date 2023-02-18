@@ -18,9 +18,7 @@ proc App():Component {.exportc.} =
       <${Header} />
       <div class="drawer drawer-mobile">
         <input id="drawer" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-side overflow-y-auto">
-          <${Drawer} />
-        </div>
+
         <div class="drawer-content overflow-y-auto">
           <${Router}>
             <${TopPage} path="/" />
@@ -30,6 +28,11 @@ proc App():Component {.exportc.} =
             <${ControllFlowPage} path="/controll-flow" />
             <${ApiAccessPage} path="/api-access" />
           <//>
+        </div>
+
+        <div class="drawer-side overflow-y-auto">
+          <label for="drawer" class="drawer-overlay"></label>
+          <${Drawer} />
         </div>
       </div>
     </div>
