@@ -14,6 +14,7 @@ proc Drawer*():Component {.exportc.} =
         <li><${Link} href="/use-effect" activeClassName="active">useEffect<//></li>
         <li><${Link} href="/signal" activeClassName="active">signal<//></li>
         <li><${Link} href="/controll-flow" activeClassName="active">controll flow<//></li>
+        <li><${Link} href="/api-access" activeClassName="active">api access<//></li>
       </ul>
     </div>
   """)

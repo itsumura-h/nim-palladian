@@ -1,15 +1,16 @@
+import std/asyncjs
 import std/jsffi
 import std/json
 
-{.emit:"""
-import { useState, useEffect, useMemo } from 'https://cdn.jsdelivr.net/npm/preact@10.11.3/hooks/+esm';
-import { signal, Signal } from 'https://cdn.jsdelivr.net/npm/@preact/signals@1.1.3/+esm';
+{.emit: """
+import { useState, useEffect, useMemo } from 'https://esm.sh/preact@10.12.1/hooks';
+import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3';
 """.}
 
 
 type BoolStateSetter = proc(arg: bool)
 
-proc boolUseState(arg: bool): JsObject {.importcpp: "useState(#)".}
+proc boolUseState(arg: bool): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: bool): (bool, BoolStateSetter) =
   let state = boolUseState(arg)
   let value = to(state[0], bool)
@@ -19,7 +20,7 @@ proc useState*(arg: bool): (bool, BoolStateSetter) =
 
 type IntStateSetter = proc(arg: int)
 
-proc intUseState(arg: int): JsObject {.importcpp: "useState(#)".}
+proc intUseState(arg: int): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: int): (int, IntStateSetter) =
   let state = intUseState(arg)
   let value = to(state[0], int)
@@ -29,7 +30,7 @@ proc useState*(arg: int): (int, IntStateSetter) =
 
 type FloatStateSetter = proc(arg: float)
 
-proc floatUseState(arg: float): JsObject {.importcpp: "useState(#)".}
+proc floatUseState(arg: float): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: float): (float, FloatStateSetter) =
   let state = floatUseState(arg)
   let value = to(state[0], float)
@@ -39,7 +40,7 @@ proc useState*(arg: float): (float, FloatStateSetter) =
 
 type StrStateSetter = proc(arg: cstring)
 
-proc strUseState(arg: cstring): JsObject {.importcpp: "useState(#)".}
+proc strUseState(arg: cstring): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: cstring): (cstring, StrStateSetter) =
   let state = strUseState(arg)
   let value = to(state[0], cstring)
@@ -49,7 +50,7 @@ proc useState*(arg: cstring): (cstring, StrStateSetter) =
 
 type ObjectStateSetter = proc(arg: JsObject)
 
-proc objUseState(arg: JsObject): JsObject {.importcpp: "useState(#)".}
+proc objUseState(arg: JsObject): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: JsObject): (JsObject, ObjectStateSetter) =
   let state = objUseState(arg)
   let value = to(state[0], JsObject)
@@ -59,48 +60,62 @@ proc useState*(arg: JsObject): (JsObject, ObjectStateSetter) =
 
 type JsonStateSetter = proc(arg: JsonNode)
 
-proc objUseState(arg: JsonNode): JsObject {.importcpp: "useState(#)".}
+proc jsonUseState(arg: JsonNode): JsObject {.importjs: "useState(#)".}
 proc useState*(arg: JsonNode): (JsonNode, JsonStateSetter) =
-  let state = objUseState(arg)
+  let state = jsonUseState(arg)
   let value = to(state[0], JsonNode)
   let setter = to(state[1], JsonStateSetter)
   return (value, setter)
 
 
+type States* = cstring|int|float|bool|JsonNode
 
-
-type States = cstring|int|float|bool
-
-proc useEffect*(cb: proc()) {.importcpp: "useEffect(#)".}
+proc useEffect*(cb: proc()) {.importjs: "useEffect(#)".}
   ## Side-Effects are at the heart of many modern Apps.
   ## Whether you want to fetch some data from an API or trigger an effect on the document, you'll find that the useEffect fits nearly all your needs.
   ## It's one of the main advantages of the hooks API, that it reshapes your mind into thinking in effects instead of a component's lifecycle.
-proc useEffect*(cb: proc(), dependency:seq[States]) {.importcpp: "useEffect(#, #)".}
+proc useEffect*(cb: proc(), dependency: array) {.importjs: "useEffect(#, [])".}
+proc useEffect*(cb: proc(), dependency: seq[States]) {.importjs: "useEffect(#, #)".}
   ## With Dependancy
   ##
   ## Side-Effects are at the heart of many modern Apps.
   ## Whether you want to fetch some data from an API or trigger an effect on the document, you'll find that the useEffect fits nearly all your needs.
   ## It's one of the main advantages of the hooks API, that it reshapes your mind into thinking in effects instead of a component's lifecycle.
+proc useEffect*(cb: proc (): Future[void]) {.importjs: "useEffect(#)".}
+proc useEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useEffect(#, [])".}
+proc useEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useEffect(#, #)".}
 
 type BoolSignal = object of JsObject
-type BoolSignalValue* = cstring
-proc signal*(arg:bool):BoolSignal {.importcpp:"signal(#)".}
-proc value*(self:BoolSignal):BoolSignalValue {.importcpp:"#.value".}
-proc `value=`*(self:BoolSignal, val:bool) {.importcpp: "#.value = #".}
+type BoolSignalValue* = bool
+proc signal*(arg: bool): BoolSignal {.importjs: "signal(#)".}
+proc value*(self: BoolSignal): BoolSignalValue {.importjs: "#.value".}
+proc `value=`*(self: BoolSignal, val: bool) {.importjs: "#.value = #".}
 
 type IntSignal = object of JsObject
-proc signal*(arg:int):IntSignal {.importcpp:"signal(#)".}
-proc value*(self:IntSignal):int {.importcpp:"#.value".}
-proc `value=`*(self:IntSignal, val:int) {.importcpp: "#.value = #".}
+proc signal*(arg: int): IntSignal {.importjs: "signal(#)".}
+proc value*(self: IntSignal): int {.importjs: "#.value".}
+proc `value=`*(self: IntSignal, val: int) {.importjs: "#.value = #".}
 
 type FloatSignal = object of JsObject
-type FloatSignalValue* = cstring
-proc signal*(arg:float):FloatSignal {.importcpp:"signal(#)".}
-proc value*(self:FloatSignal):FloatSignalValue {.importcpp:"#.value".}
-proc `value=`*(self:FloatSignal, val:float) {.importcpp: "#.value = #".}
+type FloatSignalValue* = float
+proc signal*(arg: float): FloatSignal {.importjs: "signal(#)".}
+proc value*(self: FloatSignal): FloatSignalValue {.importjs: "#.value".}
+proc `value=`*(self: FloatSignal, val: float) {.importjs: "#.value = #".}
 
 type StrSignal = object of JsObject
 type StrSignalValue* = cstring
-proc signal*(arg:cstring):StrSignal {.importcpp:"signal(#)".}
-proc value*(self:StrSignal):StrSignalValue {.importcpp:"#.value".}
-proc `value=`*(self:StrSignal, val:cstring) {.importcpp: "#.value = #".}
+proc signal*(arg: cstring): StrSignal {.importjs: "signal(#)".}
+proc value*(self: StrSignal): StrSignalValue {.importjs: "#.value".}
+proc `value=`*(self: StrSignal, val: cstring) {.importjs: "#.value = #".}
+
+type ObjSignal = object of JsObject
+type ObjSignalValue* = JsObject
+proc signal*(arg: JsObject): ObjSignal {.importjs: "signal(#)".}
+proc value*(self: ObjSignal): ObjSignalValue {.importjs: "#.value".}
+proc `value=`*(self: ObjSignal, val: JsObject) {.importjs: "#.value = #".}
+
+type JsonSignal = object of JsObject
+type JsonSignalValue* = JsonNode
+proc signal*(arg: JsonNode): JsonSignal {.importjs: "signal(#)".}
+proc value*(self: JsonSignal): JsonSignalValue {.importjs: "#.value".}
+proc `value=`*(self: JsonSignal, val: JsonNode) {.importjs: "#.value = #".}

@@ -9,11 +9,12 @@ import ./pages/use_state_page
 import ./pages/use_effect_page
 import ./pages/signal_page
 import ./pages/controll_flow_page
+import ./pages/api_access_page
 
 
 proc App():Component {.exportc.} =
   return html(fmt"""
-    <div class="min-h-screen max-h-screen overflow-hidden" data-theme="halloween">
+    <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
       <div class="drawer drawer-mobile">
         <input id="drawer" type="checkbox" class="drawer-toggle" />
@@ -27,6 +28,7 @@ proc App():Component {.exportc.} =
             <${UseEffectPage} path="/use-effect" />
             <${SignalPage} path="/signal" />
             <${ControllFlowPage} path="/controll-flow" />
+            <${ApiAccessPage} path="/api-access" />
           <//>
         </div>
       </div>

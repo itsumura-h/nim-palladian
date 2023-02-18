@@ -14,10 +14,21 @@ export function For({ each, children: f }) {
 let Item = ({ v, k, f }) => f(v, k);
 
 export function Show({ when, fallback, children: f }) {
-  let v = when.value;
+  let v;
+  if(typeof when === "object"){
+    if("value" in when){ // Signal
+      v = when.value
+    }else{ // JsObject
+      v = when
+    }
+  }else if(typeof when === "function"){
+    v = when()
+  }else{
+    v = when
+  }
   return v ? typeof f === 'function' ? html``<Item v=${v} f=${f} />`` : f : fallback;
 }
 """.}
 
-proc For*(props:JsObject):Component {.importcpp:"For(#)".}
-proc Show*(props:JsObject):Component {.importcpp:"Show(#)".}
+proc For*(props:JsObject):Component {.importjs:"For(#)".}
+proc Show*(props:JsObject):Component {.importjs:"Show(#)".}

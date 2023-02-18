@@ -2,9 +2,8 @@ import std/asyncdispatch
 import std/asynchttpserver
 import ../../src/server
 
-const html = staticRead("./index.html")
-
 proc controller(req:Request):Future[string] {.async.}=
+  let html = readFile("index.html")
   return html
 
 var routes:seq[Route] = @[]

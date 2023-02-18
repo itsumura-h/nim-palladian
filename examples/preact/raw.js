@@ -1,8 +1,8 @@
-import { h, render } from 'https://cdn.jsdelivr.net/npm/preact@10.11.3/+esm';
-import htm from 'https://cdn.jsdelivr.net/npm/htm@3.1.1/+esm'
-import { useState, useEffect, useMemo } from 'https://cdn.jsdelivr.net/npm/preact@10.11.3/hooks/+esm';
-import {Router, Link} from 'https://cdn.jsdelivr.net/npm/preact-router@4.1.0/+esm';
-import { signal } from 'https://cdn.jsdelivr.net/npm/@preact/signals@1.1.3/+esm';
+import {h, render} from 'https://esm.sh/preact@10.12.1'
+import htm from 'https://esm.sh/htm@3.1.1'
+import { useState, useEffect, useMemo } from 'https://esm.sh/preact@10.12.1/hooks';
+import { signal } from 'https://esm.sh/@preact/signals@1.1.3?deps=preact@10.12.1';
+import {Router, Link} from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.12.1';
 
 const html = htm.bind(h);
 
@@ -18,6 +18,12 @@ function page1(){
     console.log("=== setPage1Singal")
     page1Signal.value = e.target.value
   }
+
+  useEffect(async()=>{
+    let resp = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+    const json = await resp.json()
+    console.log(json)
+  }, [])
 
   return html`
     <p>page1</p>
@@ -64,4 +70,4 @@ function App (props) {
   `;
 }
 
-render(html`<${App} name="Preact" />`, document.body);
+render(html`<${App} name="Preact" />`, document.getElementById("app"));
