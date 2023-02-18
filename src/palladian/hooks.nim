@@ -1,12 +1,9 @@
 import std/asyncjs
 import std/jsffi
 import std/json
+import ./importlibs
 
-{.emit: """
-import { useState, useEffect, useMemo } from 'https://esm.sh/preact@10.12.1/hooks';
-import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3';
-""".}
-
+importPreactHooks()
 
 type BoolStateSetter = proc(arg: bool)
 
