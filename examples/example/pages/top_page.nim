@@ -15,8 +15,10 @@ proc TopPage*():Component {.exportc.} =
           </div>
         </div>
       </div>
-      <${TextBodyCenter} title="Why Preact?">
-        In creating a front-end framework made by Nim, we needed something that did not require a NodeJS environment and did not require transpiling using Babel or other software. Preact can use all of its features with a CDN call, and has a very compact library size of 3KB.
+      <${TextHeroCenter} title="Why Preact?">
+        <p>In creating a front-end framework made by Nim, we needed something that did not require a NodeJS environment
+        and did not require transpiling using Babel or other software.
+        Preact can use all of its features with a CDN call, and has a very compact library size of 3KB.</p>
       <//>
     </div>
   """)

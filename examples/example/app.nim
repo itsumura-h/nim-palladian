@@ -19,7 +19,7 @@ proc App():Component {.exportc.} =
       <div class="drawer drawer-mobile">
         <input id="drawer" type="checkbox" class="drawer-toggle" />
 
-        <div class="drawer-content overflow-y-auto">
+        <div class="drawer-content overflow-y-auto bg-base-200">
           <${Router}>
             <${TopPage} path="/" />
             <${UseStatePage} path="/use-state" />
