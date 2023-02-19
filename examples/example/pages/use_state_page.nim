@@ -5,13 +5,10 @@ import std/math
 import ../../../src/palladian
 import ../../../src/palladian/hooks
 import ../../../src/palladian/strformat
+import ../components/text_body
+import ../libs/markdown
+import ../libs/highlight
 
-{.emit:"""
-  import MarkdownIt from 'https://esm.sh/markdown-it@13.0.1';
-""".}
-
-proc newMarkdownIt():JsObject {.importjs:"new MarkdownIt(@)".}
-proc highlightAll() {.importjs:"Prism.highlightAll()".}
 
 proc BoolStateComponent():Component {.exportc.} =
   let (boolState {.exportc.}, setBoolState) = useState(false)
@@ -56,51 +53,52 @@ proc StringStateComponent():Component {.exportc.} =
 
 
 proc UseStatePage*():Component {.exportc.} =
+  let useStateContent {.exportc.} = useRef()
+  let boolStateContent {.exportc.} = useRef()
+  let intStateContent {.exportc.} = useRef()
+  let floatStateContent {.exportc.} = useRef()
+  let stringStateContent {.exportc.} = useRef()
+
   useEffect(proc()=
-    let md = newMarkdownIt()
+    let md = MarkdownIt.new()
 
     const useStateMd:cstring = staticRead("../contents/use-state/use-state.md")
-    let useStateHtml {.exportc.} = md.render(useStateMd).to(cstring);
-    var d = document.getElementById("useStateContent")
-    d.innerHtml = useStateHtml
+    let useStateHtml = md.render(useStateMd)
+    useStateContent.current.innerHtml = useStateHtml
 
     const boolStateMd:cstring = staticRead("../contents/use-state/bool-state.md")
-    let boolStateHtml {.exportc.} = md.render(boolStateMd).to(cstring);
-    d = document.getElementById("boolStateContent")
-    d.innerHtml = boolStateHtml
+    let boolStateHtml = md.render(boolStateMd)
+    boolStateContent.current.innerHtml = boolStateHtml
 
     const intStateMd:cstring = staticRead("../contents/use-state/int-state.md")
-    let intStateHtml {.exportc.} = md.render(intStateMd).to(cstring);
-    d = document.getElementById("intStateContent")
-    d.innerHtml = intStateHtml
+    let intStateHtml = md.render(intStateMd)
+    intStateContent.current.innerHtml = intStateHtml
 
     const floatStateMd:cstring = staticRead("../contents/use-state/float-state.md")
-    let floatStateHtml {.exportc.} = md.render(floatStateMd).to(cstring);
-    d = document.getElementById("floatStateContent")
-    d.innerHtml = floatStateHtml
+    let floatStateHtml = md.render(floatStateMd)
+    floatStateContent.current.innerHtml = floatStateHtml
 
     const stringStateMd:cstring = staticRead("../contents/use-state/string-state.md")
-    let stringStateHtml {.exportc.} = md.render(stringStateMd).to(cstring);
-    d = document.getElementById("stringStateContent")
-    d.innerHtml = stringStateHtml
+    let stringStateHtml = md.render(stringStateMd)
+    stringStateContent.current.innerHtml = stringStateHtml
 
     highlightAll()
   , [])
 
   return html(fmt"""
     <${TextWrap}>
-      <div id="useStateContent"/>
+      <div ref=${useStateContent} />
 
-      <div id="boolStateContent"/>
+      <div ref=${boolStateContent} />
       <${BoolStateComponent} />
 
-      <div id="intStateContent"/>
+      <div ref=${intStateContent} />
       <${IntStateComponent} />
 
-      <div id="floatStateContent"/>
+      <div ref=${floatStateContent} />
       <${FloatStateComponent} />
 
-      <div id="stringStateContent"/>
+      <div ref=${stringStateContent} />
       <${StringStateComponent} />
 
       <br/>

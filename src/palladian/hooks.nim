@@ -1,4 +1,5 @@
 import std/asyncjs
+import std/dom
 import std/jsffi
 import std/json
 import ./importlibs
@@ -68,19 +69,19 @@ proc useState*(arg: JsonNode): (JsonNode, JsonStateSetter) =
 type States* = cstring|int|float|bool|JsonNode
 
 proc useEffect*(cb: proc()) {.importjs: "useEffect(#)".}
-  ## Side-Effects are at the heart of many modern Apps.
-  ## Whether you want to fetch some data from an API or trigger an effect on the document, you'll find that the useEffect fits nearly all your needs.
-  ## It's one of the main advantages of the hooks API, that it reshapes your mind into thinking in effects instead of a component's lifecycle.
 proc useEffect*(cb: proc(), dependency: array) {.importjs: "useEffect(#, [])".}
 proc useEffect*(cb: proc(), dependency: seq[States]) {.importjs: "useEffect(#, #)".}
-  ## With Dependancy
-  ##
-  ## Side-Effects are at the heart of many modern Apps.
-  ## Whether you want to fetch some data from an API or trigger an effect on the document, you'll find that the useEffect fits nearly all your needs.
-  ## It's one of the main advantages of the hooks API, that it reshapes your mind into thinking in effects instead of a component's lifecycle.
 proc useEffect*(cb: proc (): Future[void]) {.importjs: "useEffect(#)".}
 proc useEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useEffect(#, [])".}
 proc useEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useEffect(#, #)".}
+
+proc useMemo*(cb: proc()) {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc(), dependency: array) {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc(), dependency: seq[States]) {.importjs: "useMemo(#, #)".}
+
+proc useCallback*(cb: proc()) {.importjs: "useCallback(#)".}
+proc useCallback*(cb: proc(), dependency: array) {.importjs: "useCallback(#, [])".}
+proc useCallback*(cb: proc(), dependency: seq[States]) {.importjs: "useCallback(#, #)".}
 
 type BoolSignal = object of JsObject
 type BoolSignalValue* = bool
@@ -116,3 +117,9 @@ type JsonSignalValue* = JsonNode
 proc signal*(arg: JsonNode): JsonSignal {.importjs: "signal(#)".}
 proc value*(self: JsonSignal): JsonSignalValue {.importjs: "#.value".}
 proc `value=`*(self: JsonSignal, val: JsonNode) {.importjs: "#.value = #".}
+
+
+type RefObject = object
+  current*:Element
+
+proc useRef*():RefObject {.importjs:"useRef(null)".}
