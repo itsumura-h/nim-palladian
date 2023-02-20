@@ -1,12 +1,11 @@
 import std/jsffi
 import std/dom
-import std/jsconsole
 import std/math
 import ../../../src/palladian
 import ../../../src/palladian/hooks
 import ../../../src/palladian/strformat
 import ../components/text_body
-import ../libs/markdown
+import ../components/code_block
 import ../libs/highlight
 
 
@@ -20,6 +19,20 @@ proc BoolStateComponent():Component {.exportc.} =
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${boolState.toString()}</button> </p>
   """)
 
+let boolStateCode {.exportc.} :cstring = """
+  proc BoolStateComponent():Component {.exportc.} =
+    let (boolState {.exportc.}, setBoolState) = useState(false)
+
+    proc updateState(e:Event) {.exportc.} =
+      setBoolState(not boolState)
+
+    return html(\"\"\"
+      <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${boolState.toString()}</button> </p>
+    \"\"\")
+"""
+
+
+
 proc IntStateComponent():Component {.exportc.} =
   let (intState {.exportc.}, setIntState) = useState(0)
 
@@ -30,6 +43,19 @@ proc IntStateComponent():Component {.exportc.} =
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${intState}</button> </p>
   """)
 
+let intStateCode {.exportc.} :cstring = """
+proc IntStateComponent():Component {.exportc.} =
+  let (intState {.exportc.}, setIntState) = useState(0)
+
+  proc updateState(e:Event) {.exportc.} =
+    setIntState(intState + 1)
+
+  return html(\"\"\"
+    <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${intState}</button> </p>
+  \"\"\")
+"""
+
+
 proc FloatStateComponent():Component {.exportc.} =
   let (floatState {.exportc.}, setFloatState) = useState(0.0)
 
@@ -39,6 +65,19 @@ proc FloatStateComponent():Component {.exportc.} =
   return html(fmt"""
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${floatState}</button> </p>
   """)
+
+let floatStateCode {.exportc.} :cstring = """
+proc FloatStateComponent():Component {.exportc.} =
+  let (floatState {.exportc.}, setFloatState) = useState(0.0)
+
+  proc updateState(e:Event) {.exportc.} =
+    setFloatState(round(floatState + 0.1, 1))
+
+  return html(\"\"\"
+    <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${floatState}</button> </p>
+  \"\"\")
+"""
+
 
 proc StringStateComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")
@@ -51,57 +90,65 @@ proc StringStateComponent():Component {.exportc.} =
     <p>${stringState}</p>
   """)
 
+let stringStateCode {.exportc.} :cstring = """
+proc StringStateComponent():Component {.exportc.} =
+  let (stringState {.exportc.}, setStringState) = useState("")
+
+  proc updateState(e:Event) {.exportc.} =
+    setStringState(e.target.value)
+
+  return html(\"\"\"
+    <input type="text" oninput=${updateState} placeholder="Type here" class="input w-full" />
+    <p>${stringState}</p>
+  \"\"\")
+"""
+
 
 proc UseStatePage*():Component {.exportc.} =
-  let useStateContent {.exportc.} = useRef()
-  let boolStateContent {.exportc.} = useRef()
-  let intStateContent {.exportc.} = useRef()
-  let floatStateContent {.exportc.} = useRef()
-  let stringStateContent {.exportc.} = useRef()
-
   useEffect(proc()=
-    let md = MarkdownIt.new()
-
-    const useStateMd:cstring = staticRead("../contents/use-state/use-state.md")
-    let useStateHtml = md.render(useStateMd)
-    useStateContent.current.innerHtml = useStateHtml
-
-    const boolStateMd:cstring = staticRead("../contents/use-state/bool-state.md")
-    let boolStateHtml = md.render(boolStateMd)
-    boolStateContent.current.innerHtml = boolStateHtml
-
-    const intStateMd:cstring = staticRead("../contents/use-state/int-state.md")
-    let intStateHtml = md.render(intStateMd)
-    intStateContent.current.innerHtml = intStateHtml
-
-    const floatStateMd:cstring = staticRead("../contents/use-state/float-state.md")
-    let floatStateHtml = md.render(floatStateMd)
-    floatStateContent.current.innerHtml = floatStateHtml
-
-    const stringStateMd:cstring = staticRead("../contents/use-state/string-state.md")
-    let stringStateHtml = md.render(stringStateMd)
-    stringStateContent.current.innerHtml = stringStateHtml
-
-    highlightAll()
+    document.title = "useState / Nim Palladian"
   , [])
 
   return html(fmt"""
-    <${TextWrap}>
-      <div ref=${useStateContent} />
+    <${Article}>
+      <h1>useState</h1>
+      <p>
+        <code>useState</code> is a hook provided by Preact that allows you to add state to functional components.
+        <br />
+        State refers to the data that is held by a component and can change over time, often in response to user interactions or other events.
+      </p>
+      <p>
+        The useState hook takes an initial value as an argument and returns an array with two items: the current state value and a function that can be used to update that value.
+      </p>
+      <p>
+        See also<br/>
+        <a href="https://preactjs.com/guide/v10/hooks/#usestate" target="_blank">Preact - useState</a>
+      </p>
 
-      <div ref=${boolStateContent} />
+      <h2>Bool state</h2>
+      <${CodeBlock}>
+        ${boolStateCode}
+      <//>
       <${BoolStateComponent} />
 
-      <div ref=${intStateContent} />
+      <h2>Int state</h2>
+      <${CodeBlock}>
+        ${intStateCode}
+      <//>
       <${IntStateComponent} />
 
-      <div ref=${floatStateContent} />
+      <h2>Float state</h2>
+      <${CodeBlock}>
+        ${floatStateCode}
+      <//>
       <${FloatStateComponent} />
 
-      <div ref=${stringStateContent} />
+      <h2>String state</h2>
+      <${CodeBlock}>
+        ${stringStateCode}
+      <//>
       <${StringStateComponent} />
-
-      <br/>
-      <br/>
     <//>
+    <br/>
+    <br/>
   """)

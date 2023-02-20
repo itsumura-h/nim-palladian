@@ -1,5 +1,4 @@
 import std/asyncjs
-import std/jsconsole
 import std/jsffi
 import std/jsfetch
 import std/json
@@ -25,8 +24,9 @@ proc ApiAccessPage*():Component {.exportc.} =
   , [])
 
   return html(fmt"""
-    <${TextWrap} title="api access">
+    <${Article}>
       <${Show} when=${btcPrice} fallback=${html`<p>...loading</p>`}>
+        <h1>API Access</h1>
         <p>updated ${btcPrice["time"]}</p>
         <table class="table w-full">
           <thead>

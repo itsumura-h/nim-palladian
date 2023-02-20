@@ -8,4 +8,4 @@ proc controller(req:Request):Future[string] {.async.}=
 
 var routes:seq[Route] = @[]
 routes.add Route(httpMethod:HttpGet, path:"*", controller:controller)
-serve(routes, 9001).waitFor
+serve(routes, 9002).waitFor

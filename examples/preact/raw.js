@@ -6,67 +6,65 @@ import {Router, Link} from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.12
 
 const html = htm.bind(h);
 
-
-let page1Signal = signal("a")
-console.log(page1Signal)
-console.log(typeof page1Signal)
-console.log(page1Signal.value)
-console.log(typeof page1Signal.value)
+function Nav(){
+  return html`
+    <${Link} href="/">page1<//><span>   </span><${Link} href="/page2">page2<//>
+  `
+}
 
 function page1(){
-  function setPage1Singal(e){
-    console.log("=== setPage1Singal")
-    page1Signal.value = e.target.value
-  }
+  useEffect(()=>{
+    Prism.highlightAll()
+  })
 
-  useEffect(async()=>{
-    let resp = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-    const json = await resp.json()
-    console.log(json)
-  }, [])
+  let code = `
+    proc Counter():Component {.exportc.} =
+      let (value {.exportc.}, setValue) = useState(0);
 
-  return html`
-    <p>page1</p>
-    <input type="text" value=${page1Signal} onInput=${setPage1Singal} />
-    <p>${page1Signal.value}</p>
-    <${Link} href="/page2">page2<//>
-  `
+      proc increment(e:Event) {.exportc.} =
+        setValue(value + 1)
+
+      proc decrement(e:Event) {.exportc.} =
+        setValue(value - 1)
+
+      return html("""
+        <div>Counter: {value}</div>
+        <button onClick=\${increment}>Increment</button>
+        <button onClick=\${decrement}>Decrement</button>
+      """)
+  `.replace("\\", "")
+  console.log(code)
+  let content = "    <h1>Page1</h1>\n    <pre><code class=\"language-js\">\n      ${code}\n    </code></pre>  "
+  return eval('html`' + content +  '`')
 }
-
-
-let page2Signal = signal("b")
 
 function page2(){
-  function setPage2Singal(e){
-    page2Signal.value = e.target.value
-  }
+  useEffect(()=>{
+    Prism.highlightAll()
+  })
 
-  return html`
-    <p>page2</p>
-    <input type="text" value=${page2Signal} onInput=${setPage2Singal} />
-    <p>${page2Signal.value}</p>
-    <${Link} href="/">home<//>
+  let code = `
+    function fuga(){
+      console.log("fuga")
+    }
   `
-}
-
-function display(){
-  return html`
-    <hr/>
-    <h2>display</h2>
-    <p>${page1Signal.value}</p>
-    <p>${page2Signal.value}</p>
+  let content = `
+    <h1>Page2</h1>
+    <pre><code class="language-js">
+      ${code}
+    </code></pre>
   `
+  return eval('html`' + content + '`')
 }
-
 
 function App (props) {
   return html`
     <h1>Hello ${props.name}!</h1>
+    <${Nav} />
     <${Router}>
       <${page1} path="/" />
       <${page2} path="/page2" />
     <//>
-    <${display} />
   `;
 }
 

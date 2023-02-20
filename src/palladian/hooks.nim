@@ -66,7 +66,7 @@ proc useState*(arg: JsonNode): (JsonNode, JsonStateSetter) =
   return (value, setter)
 
 
-type States* = cstring|int|float|bool|JsonNode
+type States* = cstring|int|float|bool|JsonNode|JsObject
 
 proc useEffect*(cb: proc()) {.importjs: "useEffect(#)".}
 proc useEffect*(cb: proc(), dependency: array) {.importjs: "useEffect(#, [])".}
@@ -79,9 +79,16 @@ proc useMemo*(cb: proc()) {.importjs: "useMemo(#)".}
 proc useMemo*(cb: proc(), dependency: array) {.importjs: "useMemo(#, [])".}
 proc useMemo*(cb: proc(), dependency: seq[States]) {.importjs: "useMemo(#, #)".}
 
-proc useCallback*(cb: proc()) {.importjs: "useCallback(#)".}
-proc useCallback*(cb: proc(), dependency: array) {.importjs: "useCallback(#, [])".}
-proc useCallback*(cb: proc(), dependency: seq[States]) {.importjs: "useCallback(#, #)".}
+proc useCallback*(cb: proc()):JsObject {.importjs: "useCallback(#)", discardable.}
+proc useCallback*(cb: proc(), dependency: array):JsObject {.importjs: "useCallback(#, [])", discardable.}
+proc useCallback*(cb: proc(), dependency: seq[States]):JsObject {.importjs: "useCallback(#, #)", discardable.}
+
+
+type RefObject = object
+  current*:Element
+
+proc useRef*():RefObject {.importjs:"useRef(null)".}
+
 
 type BoolSignal = object of JsObject
 type BoolSignalValue* = bool
@@ -117,9 +124,3 @@ type JsonSignalValue* = JsonNode
 proc signal*(arg: JsonNode): JsonSignal {.importjs: "signal(#)".}
 proc value*(self: JsonSignal): JsonSignalValue {.importjs: "#.value".}
 proc `value=`*(self: JsonSignal, val: JsonNode) {.importjs: "#.value = #".}
-
-
-type RefObject = object
-  current*:Element
-
-proc useRef*():RefObject {.importjs:"useRef(null)".}
