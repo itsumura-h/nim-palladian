@@ -1,4 +1,5 @@
 import std/asyncjs
+import std/dom
 import std/jsffi
 import std/jsfetch
 import std/json
@@ -11,6 +12,10 @@ import ../components/text_body
 
 proc ApiAccessPage*():Component {.exportc.} =
   let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
+
+  useLayoutEffect(proc()=
+    document.title = "API Access / Nim Palladian"
+  , [])
 
   useEffect(proc() {.async.}=
     let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json".cstring)

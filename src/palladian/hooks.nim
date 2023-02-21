@@ -75,6 +75,13 @@ proc useEffect*(cb: proc (): Future[void]) {.importjs: "useEffect(#)".}
 proc useEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useEffect(#, [])".}
 proc useEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useEffect(#, #)".}
 
+proc useLayoutEffect*(cb: proc()) {.importjs: "useLayoutEffect(#)".}
+proc useLayoutEffect*(cb: proc(), dependency: array) {.importjs: "useLayoutEffect(#, [])".}
+proc useLayoutEffect*(cb: proc(), dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
+proc useLayoutEffect*(cb: proc (): Future[void]) {.importjs: "useLayoutEffect(#)".}
+proc useLayoutEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useLayoutEffect(#, [])".}
+proc useLayoutEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
+
 proc useMemo*(cb: proc()) {.importjs: "useMemo(#)".}
 proc useMemo*(cb: proc(), dependency: array) {.importjs: "useMemo(#, [])".}
 proc useMemo*(cb: proc(), dependency: seq[States]) {.importjs: "useMemo(#, #)".}

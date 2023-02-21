@@ -27,7 +27,7 @@ proc TopPage*():Component {.exportc.} =
       \"\"")
   """
 
-  useEffect(proc()=
+  useLayoutEffect(proc()=
     document.title = "Toppage / Nim Palladian"
   , [])
 

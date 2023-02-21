@@ -1,7 +1,5 @@
-import std/macros
 import std/jsffi
 import std/dom
-import std/jsconsole
 import ./importlibs
 
 importPreact()

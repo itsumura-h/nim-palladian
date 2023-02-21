@@ -9,7 +9,7 @@ import ../libs/highlight
 proc CodeBlock(props:JsObject):Component {.exportc.} =
   let codeRef {.exportc.} = useRef()
 
-  useEffect(proc() =
+  useLayoutEffect(proc() =
     var code = $props.children.to(cstring)
     code = code.replace("\\", "").dedent()
     codeRef.current.textContent = code

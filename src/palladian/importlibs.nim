@@ -10,7 +10,14 @@ template importPreact*() =
 
 template importPreactHooks*() =
   {.emit: """
-    import { useState, useEffect, useMemo, useRef, useCallback } from 'https://esm.sh/preact@10.12.1/hooks';
+    import {
+      useState,
+      useEffect,
+      useLayoutEffect,
+      useMemo,
+      useRef,
+      useCallback
+    } from 'https://esm.sh/preact@10.12.1/hooks';
     import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3?deps=preact@10.12.1';
   """.}
 

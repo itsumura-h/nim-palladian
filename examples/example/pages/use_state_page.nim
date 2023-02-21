@@ -105,7 +105,7 @@ proc StringStateComponent():Component {.exportc.} =
 
 
 proc UseStatePage*():Component {.exportc.} =
-  useEffect(proc()=
+  useLayoutEffect(proc()=
     document.title = "useState / Nim Palladian"
   , [])
 

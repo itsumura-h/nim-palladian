@@ -44,7 +44,7 @@ proc StringEffectComponent():Component {.exportc.} =
   \"\"")
   """
 
-  useEffect(proc() =
+  useLayoutEffect(proc() =
     document.title = "useEffect / Nim Palladian"
   , [])
 

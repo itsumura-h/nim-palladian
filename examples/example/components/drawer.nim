@@ -1,4 +1,3 @@
-import jsffi
 import ../../../src/palladian
 import ../../../src/palladian/strformat
 
