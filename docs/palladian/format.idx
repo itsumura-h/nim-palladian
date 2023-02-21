@@ -1,0 +1,2 @@
+fmt	palladian/format.html#fmt,cstring	format: fmt(arg: cstring): cstring	
+fmt	palladian/format.html#fmt.t,string	format: fmt(arg: string): cstring	

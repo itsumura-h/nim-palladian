@@ -12,6 +12,8 @@ skipFiles = @["server.nim"]
 
 requires "nim >= 1.6.10"
 
+import std/os
 task docs, "generate nim api docs":
+  rmDir(getCurrentDir() /  "docs")
   let cmd = "nim doc -b:js --project --index:on --outdir:docs src/palladian.nim"
   exec(cmd)

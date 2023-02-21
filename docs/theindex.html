@@ -70,10 +70,36 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>.<br/><p /><h2>API symbols</h2>
-<dl><dt><a name="Component" href="#Component"><span>Component:</span></a></dt><dd><ul class="simple">
+    Modules: <a href="palladian/controll_flow.html">palladian/controll_flow</a>, <a href="palladian/format.html">palladian/format</a>, <a href="palladian/hooks.html">palladian/hooks</a>, <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>.<br/><p /><h2>API symbols</h2>
+<dl><dt><a name="BoolSignalValue" href="#BoolSignalValue"><span>BoolSignalValue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: BoolSignalValue" href="palladian/hooks.html#BoolSignalValue">hooks: BoolSignalValue</a></li>
+          </ul></dd>
+<dt><a name="Component" href="#Component"><span>Component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="preact: Component" href="palladian/preact.html#Component">preact: Component</a></li>
+          </ul></dd>
+<dt><a name="ComponentProps" href="#ComponentProps"><span>ComponentProps:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="preact: ComponentProps" href="palladian/preact.html#ComponentProps">preact: ComponentProps</a></li>
+          </ul></dd>
+<dt><a name="false" href="#false"><span>false:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="BoolSignalValue.false" href="palladian/hooks.html#false">BoolSignalValue.false</a></li>
+          </ul></dd>
+<dt><a name="FloatSignalValue" href="#FloatSignalValue"><span>FloatSignalValue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: FloatSignalValue" href="palladian/hooks.html#FloatSignalValue">hooks: FloatSignalValue</a></li>
+          </ul></dd>
+<dt><a name="fmt" href="#fmt"><span>fmt:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="format: fmt(arg: cstring): cstring" href="palladian/format.html#fmt%2Ccstring">format: fmt(arg: cstring): cstring</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="format: fmt(arg: string): cstring" href="palladian/format.html#fmt.t%2Cstring">format: fmt(arg: string): cstring</a></li>
+          </ul></dd>
+<dt><a name="For" href="#For"><span>For:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="controll_flow: For(props: ComponentProps): Component" href="palladian/controll_flow.html#For%2CComponentProps">controll_flow: For(props: ComponentProps): Component</a></li>
           </ul></dd>
 <dt><a name="html" href="#html"><span>html:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -93,16 +119,144 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="importlibs: importPreactRouter()" href="palladian/importlibs.html#importPreactRouter.t">importlibs: importPreactRouter()</a></li>
           </ul></dd>
+<dt><a name="JsonSignalValue" href="#JsonSignalValue"><span>JsonSignalValue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: JsonSignalValue" href="palladian/hooks.html#JsonSignalValue">hooks: JsonSignalValue</a></li>
+          </ul></dd>
+<dt><a name="ObjSignalValue" href="#ObjSignalValue"><span>ObjSignalValue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: ObjSignalValue" href="palladian/hooks.html#ObjSignalValue">hooks: ObjSignalValue</a></li>
+          </ul></dd>
 <dt><a name="renderApp" href="#renderApp"><span>renderApp:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="preact: renderApp(component: proc (): Component; dom: Element)" href="palladian/preact.html#renderApp%2Cproc%29%2CElement">preact: renderApp(component: proc (): Component; dom: Element)</a></li>
+          </ul></dd>
+<dt><a name="Show" href="#Show"><span>Show:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="controll_flow: Show(props: ComponentProps): Component" href="palladian/controll_flow.html#Show%2CComponentProps">controll_flow: Show(props: ComponentProps): Component</a></li>
+          </ul></dd>
+<dt><a name="signal" href="#signal"><span>signal:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: bool): BoolSignal" href="palladian/hooks.html#signal%2Cbool">hooks: signal(arg: bool): BoolSignal</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: cstring): StrSignal" href="palladian/hooks.html#signal%2Ccstring">hooks: signal(arg: cstring): StrSignal</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: float): FloatSignal" href="palladian/hooks.html#signal%2Cfloat">hooks: signal(arg: float): FloatSignal</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: int): IntSignal" href="palladian/hooks.html#signal%2Cint">hooks: signal(arg: int): IntSignal</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: JsObject): ObjSignal" href="palladian/hooks.html#signal%2CJsObject">hooks: signal(arg: JsObject): ObjSignal</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: signal(arg: JsonNode): JsonSignal" href="palladian/hooks.html#signal%2CJsonNode">hooks: signal(arg: JsonNode): JsonSignal</a></li>
+          </ul></dd>
+<dt><a name="States" href="#States"><span>States:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: States" href="palladian/hooks.html#States">hooks: States</a></li>
+          </ul></dd>
+<dt><a name="StrSignalValue" href="#StrSignalValue"><span>StrSignalValue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: StrSignalValue" href="palladian/hooks.html#StrSignalValue">hooks: StrSignalValue</a></li>
+          </ul></dd>
+<dt><a name="true" href="#true"><span>true:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="BoolSignalValue.true" href="palladian/hooks.html#true">BoolSignalValue.true</a></li>
+          </ul></dd>
+<dt><a name="useCallback" href="#useCallback"><span>useCallback:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useCallback(cb: proc ()): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29">hooks: useCallback(cb: proc ()): JsObject</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: array): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29%2Carray">hooks: useCallback(cb: proc (); dependency: array): JsObject</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: seq[States]): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29%2Cseq%5BStates%5D">hooks: useCallback(cb: proc (); dependency: seq[States]): JsObject</a></li>
+          </ul></dd>
+<dt><a name="useEffect" href="#useEffect"><span>useEffect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc ())" href="palladian/hooks.html#useEffect%2Cproc%29">hooks: useEffect(cb: proc ())</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc (); dependency: array)" href="palladian/hooks.html#useEffect%2Cproc%29%2Carray">hooks: useEffect(cb: proc (); dependency: array)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc (): Future[void]; dependency: array)" href="palladian/hooks.html#useEffect%2Cproc%29%2Carray_2">hooks: useEffect(cb: proc (): Future[void]; dependency: array)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc (); dependency: seq[States])" href="palladian/hooks.html#useEffect%2Cproc%29%2Cseq%5BStates%5D">hooks: useEffect(cb: proc (); dependency: seq[States])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc (): Future[void]; dependency: seq[States])" href="palladian/hooks.html#useEffect%2Cproc%29%2Cseq%5BStates%5D_2">hooks: useEffect(cb: proc (): Future[void]; dependency: seq[States])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useEffect(cb: proc (): Future[void])" href="palladian/hooks.html#useEffect%2Cproc%29_2">hooks: useEffect(cb: proc (): Future[void])</a></li>
+          </ul></dd>
+<dt><a name="useLayoutEffect" href="#useLayoutEffect"><span>useLayoutEffect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc ())" href="palladian/hooks.html#useLayoutEffect%2Cproc%29">hooks: useLayoutEffect(cb: proc ())</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc (); dependency: array)" href="palladian/hooks.html#useLayoutEffect%2Cproc%29%2Carray">hooks: useLayoutEffect(cb: proc (); dependency: array)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: array)" href="palladian/hooks.html#useLayoutEffect%2Cproc%29%2Carray_2">hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: array)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc (); dependency: seq[States])" href="palladian/hooks.html#useLayoutEffect%2Cproc%29%2Cseq%5BStates%5D">hooks: useLayoutEffect(cb: proc (); dependency: seq[States])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: seq[States])" href="palladian/hooks.html#useLayoutEffect%2Cproc%29%2Cseq%5BStates%5D_2">hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: seq[States])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useLayoutEffect(cb: proc (): Future[void])" href="palladian/hooks.html#useLayoutEffect%2Cproc%29_2">hooks: useLayoutEffect(cb: proc (): Future[void])</a></li>
+          </ul></dd>
+<dt><a name="useMemo" href="#useMemo"><span>useMemo:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc ())" href="palladian/hooks.html#useMemo%2Cproc%29">hooks: useMemo(cb: proc ())</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (); dependency: array)" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray">hooks: useMemo(cb: proc (); dependency: array)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (); dependency: seq[States])" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D">hooks: useMemo(cb: proc (); dependency: seq[States])</a></li>
+          </ul></dd>
+<dt><a name="useRef" href="#useRef"><span>useRef:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useRef(): RefObject" href="palladian/hooks.html#useRef">hooks: useRef(): RefObject</a></li>
+          </ul></dd>
+<dt><a name="useState" href="#useState"><span>useState:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: bool): (bool, BoolStateSetter)" href="palladian/hooks.html#useState%2Cbool">hooks: useState(arg: bool): (bool, BoolStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: cstring): (cstring, StrStateSetter)" href="palladian/hooks.html#useState%2Ccstring">hooks: useState(arg: cstring): (cstring, StrStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: float): (float, FloatStateSetter)" href="palladian/hooks.html#useState%2Cfloat">hooks: useState(arg: float): (float, FloatStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: int): (int, IntStateSetter)" href="palladian/hooks.html#useState%2Cint">hooks: useState(arg: int): (int, IntStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: JsObject): (JsObject, ObjectStateSetter)" href="palladian/hooks.html#useState%2CJsObject">hooks: useState(arg: JsObject): (JsObject, ObjectStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: JsonNode): (JsonNode, JsonStateSetter)" href="palladian/hooks.html#useState%2CJsonNode">hooks: useState(arg: JsonNode): (JsonNode, JsonStateSetter)</a></li>
+          </ul></dd>
+<dt><a name="value" href="#value"><span>value:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: BoolSignal): BoolSignalValue" href="palladian/hooks.html#value%2CBoolSignal">hooks: value(self: BoolSignal): BoolSignalValue</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: FloatSignal): FloatSignalValue" href="palladian/hooks.html#value%2CFloatSignal">hooks: value(self: FloatSignal): FloatSignalValue</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: IntSignal): int" href="palladian/hooks.html#value%2CIntSignal">hooks: value(self: IntSignal): int</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: JsonSignal): JsonSignalValue" href="palladian/hooks.html#value%2CJsonSignal">hooks: value(self: JsonSignal): JsonSignalValue</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: ObjSignal): ObjSignalValue" href="palladian/hooks.html#value%2CObjSignal">hooks: value(self: ObjSignal): ObjSignalValue</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value(self: StrSignal): StrSignalValue" href="palladian/hooks.html#value%2CStrSignal">hooks: value(self: StrSignal): StrSignalValue</a></li>
+          </ul></dd>
+<dt><a name="value%3D" href="#value%3D"><span>value=:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: BoolSignal; val: bool)" href="palladian/hooks.html#value%3D%2CBoolSignal%2Cbool">hooks: value=(self: BoolSignal; val: bool)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: FloatSignal; val: float)" href="palladian/hooks.html#value%3D%2CFloatSignal%2Cfloat">hooks: value=(self: FloatSignal; val: float)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: IntSignal; val: int)" href="palladian/hooks.html#value%3D%2CIntSignal%2Cint">hooks: value=(self: IntSignal; val: int)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: JsonSignal; val: JsonNode)" href="palladian/hooks.html#value%3D%2CJsonSignal%2CJsonNode">hooks: value=(self: JsonSignal; val: JsonNode)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: ObjSignal; val: JsObject)" href="palladian/hooks.html#value%3D%2CObjSignal%2CJsObject">hooks: value=(self: ObjSignal; val: JsObject)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: value=(self: StrSignal; val: cstring)" href="palladian/hooks.html#value%3D%2CStrSignal%2Ccstring">hooks: value=(self: StrSignal; val: cstring)</a></li>
           </ul></dd>
 </dl>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-18 21:13:49 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-21 02:56:33 UTC</small>
       </div>
     </div>
   </div>
