@@ -70,10 +70,14 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="palladian/controll_flow.html">palladian/controll_flow</a>, <a href="palladian/format.html">palladian/format</a>, <a href="palladian/hooks.html">palladian/hooks</a>, <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="palladian/cli/functions/build_impl.html">palladian/cli/functions/build_impl</a>, <a href="palladian/cli/functions/dev_impl.html">palladian/cli/functions/dev_impl</a>, <a href="palladian/cli/functions/serve_impl.html">palladian/cli/functions/serve_impl</a>, <a href="palladian/controll_flow.html">palladian/controll_flow</a>, <a href="palladian/format.html">palladian/format</a>, <a href="palladian/hooks.html">palladian/hooks</a>, <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>, <a href="server.html">server</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="BoolSignalValue" href="#BoolSignalValue"><span>BoolSignalValue:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="hooks: BoolSignalValue" href="palladian/hooks.html#BoolSignalValue">hooks: BoolSignalValue</a></li>
+          </ul></dd>
+<dt><a name="build" href="#build"><span>build:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="build_impl: build()" href="palladian/cli/functions/build_impl.html#build">build_impl: build()</a></li>
           </ul></dd>
 <dt><a name="Component" href="#Component"><span>Component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -82,6 +86,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="ComponentProps" href="#ComponentProps"><span>ComponentProps:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="preact: ComponentProps" href="palladian/preact.html#ComponentProps">preact: ComponentProps</a></li>
+          </ul></dd>
+<dt><a name="dev" href="#dev"><span>dev:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="dev_impl: dev(port = 3000)" href="palladian/cli/functions/dev_impl.html#dev%2Cint">dev_impl: dev(port = 3000)</a></li>
           </ul></dd>
 <dt><a name="false" href="#false"><span>false:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -130,6 +138,18 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="renderApp" href="#renderApp"><span>renderApp:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="preact: renderApp(component: proc (): Component; dom: Element)" href="palladian/preact.html#renderApp%2Cproc%29%2CElement">preact: renderApp(component: proc (): Component; dom: Element)</a></li>
+          </ul></dd>
+<dt><a name="Route" href="#Route"><span>Route:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="server: Route" href="server.html#Route">server: Route</a></li>
+          </ul></dd>
+<dt><a name="runServe" href="#runServe"><span>runServe:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="server: runServe(routes: seq[Route]; port = 8080): owned(Future[void])" href="server.html#runServe%2Cseq%5BRoute%5D%2Cint">server: runServe(routes: seq[Route]; port = 8080): owned(Future[void])</a></li>
+          </ul></dd>
+<dt><a name="serve" href="#serve"><span>serve:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="serve_impl: serve(port = 3000)" href="palladian/cli/functions/serve_impl.html#serve%2Cint">serve_impl: serve(port = 3000)</a></li>
           </ul></dd>
 <dt><a name="Show" href="#Show"><span>Show:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -256,7 +276,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-21 02:56:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-21 04:39:56 UTC</small>
       </div>
     </div>
   </div>
