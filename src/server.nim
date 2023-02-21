@@ -10,8 +10,8 @@ type Route* = object
   path*:string
   controller*:proc(req:Request):Future[string] {.gcsafe.}
 
-proc serve*(routes:seq[Route], port=8080) {.async.} =
-  var server = newAsyncHttpServer()
+proc runServe*(routes:seq[Route], port=8080) {.async.} =
+  var server = newAsyncHttpServer(true, true)
   proc cb(req: Request) {.async, gcsafe.} =
     try:
       if req.url.path.contains("."):
