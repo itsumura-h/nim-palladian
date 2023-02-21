@@ -1,6 +1,6 @@
 import std/dom
 import ../../src/palladian
-import ../../src/palladian/strformat
+import ../../src/palladian/format
 import ../../src/palladian/router
 import ./components/header
 import ./components/drawer

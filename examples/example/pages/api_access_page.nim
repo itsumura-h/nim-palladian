@@ -6,7 +6,7 @@ import std/json
 import ../../../src/palladian
 import ../../../src/palladian/hooks
 import ../../../src/palladian/controll_flow
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../components/text_body
 
 

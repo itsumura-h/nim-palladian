@@ -2,15 +2,18 @@ import std/jsffi
 import std/dom
 import std/strutils
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../../../src/palladian/hooks
 import ../libs/highlight
 
-proc CodeBlock(props:JsObject):Component {.exportc.} =
+import std/jsconsole
+
+
+proc CodeBlock(props:ComponentProps):Component {.exportc.} =
   let codeRef {.exportc.} = useRef()
 
   useLayoutEffect(proc() =
-    var code = $props.children.to(cstring)
+    var code = $props.children
     code = code.replace("\\", "").dedent()
     codeRef.current.textContent = code
     highlightAll()

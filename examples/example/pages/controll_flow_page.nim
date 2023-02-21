@@ -1,5 +1,5 @@
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 
 proc ControllFlowPage*():Component {.exportc.} =
   return html(fmt"""

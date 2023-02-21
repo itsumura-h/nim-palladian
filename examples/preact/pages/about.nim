@@ -1,6 +1,6 @@
 import std/jsconsole
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../components/parent
 
 proc About():Component {.exportc.} =

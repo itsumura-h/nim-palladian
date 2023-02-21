@@ -2,15 +2,44 @@ import std/dom
 import std/jsffi
 import std/strutils
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../../../src/palladian/hooks
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
 
+proc Title(props:ComponentProps):Component {.exportc.} =
+  let name {.exportc.} = props.children
+
+  return html(fmt"""
+    <h1>${name}</h1>
+  """)
+
+proc Counter():Component {.exportc.} =
+  let (value {.exportc.}, setValue) = useState(0);
+
+  proc increment(e:Event) {.exportc.} =
+    setValue(value + 1)
+
+  proc decrement(e:Event) {.exportc.} =
+    setValue(value - 1)
+
+  return html(fmt"""
+    <${Title}>Hello Nim Palladian<//>
+    <div>Counter: ${value}</div>
+    <p><button onClick=${increment} class="btn btn-primary">Increment</button></p>
+    <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
+  """)
 
 proc TopPage*():Component {.exportc.} =
   let sampleCode {.exportc.} :cstring = """
+    proc Title(props:ComponentProps):Component {.exportc.} =
+      let name {.exportc.} = props.children
+
+      return html(fmt\"\""
+        <h1>${name}</h1>
+      \"\"")
+
     proc Counter():Component {.exportc.} =
       let (value {.exportc.}, setValue) = useState(0);
 
@@ -20,10 +49,11 @@ proc TopPage*():Component {.exportc.} =
       proc decrement(e:Event) {.exportc.} =
         setValue(value - 1)
 
-      return html(\"\""
-        <div>Counter: {value}</div>
-        <button onClick=${increment}>Increment</button>
-        <button onClick=${decrement}>Decrement</button>
+      return html(fmt\"\""
+        <${Title}>Hello Nim Palladian<//>
+        <div>Counter: ${value}</div>
+        <p><button onClick=${increment} class="btn btn-primary">Increment</button></p>
+        <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
       \"\"")
   """
 
@@ -60,6 +90,7 @@ proc TopPage*():Component {.exportc.} =
         <${CodeBlock}>
           ${sampleCode}
         <//>
+        <${Counter} />
       <//>
     </div>
 

@@ -1,8 +1,8 @@
 import std/jsffi
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 
-proc Hero*(props:JsObject):Component {.exportc.} =
+proc Hero*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(fmt"""
   <div class="hero">
@@ -14,7 +14,7 @@ proc Hero*(props:JsObject):Component {.exportc.} =
   </div>
   """)
 
-proc Article*(props:JsObject):Component {.exportc.} =
+proc Article*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(fmt"""
     <style>

@@ -1,7 +1,7 @@
 import std/dom
 import std/jsconsole
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../../../src/palladian/hooks
 import ../libs/highlight
 import ../components/code_block

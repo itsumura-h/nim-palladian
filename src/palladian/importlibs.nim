@@ -1,4 +1,5 @@
 ## use https://esm.sh for CDN.
+## 
 ## You can explicitly tell it which version of any dependency to use.
 
 template importPreact*() =
@@ -25,9 +26,4 @@ template importPreactRouter*() =
   {.emit: """
     import {Router} from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.12.1';
     import {Link} from 'https://esm.sh/preact-router@4.1.0/match?deps=preact@10.12.1';
-  """.}
-
-template importMarkdown*() =
-  {.emit:"""
-    import MarkdownIt from 'https://esm.sh/markdown-it@13.0.1';
   """.}

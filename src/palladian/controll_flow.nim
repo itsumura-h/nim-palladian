@@ -30,5 +30,5 @@ export function Show({ when, fallback, children: f }) {
 }
 """.}
 
-proc For*(props:JsObject):Component {.importjs:"For(#)".}
-proc Show*(props:JsObject):Component {.importjs:"Show(#)".}
+proc For*(props:ComponentProps):Component {.importjs:"For(#)".}
+proc Show*(props:ComponentProps):Component {.importjs:"Show(#)".}

@@ -3,7 +3,7 @@ import std/dom
 import std/math
 import ../../../src/palladian
 import ../../../src/palladian/hooks
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
@@ -67,6 +67,8 @@ proc FloatStateComponent():Component {.exportc.} =
   """)
 
 let floatStateCode {.exportc.} :cstring = """
+import std/math
+
 proc FloatStateComponent():Component {.exportc.} =
   let (floatState {.exportc.}, setFloatState) = useState(0.0)
 

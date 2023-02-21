@@ -4,7 +4,6 @@ import std/asyncfile
 import std/mimetypes
 import std/os
 import std/strutils
-import std/strformat
 
 type Route* = object
   httpMethod*:HttpMethod
