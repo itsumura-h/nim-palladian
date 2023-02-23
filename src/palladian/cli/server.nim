@@ -10,12 +10,12 @@ type Route* = object
   path*:string
   controller*:proc(req:Request):Future[string] {.gcsafe.}
 
-proc serve*(routes:seq[Route], port=8080) {.async.} =
-  var server = newAsyncHttpServer()
+proc runServe*(routes:seq[Route], port=8080) {.async.} =
+  var server = newAsyncHttpServer(true, true)
   proc cb(req: Request) {.async, gcsafe.} =
     try:
       if req.url.path.contains("."):
-        let filepath = getCurrentDir() & req.url.path
+        let filepath = getCurrentDir() / req.url.path
         if fileExists(filepath):
           let file = openAsync(filepath, fmRead)
           let data = file.readAll().await
@@ -23,15 +23,18 @@ proc serve*(routes:seq[Route], port=8080) {.async.} =
           var headers = newHttpHeaders()
           headers["content-type"] = contentType
           await req.respond(Http200, data, headers)
-      let headers = {"Content-type": "text/html; charset=utf-8"}
-      for route in routes:
-        if route.path == "*":
-          await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
-          break
-        if req.reqMethod == route.httpMethod and req.url.path == route.path:
-          await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
-          break
-      await req.respond(Http404, "", headers.newHttpHeaders())
+        else:
+          await req.respond(Http404, "", newHttpHeaders())
+      else:
+        let headers = {"Content-type": "text/html; charset=utf-8"}
+        for route in routes:
+          if route.path == "*":
+            await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
+            break
+          if req.reqMethod == route.httpMethod and req.url.path == route.path:
+            await req.respond(Http200, route.controller(req).await, headers.newHttpHeaders())
+            break
+        await req.respond(Http404, "", headers.newHttpHeaders())
     except:
       echo getCurrentExceptionMsg()
       await req.respond(Http400, "", newHttpHeaders())

@@ -1,0 +1,6 @@
+Component	palladian/preact.html#Component	preact: Component	
+html	palladian/preact.html#html,cstring	preact: html(arg: cstring): Component	
+html	palladian/preact.html#html.t,string	preact: html(arg: string): Component	
+renderApp	palladian/preact.html#renderApp,proc),Element	preact: renderApp(component: proc (): Component; dom: Element)	
+ComponentProps	palladian/preact.html#ComponentProps	preact: ComponentProps	
+children	palladian/preact.html#children,ComponentProps	preact: children(self: ComponentProps): cstring	

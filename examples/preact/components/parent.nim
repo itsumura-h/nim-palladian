@@ -3,7 +3,7 @@ import std/jsffi
 import std/jsconsole
 import std/json
 import ../../../src/palladian
-import ../../../src/palladian/strformat
+import ../../../src/palladian/format
 import ../../../src/palladian/hooks
 import ../../../src/palladian/router
 import ../../../src/palladian/controll_flow
@@ -28,10 +28,21 @@ proc Parent*(props: JsObject):Component {.exportc.} =
       <form>
         <input type="text" oninput=${setMsgFunc} value=${msg} />
         <${Show} when=${msg} fallback=${html`<p>fill message</p>`}>
-          ${html`<p>message filled</p>`}
+          <p>message filled</p>
+        <//>
+        <${Show} when=${msgLen} fallback=${html`<p>fill message</p>`}>
+          <p>message filled</p>
+        <//>
+        <${Show} when=${msgLen > 0} fallback=${html`<p>fill message</p>`}>
+          <p>message filled</p>
+        <//>
+        <${Show} when=${()=> msgLen > 0} fallback=${html`<p>fill message</p>`}>
+          <p>message filled</p>
         <//>
         <p>this is a ${msg}</p>
         <p>message count is ${msgLen}</p>
       </form>
     </div>
   """)
+
+# ${html`<p>message filled</p>`}

@@ -1,6 +1,6 @@
 import std/jsffi
 import std/dom
-import std/strformat
+import std/format
 import ../../src/palladian/preact
 
 proc Func1():Component {.exportc.} =

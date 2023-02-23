@@ -12,11 +12,8 @@ import {
   onCleanup,
 } from "https://cdn.jsdelivr.net/npm/solid-js@1.6.10/+esm";
 import {render} from "https://cdn.jsdelivr.net/npm/solid-js@1.6.10/web/+esm";
-// import html from "https://cdn.jsdelivr.net/npm/solid-js@1.6.10/html/+esm";
+import html from "https://cdn.jsdelivr.net/npm/solid-js@1.6.10/html/+esm";
 import { Router, Routes, Route, A } from "https://cdn.jsdelivr.net/npm/@solidjs/router@0.7.0/+esm";
-import {createHTML} from "https://cdn.jsdelivr.net/npm/lit-dom-expressions@0.35.15/+esm";
-
-const html = createHTML({});
 
 
 function Page1() {
@@ -31,27 +28,29 @@ function Page3() {
   return html`<h2>page3</h2>`;
 }
 
-function Parent() {
+
+function App() {
   return html`
     <div>
       <${A} href="/">page1<//>
       <${A} href="/page2">page2<//>
       <${A} href="/page3">page3<//>
       <${Routes}>
-        <${Route} path="/" component=${()=> Page1} />
-        <${Route} path="/page2" component=${()=> Page2} />
-        <${Route} path="/page3" component=${()=> Page3} />
+        <${Route} path="/" element=${()=> html`<${Page1} />` } />
+        <${Route} path="/page2" element=${html`<${Page2} />`} />
+        <${Route} path="/page3" element=${html`<${Page3} />`} />
       <//>
     </div>
   `;
 }
 
-function App() {
-  return html`
-    <${Router}>
-      <${Parent} />
-    <//>
-  `;
-}
-
-render(App, document.getElementById('app'));
+render(
+  ()=>(
+    html`
+      <${Router}>
+        <${App} />
+      <//>
+    `
+  ),
+  document.getElementById('app')
+);
