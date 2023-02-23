@@ -15,8 +15,8 @@ proc Drawer*(props:ComponentProps):Component {.exportc.} =
       <!-- Sidebar content here -->
       <li><${Link} href="/" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
       <li><${Link} href="/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
-      <li><${Link} href="/use-effect" activeClassName="active" onclick=${changeDrawer}>useEffect<//></li>
-      <li><${Link} href="/signal" activeClassName="active" onclick=${changeDrawer}>signal<//></li>
+      <li><${Link} href="/effect-system" activeClassName="active" onclick=${changeDrawer}>Effect system<//></li>
+      <li><${Link} href="/signal" activeClassName="active" onclick=${changeDrawer}>Signal<//></li>
       <li><${Link} href="/controll-flow" activeClassName="active" onclick=${changeDrawer}>controll flow<//></li>
       <li><${Link} href="/api-access" activeClassName="active" onclick=${changeDrawer}>api access<//></li>
     </ul>

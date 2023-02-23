@@ -151,6 +151,4 @@ proc UseStatePage*():Component {.exportc.} =
       <//>
       <${StringStateComponent} />
     <//>
-    <br/>
-    <br/>
   """)

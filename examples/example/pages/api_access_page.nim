@@ -13,11 +13,9 @@ import ../components/text_body
 proc ApiAccessPage*():Component {.exportc.} =
   let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
 
-  useLayoutEffect(proc()=
-    document.title = "API Access / Nim Palladian"
-  , [])
-
   useEffect(proc() {.async.}=
+    document.title = "API Access / Nim Palladian"
+
     let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json".cstring)
     let json = await res.json()
     var btcPriceObj = newJsObject()
@@ -30,8 +28,8 @@ proc ApiAccessPage*():Component {.exportc.} =
 
   return html(fmt"""
     <${Article}>
+      <h1>API Access</h1>
       <${Show} when=${btcPrice} fallback=${html`<p>...loading</p>`}>
-        <h1>API Access</h1>
         <p>updated ${btcPrice["time"]}</p>
         <table class="table w-full">
           <thead>

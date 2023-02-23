@@ -94,7 +94,4 @@ proc TopPage*():Component {.exportc.} =
         </p>
       <//>
     </div>
-
-    <br />
-    <br />
   """)
