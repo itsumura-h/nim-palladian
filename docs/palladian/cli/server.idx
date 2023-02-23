@@ -1,0 +1,2 @@
+Route	palladian/cli/server.html#Route	server: Route	
+runServe	palladian/cli/server.html#runServe,seq[Route],int	server: runServe(routes: seq[Route]; port = 8080): owned(Future[void])	
