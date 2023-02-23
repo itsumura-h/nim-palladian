@@ -18,5 +18,5 @@ function renderApp(component, dom){
 proc renderApp*(component: proc():Component, dom: Element) {.importjs: "renderApp(#, #)".}
 
 
-type ComponentProps* = object of JsObject
-  children*:cstring
+type ComponentProps* = JsObject
+proc children*(self:ComponentProps):cstring {.importjs:"#.children".}

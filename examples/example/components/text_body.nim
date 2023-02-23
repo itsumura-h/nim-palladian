@@ -17,12 +17,7 @@ proc Hero*(props:ComponentProps):Component {.exportc.} =
 proc Article*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(fmt"""
-    <style>
-      code{
-        background-color: darkslategray;
-      }
-    </style>
-    <div class="p-6 xl:pr-2 pb-16">
+    <div class="p-6 xl:pr-2 pb-16 text-sm md:text-base">
       <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row">
         <article class="prose w-full max-w-4xl flex-grow">
           ${props.children}

@@ -12,7 +12,7 @@ proc Title(props:ComponentProps):Component {.exportc.} =
   let name {.exportc.} = props.children
 
   return html(fmt"""
-    <h1>${name}</h1>
+    <p class="font-extrabold">${name}</p>
   """)
 
 proc Counter():Component {.exportc.} =
@@ -37,7 +37,7 @@ proc TopPage*():Component {.exportc.} =
       let name {.exportc.} = props.children
 
       return html(fmt\"\""
-        <h1>${name}</h1>
+        <p class="font-extrabold">${name}</p>
       \"\"")
 
     proc Counter():Component {.exportc.} =
@@ -64,11 +64,26 @@ proc TopPage*():Component {.exportc.} =
   return html(fmt"""
     <div>
       <${Hero}>
-        <h1>Nim Palladian</h1>
-        <p>Palladian is a Nim front-end framework for SPA based on and wrapped around Preact.</p>
+        <h1>Nim Palladian🏛️</h1>
+        <p>Palladian is a Nim front-end framework for SPA based on and wrapped around <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
       <//>
       <${Article}>
-        <h2>Why Preact?</h2>
+        <h2>Features</h2>
+        <ul>
+          <li>Easy syntax thanks to Nim.</li>
+          <li>Extensive assets by JavScript.</li>
+          <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
+          <li>The evolution of CDN that allow development without NodeJS.</li>
+          <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
+          <li></li>
+        </ul>
+        <${CodeBlock}>
+          ${sampleCode}
+        <//>
+        <${Counter} />
+      <//>
+      <${Article}>
+        <h2>Why using Preact?</h2>
         <p>
           In creating a front-end framework made by Nim, we needed something that did not require a NodeJS environment
           and did not require transpiling using Babel or other software.
@@ -77,20 +92,6 @@ proc TopPage*():Component {.exportc.} =
         <p>
           Furthermore, unlike React, Preact can use the browser standard API for DOM manipulation.
         </p>
-      <//>
-      <${Article}>
-        <h2>Features</h2>
-        <ul>
-          <li>Easy syntax by Nim</li>
-          <li>Extensive assets by JavScript</li>
-          <li>The evolution of CDN that allow development without NodeJS</li>
-          <li>Resolving library dependencies by <a href="https://esm.sh/" target="_blank">esm.sh</a></li>
-          <li></li>
-        </ul>
-        <${CodeBlock}>
-          ${sampleCode}
-        <//>
-        <${Counter} />
       <//>
     </div>
 

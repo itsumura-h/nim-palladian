@@ -1,5 +1,7 @@
 import std/dom
+import std/jsconsole
 import ../../src/palladian
+import ../../src/palladian/hooks
 import ../../src/palladian/format
 import ../../src/palladian/router
 import ./components/header
@@ -17,9 +19,9 @@ proc App():Component {.exportc.} =
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
       <div class="drawer drawer-mobile">
-        <input id="drawer" type="checkbox" class="drawer-toggle" />
+        <input id="drawer-id" type="checkbox" class="drawer-toggle"/>
 
-        <div class="drawer-content overflow-y-auto bg-base-200">
+        <div class="drawer-content bg-base-200">
           <${Router}>
             <${TopPage} path="/" />
             <${UseStatePage} path="/use-state" />
@@ -30,8 +32,8 @@ proc App():Component {.exportc.} =
           <//>
         </div>
 
-        <div class="drawer-side overflow-y-auto">
-          <label for="drawer" class="drawer-overlay"></label>
+        <div class="drawer-side">
+          <label for="drawer-id" class="drawer-overlay"></label>
           <${Drawer} />
         </div>
       </div>
