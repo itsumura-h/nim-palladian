@@ -1,6 +1,6 @@
 import std/asyncdispatch
 import std/asynchttpserver
-import ../../../server
+import ../server
 
 proc controller(req:Request):Future[string] {.async.}=
   let html = readFile("index.html")

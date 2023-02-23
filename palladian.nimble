@@ -5,7 +5,9 @@ author        = "Anonymous"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
-skipFiles = @["server.nim"]
+installExt    = @["nim"]
+skipFiles     = @["server.nim"]
+skipDirs      = @["palladian/cli"]
 bin           = @["palladian"]
 
 

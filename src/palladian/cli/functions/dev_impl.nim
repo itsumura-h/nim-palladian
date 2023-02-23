@@ -24,7 +24,7 @@ proc echoMsg(bg: BackgroundColor, msg: string) =
 proc ctrlC() {.noconv.} =
   if p != nil:
     p.close()
-  echoMsg(bgGreen, "[SUCCESS] Stoped dev server")
+  # echoMsg(bgGreen, "[SUCCESS] Stoped dev server")
   quit 0
 setControlCHook(ctrlC)
 
