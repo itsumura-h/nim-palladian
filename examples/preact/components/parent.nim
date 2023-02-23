@@ -7,6 +7,7 @@ import ../../../src/palladian/format
 import ../../../src/palladian/hooks
 import ../../../src/palladian/router
 import ../../../src/palladian/controll_flow
+import ./loop
 
 let msg* {.exportc.} = signal("message")
 
@@ -42,7 +43,7 @@ proc Parent*(props: JsObject):Component {.exportc.} =
         <p>this is a ${msg}</p>
         <p>message count is ${msgLen}</p>
       </form>
+      <${Loop} />
     </div>
   """)
 
-# ${html`<p>message filled</p>`}

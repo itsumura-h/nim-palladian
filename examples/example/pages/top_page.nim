@@ -9,10 +9,10 @@ import ../components/code_block
 import ../libs/highlight
 
 proc Title(props:ComponentProps):Component {.exportc.} =
-  let name {.exportc.} = props.children
+  let children {.exportc.} = props.children
 
   return html(fmt"""
-    <p class="font-extrabold">${name}</p>
+    <p class="font-extrabold">${children}</p>
   """)
 
 proc Counter():Component {.exportc.} =
@@ -34,10 +34,10 @@ proc Counter():Component {.exportc.} =
 proc TopPage*():Component {.exportc.} =
   let sampleCode {.exportc.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =
-      let name {.exportc.} = props.children
+      let children {.exportc.} = props.children
 
       return html(fmt\"\""
-        <p class="font-extrabold">${name}</p>
+        <p class="font-extrabold">${children}</p>
       \"\"")
 
     proc Counter():Component {.exportc.} =
