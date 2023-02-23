@@ -39,9 +39,6 @@ export function Show({ when, fallback, children: f }) {
   }else{
     v = when
   }
-  return v ? typeof f === 'function' ? html``<Item v=${v} f=${f} />`` : f : fallback;
+  return Boolean(v) ? typeof f === 'function' ? html``<Item v=${v} f=${f} />`` : f : fallback;
 }
 """.}
-
-# proc For*(props:ComponentProps):Component {.importjs:"For(#)".}
-# proc Show*(props:ComponentProps):Component {.importjs:"Show(#)".}

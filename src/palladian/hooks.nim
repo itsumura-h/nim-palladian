@@ -2,6 +2,7 @@ import std/asyncjs
 import std/dom
 import std/jsffi
 import std/json
+import std/macros
 import ./importlibs
 
 importPreactHooks()
@@ -66,6 +67,22 @@ proc useState*(arg: JsonNode): (JsonNode, JsonStateSetter) =
   return (value, setter)
 
 
+macro useState*(arg:typedesc):untyped =
+  let typ = arg.getTypeImpl
+  result = quote do:
+    type TypeStateSetter = proc(arg: `arg`)
+
+    proc typeUseState(arg: `arg`):JsObject {.importjs: "useState(#)".}
+
+    proc useStateImpl(arg: `arg`): (`arg`, TypeStateSetter) =
+      let state = typeUseState(`arg`())
+      let value = to(state[0], `arg`)
+      let setter = to(state[1], TypeStateSetter)
+      return (value, setter)
+    useStateImpl(`arg`())
+  # echo result.repr
+
+
 type States* = cstring|int|float|bool|JsonNode|JsObject
 
 proc useEffect*(cb: proc()) {.importjs: "useEffect(#)".}
@@ -82,13 +99,31 @@ proc useLayoutEffect*(cb: proc (): Future[void]) {.importjs: "useLayoutEffect(#)
 proc useLayoutEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useLayoutEffect(#, [])".}
 proc useLayoutEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
 
-proc useMemo*(cb: proc()) {.importjs: "useMemo(#)".}
-proc useMemo*(cb: proc(), dependency: array) {.importjs: "useMemo(#, [])".}
-proc useMemo*(cb: proc(), dependency: seq[States]) {.importjs: "useMemo(#, #)".}
 
-proc useCallback*(cb: proc()):JsObject {.importjs: "useCallback(#)", discardable.}
-proc useCallback*(cb: proc(), dependency: array):JsObject {.importjs: "useCallback(#, [])", discardable.}
-proc useCallback*(cb: proc(), dependency: seq[States]):JsObject {.importjs: "useCallback(#, #)", discardable.}
+proc useMemo*(cb: proc():bool):bool {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc():bool, dependency: array):bool {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc():bool, dependency: seq[States]):bool {.importjs: "useMemo(#, #)".}
+
+proc useMemo*(cb: proc():int):int {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc():int, dependency: array):int {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc():int, dependency: seq[States]):int {.importjs: "useMemo(#, #)".}
+
+proc useMemo*(cb: proc():float):float {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc():float, dependency: array):float {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc():float, dependency: seq[States]):float {.importjs: "useMemo(#, #)".}
+
+proc useMemo*(cb: proc():cstring):cstring {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc():cstring, dependency: array):cstring {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc():cstring, dependency: seq[States]):cstring {.importjs: "useMemo(#, #)".}
+
+proc useMemo*(cb: proc():JsObject):JsObject {.importjs: "useMemo(#)".}
+proc useMemo*(cb: proc():JsObject, dependency: array):JsObject {.importjs: "useMemo(#, [])".}
+proc useMemo*(cb: proc():JsObject, dependency: seq[States]):JsObject {.importjs: "useMemo(#, #)".}
+
+
+proc useCallback*(cb: proc()):(proc()) {.importjs: "useCallback(#)", discardable.}
+proc useCallback*(cb: proc(), dependency: array):(proc()) {.importjs: "useCallback(#, [])", discardable.}
+proc useCallback*(cb: proc(), dependency: seq[States]):(proc()) {.importjs: "useCallback(#, #)", discardable.}
 
 
 type RefObject = object
