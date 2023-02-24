@@ -3,7 +3,6 @@ import std/os
 import std/osproc
 import std/re
 import std/strformat
-import std/strutils
 import std/tables
 import std/terminal
 import std/times

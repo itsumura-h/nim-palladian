@@ -102,7 +102,7 @@ proc TopPage*():Component {.exportc.} =
         <div class="whiteFont">
           <ul>
             <li>Easy syntax thanks to Nim.</li>
-            <li>Extensive assets by JavScript.</li>
+            <li>Extensive assets by JavaScript.</li>
             <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
             <li>The evolution of CDN that allow development without NodeJS.</li>
             <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
