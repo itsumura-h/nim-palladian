@@ -142,11 +142,11 @@ window.addEventListener('DOMContentLoaded', main);
   </ul>
   <ul class="simple nested-toc-section">useCallback
       <li><a class="reference" href="#useCallback%2Cproc%29"
-    title="useCallback(cb: proc ()): JsObject">useCallback(cb: proc ()): JsObject</a></li>
+    title="useCallback(cb: proc ()): (proc ())">useCallback(cb: proc ()): (proc ())</a></li>
   <li><a class="reference" href="#useCallback%2Cproc%29%2Carray"
-    title="useCallback(cb: proc (); dependency: array): JsObject">useCallback(cb: proc (); dependency: array): JsObject</a></li>
+    title="useCallback(cb: proc (); dependency: array): (proc ())">useCallback(cb: proc (); dependency: array): (proc ())</a></li>
   <li><a class="reference" href="#useCallback%2Cproc%29%2Cseq%5BStates%5D"
-    title="useCallback(cb: proc (); dependency: seq[States]): JsObject">useCallback(cb: proc (); dependency: seq[States]): JsObject</a></li>
+    title="useCallback(cb: proc (); dependency: seq[States]): (proc ())">useCallback(cb: proc (); dependency: seq[States]): (proc ())</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">useEffect
@@ -181,11 +181,35 @@ window.addEventListener('DOMContentLoaded', main);
   </ul>
   <ul class="simple nested-toc-section">useMemo
       <li><a class="reference" href="#useMemo%2Cproc%29"
-    title="useMemo(cb: proc ())">useMemo(cb: proc ())</a></li>
+    title="useMemo(cb: proc (): bool): bool">useMemo(cb: proc (): bool): bool</a></li>
   <li><a class="reference" href="#useMemo%2Cproc%29%2Carray"
-    title="useMemo(cb: proc (); dependency: array)">useMemo(cb: proc (); dependency: array)</a></li>
+    title="useMemo(cb: proc (): bool; dependency: array): bool">useMemo(cb: proc (): bool; dependency: array): bool</a></li>
   <li><a class="reference" href="#useMemo%2Cproc%29%2Cseq%5BStates%5D"
-    title="useMemo(cb: proc (); dependency: seq[States])">useMemo(cb: proc (); dependency: seq[States])</a></li>
+    title="useMemo(cb: proc (): bool; dependency: seq[States]): bool">useMemo(cb: proc (): bool; dependency: seq[States]): bool</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29_4"
+    title="useMemo(cb: proc (): cstring): cstring">useMemo(cb: proc (): cstring): cstring</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Carray_4"
+    title="useMemo(cb: proc (): cstring; dependency: array): cstring">useMemo(cb: proc (): cstring; dependency: array): cstring</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_4"
+    title="useMemo(cb: proc (): cstring; dependency: seq[States]): cstring">useMemo(cb: proc (): cstring; dependency: seq[States]): cstring</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29_3"
+    title="useMemo(cb: proc (): float): float">useMemo(cb: proc (): float): float</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Carray_3"
+    title="useMemo(cb: proc (): float; dependency: array): float">useMemo(cb: proc (): float; dependency: array): float</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_3"
+    title="useMemo(cb: proc (): float; dependency: seq[States]): float">useMemo(cb: proc (): float; dependency: seq[States]): float</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29_2"
+    title="useMemo(cb: proc (): int): int">useMemo(cb: proc (): int): int</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Carray_2"
+    title="useMemo(cb: proc (): int; dependency: array): int">useMemo(cb: proc (): int; dependency: array): int</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_2"
+    title="useMemo(cb: proc (): int; dependency: seq[States]): int">useMemo(cb: proc (): int; dependency: seq[States]): int</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29_5"
+    title="useMemo(cb: proc (): JsObject): JsObject">useMemo(cb: proc (): JsObject): JsObject</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Carray_5"
+    title="useMemo(cb: proc (): JsObject; dependency: array): JsObject">useMemo(cb: proc (): JsObject; dependency: array): JsObject</a></li>
+  <li><a class="reference" href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_5"
+    title="useMemo(cb: proc (): JsObject; dependency: seq[States]): JsObject">useMemo(cb: proc (): JsObject; dependency: seq[States]): JsObject</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">useRef
@@ -236,6 +260,17 @@ window.addEventListener('DOMContentLoaded', main);
     title="value=(self: ObjSignal; val: JsObject)">value=(self: ObjSignal; val: JsObject)</a></li>
   <li><a class="reference" href="#value%3D%2CStrSignal%2Ccstring"
     title="value=(self: StrSignal; val: cstring)">value=(self: StrSignal; val: cstring)</a></li>
+
+  </ul>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
+  <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">useState
+      <li><a class="reference" href="#useState.m%2Ctypedesc"
+    title="useState(arg: typedesc): untyped">useState(arg: typedesc): untyped</a></li>
 
   </ul>
 
@@ -364,7 +399,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useCallback,proc)">
-<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useCallback(#)&quot;</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Other">(</span><span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useCallback(#)&quot;</span><span class="Other">,</span>
     <span class="Identifier">discardable</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -373,7 +408,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useCallback,proc),array">
-<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29%2Carray"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.
+<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29%2Carray"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Other">(</span><span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span> {.
     <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useCallback(#, [])&quot;</span><span class="Other">,</span> <span class="Identifier">discardable</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -382,7 +417,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useCallback,proc),seq[States]">
-<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29%2Cseq%5BStates%5D"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.
+<dt><pre><span class="Keyword">proc</span> <a href="#useCallback%2Cproc%29%2Cseq%5BStates%5D"><span class="Identifier">useCallback</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Other">(</span><span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span> {.
     <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useCallback(#, #)&quot;</span><span class="Other">,</span> <span class="Identifier">discardable</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -498,7 +533,8 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useMemo,proc)">
-<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">)</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                                        <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -506,8 +542,8 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useMemo,proc),array">
-<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -515,8 +551,116 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="useMemo,proc),seq[States]">
-<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc)_4">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29_4"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span>
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),array_4">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray_4"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),seq[States]_4">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_4"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc)_3">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29_3"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),array_3">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray_3"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),seq[States]_3">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_3"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc)_2">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29_2"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                                      <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),array_2">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray_2"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),seq[States]_2">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_2"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc)_5">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29_5"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#)&quot;</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),array_5">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Carray_5"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, [])&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="useMemo,proc),seq[States]_5">
+<dt><pre><span class="Keyword">proc</span> <a href="#useMemo%2Cproc%29%2Cseq%5BStates%5D_5"><span class="Identifier">useMemo</span></a><span class="Other">(</span><span class="Identifier">cb</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span><span class="Other">;</span> <span class="Identifier">dependency</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="hooks.html#States"><span class="Identifier">States</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsObject</span> {.
+    <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;useMemo(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -689,6 +833,19 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 
 </dl></div>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Macros</a></h1>
+<dl class="item">
+<div id="useState.m,typedesc">
+<dt><pre><span class="Keyword">macro</span> <a href="#useState.m%2Ctypedesc"><span class="Identifier">useState</span></a><span class="Other">(</span><span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+
+</dl></div>
 
   </div>
 </div>
@@ -697,7 +854,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-23 02:56:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-24 07:08:27 UTC</small>
       </div>
     </div>
   </div>

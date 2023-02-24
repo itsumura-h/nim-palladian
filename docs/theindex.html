@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="palladian/cli/functions/build_impl.html">palladian/cli/functions/build_impl</a>, <a href="palladian/cli/functions/dev_impl.html">palladian/cli/functions/dev_impl</a>, <a href="palladian/cli/functions/serve_impl.html">palladian/cli/functions/serve_impl</a>, <a href="palladian/cli/server.html">palladian/cli/server</a>, <a href="palladian/controll_flow.html">palladian/controll_flow</a>, <a href="palladian/format.html">palladian/format</a>, <a href="palladian/hooks.html">palladian/hooks</a>, <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="palladian/cli/functions/build_impl.html">palladian/cli/functions/build_impl</a>, <a href="palladian/cli/functions/dev_impl.html">palladian/cli/functions/dev_impl</a>, <a href="palladian/cli/functions/new_impl.html">palladian/cli/functions/new_impl</a>, <a href="palladian/cli/functions/serve_impl.html">palladian/cli/functions/serve_impl</a>, <a href="palladian/cli/server.html">palladian/cli/server</a>, <a href="palladian/format.html">palladian/format</a>, <a href="palladian/hooks.html">palladian/hooks</a>, <a href="palladian/importlibs.html">palladian/importlibs</a>, <a href="palladian/preact.html">palladian/preact</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="BoolSignalValue" href="#BoolSignalValue"><span>BoolSignalValue:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="hooks: BoolSignalValue" href="palladian/hooks.html#BoolSignalValue">hooks: BoolSignalValue</a></li>
@@ -93,7 +93,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="dev" href="#dev"><span>dev:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="dev_impl: dev(port = 3000)" href="palladian/cli/functions/dev_impl.html#dev%2Cint">dev_impl: dev(port = 3000)</a></li>
+          data-doc-search-tag="dev_impl: dev(portArg = 3000)" href="palladian/cli/functions/dev_impl.html#dev%2Cint">dev_impl: dev(portArg = 3000)</a></li>
           </ul></dd>
 <dt><a name="false" href="#false"><span>false:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -108,10 +108,6 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="format: fmt(arg: cstring): cstring" href="palladian/format.html#fmt%2Ccstring">format: fmt(arg: cstring): cstring</a></li>
           <li><a class="reference external"
           data-doc-search-tag="format: fmt(arg: string): cstring" href="palladian/format.html#fmt.t%2Cstring">format: fmt(arg: string): cstring</a></li>
-          </ul></dd>
-<dt><a name="For" href="#For"><span>For:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="controll_flow: For(props: ComponentProps): Component" href="palladian/controll_flow.html#For%2CComponentProps">controll_flow: For(props: ComponentProps): Component</a></li>
           </ul></dd>
 <dt><a name="html" href="#html"><span>html:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -135,6 +131,16 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="hooks: JsonSignalValue" href="palladian/hooks.html#JsonSignalValue">hooks: JsonSignalValue</a></li>
           </ul></dd>
+<dt><a name="len" href="#len"><span>len:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="preact: len(arg: JsObject): int" href="palladian/preact.html#len%2CJsObject">preact: len(arg: JsObject): int</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="preact: len[T](arg: T): int" href="palladian/preact.html#len%2CT">preact: len[T](arg: T): int</a></li>
+          </ul></dd>
+<dt><a name="new" href="#new"><span>new:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="new_impl: new(args: seq[string]): int" href="palladian/cli/functions/new_impl.html#new%2Cseq%5Bstring%5D">new_impl: new(args: seq[string]): int</a></li>
+          </ul></dd>
 <dt><a name="ObjSignalValue" href="#ObjSignalValue"><span>ObjSignalValue:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="hooks: ObjSignalValue" href="palladian/hooks.html#ObjSignalValue">hooks: ObjSignalValue</a></li>
@@ -154,10 +160,6 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="serve" href="#serve"><span>serve:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="serve_impl: serve(port = 3000)" href="palladian/cli/functions/serve_impl.html#serve%2Cint">serve_impl: serve(port = 3000)</a></li>
-          </ul></dd>
-<dt><a name="Show" href="#Show"><span>Show:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="controll_flow: Show(props: ComponentProps): Component" href="palladian/controll_flow.html#Show%2CComponentProps">controll_flow: Show(props: ComponentProps): Component</a></li>
           </ul></dd>
 <dt><a name="signal" href="#signal"><span>signal:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -187,11 +189,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="useCallback" href="#useCallback"><span>useCallback:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="hooks: useCallback(cb: proc ()): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29">hooks: useCallback(cb: proc ()): JsObject</a></li>
+          data-doc-search-tag="hooks: useCallback(cb: proc ()): (proc ())" href="palladian/hooks.html#useCallback%2Cproc%29">hooks: useCallback(cb: proc ()): (proc ())</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: array): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29%2Carray">hooks: useCallback(cb: proc (); dependency: array): JsObject</a></li>
+          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: array): (proc ())" href="palladian/hooks.html#useCallback%2Cproc%29%2Carray">hooks: useCallback(cb: proc (); dependency: array): (proc ())</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: seq[States]): JsObject" href="palladian/hooks.html#useCallback%2Cproc%29%2Cseq%5BStates%5D">hooks: useCallback(cb: proc (); dependency: seq[States]): JsObject</a></li>
+          data-doc-search-tag="hooks: useCallback(cb: proc (); dependency: seq[States]): (proc ())" href="palladian/hooks.html#useCallback%2Cproc%29%2Cseq%5BStates%5D">hooks: useCallback(cb: proc (); dependency: seq[States]): (proc ())</a></li>
           </ul></dd>
 <dt><a name="useEffect" href="#useEffect"><span>useEffect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -223,11 +225,35 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="useMemo" href="#useMemo"><span>useMemo:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="hooks: useMemo(cb: proc ())" href="palladian/hooks.html#useMemo%2Cproc%29">hooks: useMemo(cb: proc ())</a></li>
+          data-doc-search-tag="hooks: useMemo(cb: proc (): bool): bool" href="palladian/hooks.html#useMemo%2Cproc%29">hooks: useMemo(cb: proc (): bool): bool</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="hooks: useMemo(cb: proc (); dependency: array)" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray">hooks: useMemo(cb: proc (); dependency: array)</a></li>
+          data-doc-search-tag="hooks: useMemo(cb: proc (): bool; dependency: array): bool" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray">hooks: useMemo(cb: proc (): bool; dependency: array): bool</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="hooks: useMemo(cb: proc (); dependency: seq[States])" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D">hooks: useMemo(cb: proc (); dependency: seq[States])</a></li>
+          data-doc-search-tag="hooks: useMemo(cb: proc (): int; dependency: array): int" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray_2">hooks: useMemo(cb: proc (): int; dependency: array): int</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): float; dependency: array): float" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray_3">hooks: useMemo(cb: proc (): float; dependency: array): float</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): cstring; dependency: array): cstring" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray_4">hooks: useMemo(cb: proc (): cstring; dependency: array): cstring</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): JsObject; dependency: array): JsObject" href="palladian/hooks.html#useMemo%2Cproc%29%2Carray_5">hooks: useMemo(cb: proc (): JsObject; dependency: array): JsObject</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): bool; dependency: seq[States]): bool" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D">hooks: useMemo(cb: proc (): bool; dependency: seq[States]): bool</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): int; dependency: seq[States]): int" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D_2">hooks: useMemo(cb: proc (): int; dependency: seq[States]): int</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): float; dependency: seq[States]): float" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D_3">hooks: useMemo(cb: proc (): float; dependency: seq[States]): float</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): cstring; dependency: seq[States]): cstring" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D_4">hooks: useMemo(cb: proc (): cstring; dependency: seq[States]): cstring</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): JsObject; dependency: seq[States]): JsObject" href="palladian/hooks.html#useMemo%2Cproc%29%2Cseq%5BStates%5D_5">hooks: useMemo(cb: proc (): JsObject; dependency: seq[States]): JsObject</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): int): int" href="palladian/hooks.html#useMemo%2Cproc%29_2">hooks: useMemo(cb: proc (): int): int</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): float): float" href="palladian/hooks.html#useMemo%2Cproc%29_3">hooks: useMemo(cb: proc (): float): float</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): cstring): cstring" href="palladian/hooks.html#useMemo%2Cproc%29_4">hooks: useMemo(cb: proc (): cstring): cstring</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useMemo(cb: proc (): JsObject): JsObject" href="palladian/hooks.html#useMemo%2Cproc%29_5">hooks: useMemo(cb: proc (): JsObject): JsObject</a></li>
           </ul></dd>
 <dt><a name="useRef" href="#useRef"><span>useRef:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -246,6 +272,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="hooks: useState(arg: JsObject): (JsObject, ObjectStateSetter)" href="palladian/hooks.html#useState%2CJsObject">hooks: useState(arg: JsObject): (JsObject, ObjectStateSetter)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="hooks: useState(arg: JsonNode): (JsonNode, JsonStateSetter)" href="palladian/hooks.html#useState%2CJsonNode">hooks: useState(arg: JsonNode): (JsonNode, JsonStateSetter)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="hooks: useState(arg: typedesc): untyped" href="palladian/hooks.html#useState.m%2Ctypedesc">hooks: useState(arg: typedesc): untyped</a></li>
           </ul></dd>
 <dt><a name="value" href="#value"><span>value:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -280,7 +308,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-23 02:56:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-24 07:08:32 UTC</small>
       </div>
     </div>
   </div>

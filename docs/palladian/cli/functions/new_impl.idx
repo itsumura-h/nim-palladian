@@ -1,0 +1,1 @@
+new	palladian/cli/functions/new_impl.html#new,seq[string]	new_impl: new(args: seq[string]): int	
