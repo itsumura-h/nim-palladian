@@ -21,7 +21,7 @@ proc StringEffectComponent():Component {.exportc.} =
   return html(fmt"""
     <input type="text" oninput=${updateState} placeholder="Type here" class="input w-full" />
     <p>${stringState}</p>
-    <p>${stringCount}</p>
+    <p>count: ${stringCount}</p>
   """)
 
 
