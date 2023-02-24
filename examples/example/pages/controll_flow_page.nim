@@ -13,10 +13,10 @@ type User = object
 
 proc ForControllComponent*():Component {.exportc.} =
   let usersData = [
-    User(id: 1, name: "Alice"),
-    User(id: 2, name: "Bob"),
-    User(id: 3, name: "Charlie"),
-    User(id: 4, name: "Dave"),
+    User{id: 1, name: "Alice"},
+    User{id: 2, name: "Bob"},
+    User{id: 3, name: "Charlie"},
+    User{id: 4, name: "Dave"},
   ]
   let users{.exportc.} = usersData.toJs()
 
@@ -45,10 +45,10 @@ type User = object
 
 proc ForControllComponent*():Component {.exportc.} =
   let usersData = [
-    User(id: 1, name: "Alice"),
-    User(id: 2, name: "Bob"),
-    User(id: 3, name: "Charlie"),
-    User(id: 4, name: "Dave"),
+    User{id: 1, name: "Alice"},
+    User{id: 2, name: "Bob"},
+    User{id: 3, name: "Charlie"},
+    User{id: 4, name: "Dave"},
   ]
   let users{.exportc.} = usersData.toJs()
 
@@ -79,7 +79,7 @@ proc ShowControllComponent():Component {.exportc.} =
     setMessage(e.target.value)
 
   return html(fmt"""
-    <input type="text" oninput=${updateMessage} />
+    <input type="text" oninput=${updateMessage} placeholder="message" />
     <${Show} when=${message} fallback=${html`<p class="bg-pink-300 text-red-500 font-bold">Fill the message!</p>`}>
       <p>${message}</p>
     <//>
@@ -93,7 +93,7 @@ proc ShowControllComponent():Component {.exportc.} =
     setMessage(e.target.value)
 
   return html(fmt\"\""
-    <input type="text" oninput=${updateMessage} />
+    <input type="text" oninput=${updateMessage} placeholder="message" />
     <${Show} when=${message} fallback=${html`<p class="bg-pink-300 text-red-500 font-bold">Fill the message!</p>`}>
       <p>${message}</p>
     <//>
