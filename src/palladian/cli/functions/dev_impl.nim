@@ -17,6 +17,7 @@ var
   files: Table[string, Time]
   isModified = false
   p: Process
+  port:int
 
 proc echoMsg(bg: BackgroundColor, msg: string) =
   styledEcho(fgBlack, bg, &"{msg} ", resetStyle)
@@ -29,31 +30,33 @@ proc ctrlC() {.noconv.} =
 setControlCHook(ctrlC)
 
 
-proc runCommand(port:int) =
-  var isInProjectDir = false
-  for (kind, path) in walkDir(getCurrentDir()):
-    if path.contains(".nimble"):
-      isInProjectDir = true
-  if not isInProjectDir:
-    raise newException(Exception, "Run command in directory which contains nimble file")
-
+proc buildCommand() =
   try:
-    if p != nil:
-      p.close()
     let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app"
     echo cmd
     if execShellCmd(cmd) > 0:
       raise newException(Exception, "")
-    p = startProcess(&"palladian serve -p {port}", options={poStdErrToStdOut, poParentStreams, poEvalCommand})
-    echoMsg(bgGreen, "[SUCCESS] Building dev server")
+    echoMsg(bgGreen, &"Running dev server at http://localhost:{port}")
+    echoMsg(bgGreen, "[SUCCESS] Building js application")
   except:
     echoMsg(bgRed, "[FAILED] Build error")
     echo getCurrentExceptionMsg()
-    # quit 1
 
-proc dev*(port=3000) =
+proc runServer(portArg:int) =
+  try:
+    if p != nil:
+      p.close()
+    p = startProcess(&"palladian serve -p {portArg}", options={poStdErrToStdOut, poParentStreams, poEvalCommand})
+    # echoMsg(bgGreen, &"[SUCCESS] Running dev server http://localhost:{port}")
+    port = portArg
+  except:
+    echoMsg(bgRed, "[FAILED] Build error")
+    echo getCurrentExceptionMsg()
+
+proc dev*(portArg=3000) =
   ## Run server for development with hot reload.
-  runCommand(port)
+  runServer(portArg)
+  buildCommand()
   while true:
     sleep sleepTime * 1000
     for f in walkDirRec(currentDir, {pcFile}):
@@ -81,4 +84,5 @@ proc dev*(port=3000) =
 
     if isModified:
       isModified = false
-      runCommand(port)
+      # runCommand(port)
+      buildCommand()

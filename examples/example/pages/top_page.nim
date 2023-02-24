@@ -9,10 +9,10 @@ import ../components/code_block
 import ../libs/highlight
 
 proc Title(props:ComponentProps):Component {.exportc.} =
-  let name {.exportc.} = props.children
+  let children {.exportc.} = props.children
 
   return html(fmt"""
-    <p class="font-extrabold">${name}</p>
+    <p class="font-extrabold">${children}</p>
   """)
 
 proc Counter():Component {.exportc.} =
@@ -34,10 +34,10 @@ proc Counter():Component {.exportc.} =
 proc TopPage*():Component {.exportc.} =
   let sampleCode {.exportc.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =
-      let name {.exportc.} = props.children
+      let children {.exportc.} = props.children
 
       return html(fmt\"\""
-        <p class="font-extrabold">${name}</p>
+        <p class="font-extrabold">${children}</p>
       \"\"")
 
     proc Counter():Component {.exportc.} =
@@ -75,7 +75,6 @@ proc TopPage*():Component {.exportc.} =
           <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
           <li>The evolution of CDN that allow development without NodeJS.</li>
           <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
-          <li></li>
         </ul>
         <${CodeBlock}>
           ${sampleCode}
@@ -94,7 +93,4 @@ proc TopPage*():Component {.exportc.} =
         </p>
       <//>
     </div>
-
-    <br />
-    <br />
   """)

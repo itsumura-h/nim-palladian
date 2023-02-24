@@ -41,7 +41,6 @@ proc runServe*(routes:seq[Route], port=8080) {.async.} =
 
   server.listen(Port(port)) # or Port(8080) to hardcode the standard HTTP port.
   let port = server.getPort
-  echo "test this with: curl localhost:" & $port.uint16 & "/"
   while true:
     if server.shouldAcceptRequest():
       await server.acceptRequest(cb)

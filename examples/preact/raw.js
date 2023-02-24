@@ -6,6 +6,55 @@ import {Router, Link} from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.12
 
 const html = htm.bind(h);
 
+let Item = ({ v, k, f }) => f(v, k);
+
+export function For({ each, children: f }) {
+  let c = useMemo(() => new Map, []);
+  // let value = each.value;
+  let value;
+  if(typeof each === "object"){
+    if("value" in each){ // Signal
+      value = each.value
+    }else{ // JsObject
+      value = each
+    }
+  }else if(typeof each === "function"){
+    value = each()
+  }else{
+    value = each
+  }
+  console.log("==== For")
+  console.log(value)
+  console.log(Array.isArray(value))
+  if (!Array.isArray(value)) return html`<${Item} v=${value} f=${f} />`;
+  // return value.map((v, k, x) => c.get(v) || (c.set(v, x = html``<Item v=${v} k=${k} f=${f} />``), x));
+  return value.map((v, k, x) => {
+    console.log("===== loop")
+    console.log({f})
+    console.log({v, k, x})
+    console.log(c.get(v) || (c.set(v, x = html`<${Item} v=${v} k=${k} f=${f} />`), x))
+    return c.get(v) || (c.set(v, x = html`<${Item} v=${v} k=${k} f=${f} />`), x)
+  });
+}
+
+
+function Loop(){
+  const users = [
+    {id:1, name:"Alice"},
+    {id:2, name:"Bob"},
+    {id:3, name:"Charlie"},
+    {id:4, name:"Dave"},
+  ]
+
+  return html`
+    <table>
+      <${For} each=${users}>
+        ${user=> html`<tr> <td>${user.id}</td><td>${user.name}</td> </tr>`}
+      <//>
+    </table>
+  `
+}
+
 function Nav(){
   return html`
     <${Link} href="/">page1<//><span>   </span><${Link} href="/page2">page2<//>
@@ -33,7 +82,6 @@ function page1(){
         <button onClick=\${decrement}>Decrement</button>
       """)
   `.replace("\\", "")
-  console.log(code)
   let content = "    <h1>Page1</h1>\n    <pre><code class=\"language-js\">\n      ${code}\n    </code></pre>  "
   return eval('html`' + content +  '`')
 }
@@ -65,6 +113,7 @@ function App (props) {
       <${page1} path="/" />
       <${page2} path="/page2" />
     <//>
+    <${Loop} />
   `;
 }
 

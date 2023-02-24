@@ -20,3 +20,7 @@ proc renderApp*(component: proc():Component, dom: Element) {.importjs: "renderAp
 
 type ComponentProps* = JsObject
 proc children*(self:ComponentProps):cstring {.importjs:"#.children".}
+
+
+proc len*(arg:JsObject):int {.importjs:"Object.keys(#).length".}
+proc len*[T](arg:T):int {.importjs:"Object.keys(#).length".}
