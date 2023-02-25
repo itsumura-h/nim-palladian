@@ -37,12 +37,13 @@ jobs:
       - name: Install palladian
         run: nimble install -y
       - name: Build palladian
+        run: palladian build
+      - name: move generated file
         run: |
           mkdir githubpage
           cd examples/document
-          palladian build
           cp index.html ../../githubpage/
-          cp public ../../githubpage/
+          cp -r public ../../githubpage/
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
