@@ -37,7 +37,7 @@ jobs:
       - name: Install palladian
         run: nimble install -y
       - name: Build github-page
-        run: >
+        run: |
           pwd
           ls -la
           mkdir githubpage
