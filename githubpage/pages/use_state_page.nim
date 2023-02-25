@@ -1,9 +1,9 @@
 import std/jsffi
 import std/dom
 import std/math
-import ../../../src/palladian
-import ../../../src/palladian/hooks
-import ../../../src/palladian/format
+import ../../src/palladian
+import ../../src/palladian/hooks
+import ../../src/palladian/format
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight

@@ -127,6 +127,13 @@ window.addEventListener('DOMContentLoaded', main);
     title="html(arg: cstring): Component">html(arg: cstring): Component</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">len
+      <li><a class="reference" href="#len%2CJsObject"
+    title="len(arg: JsObject): int">len(arg: JsObject): int</a></li>
+  <li><a class="reference" href="#len%2CT"
+    title="len[T](arg: T): int">len[T](arg: T): int</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">renderApp
       <li><a class="reference" href="#renderApp%2Cproc%29%2CElement"
     title="renderApp(component: proc (): Component; dom: Element)">renderApp(component: proc (): Component; dom: Element)</a></li>
@@ -202,6 +209,24 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="len,JsObject">
+<dt><pre><span class="Keyword">proc</span> <a href="#len%2CJsObject"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">JsObject</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;Object.keys(#).length&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                               <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="len,T">
+<dt><pre><span class="Keyword">proc</span> <a href="#len%2CT"><span class="Identifier">len</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;Object.keys(#).length&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                           <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="renderApp,proc),Element">
 <dt><pre><span class="Keyword">proc</span> <a href="#renderApp%2Cproc%29%2CElement"><span class="Identifier">renderApp</span></a><span class="Other">(</span><span class="Identifier">component</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="preact.html#Component"><span class="Identifier">Component</span></a><span class="Other">;</span> <span class="Identifier">dom</span><span class="Other">:</span> <span class="Identifier">Element</span><span class="Other">)</span> {.
     <span class="Identifier">importjs</span><span class="Other">:</span> <span class="StringLit">&quot;renderApp(#, #)&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -234,7 +259,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-23 02:56:35 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-02-24 07:08:27 UTC</small>
       </div>
     </div>
   </div>

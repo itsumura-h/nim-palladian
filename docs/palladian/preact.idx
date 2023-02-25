@@ -4,3 +4,5 @@ html	palladian/preact.html#html.t,string	preact: html(arg: string): Component
 renderApp	palladian/preact.html#renderApp,proc),Element	preact: renderApp(component: proc (): Component; dom: Element)	
 ComponentProps	palladian/preact.html#ComponentProps	preact: ComponentProps	
 children	palladian/preact.html#children,ComponentProps	preact: children(self: ComponentProps): cstring	
+len	palladian/preact.html#len,JsObject	preact: len(arg: JsObject): int	
+len	palladian/preact.html#len,T	preact: len[T](arg: T): int	

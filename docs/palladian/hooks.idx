@@ -4,6 +4,7 @@ useState	palladian/hooks.html#useState,float	hooks: useState(arg: float): (float
 useState	palladian/hooks.html#useState,cstring	hooks: useState(arg: cstring): (cstring, StrStateSetter)	
 useState	palladian/hooks.html#useState,JsObject	hooks: useState(arg: JsObject): (JsObject, ObjectStateSetter)	
 useState	palladian/hooks.html#useState,JsonNode	hooks: useState(arg: JsonNode): (JsonNode, JsonStateSetter)	
+useState	palladian/hooks.html#useState.m,typedesc	hooks: useState(arg: typedesc): untyped	
 States	palladian/hooks.html#States	hooks: States	
 useEffect	palladian/hooks.html#useEffect,proc)	hooks: useEffect(cb: proc ())	
 useEffect	palladian/hooks.html#useEffect,proc),array	hooks: useEffect(cb: proc (); dependency: array)	
@@ -17,12 +18,24 @@ useLayoutEffect	palladian/hooks.html#useLayoutEffect,proc),seq[States]	hooks: us
 useLayoutEffect	palladian/hooks.html#useLayoutEffect,proc)_2	hooks: useLayoutEffect(cb: proc (): Future[void])	
 useLayoutEffect	palladian/hooks.html#useLayoutEffect,proc),array_2	hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: array)	
 useLayoutEffect	palladian/hooks.html#useLayoutEffect,proc),seq[States]_2	hooks: useLayoutEffect(cb: proc (): Future[void]; dependency: seq[States])	
-useMemo	palladian/hooks.html#useMemo,proc)	hooks: useMemo(cb: proc ())	
-useMemo	palladian/hooks.html#useMemo,proc),array	hooks: useMemo(cb: proc (); dependency: array)	
-useMemo	palladian/hooks.html#useMemo,proc),seq[States]	hooks: useMemo(cb: proc (); dependency: seq[States])	
-useCallback	palladian/hooks.html#useCallback,proc)	hooks: useCallback(cb: proc ()): JsObject	
-useCallback	palladian/hooks.html#useCallback,proc),array	hooks: useCallback(cb: proc (); dependency: array): JsObject	
-useCallback	palladian/hooks.html#useCallback,proc),seq[States]	hooks: useCallback(cb: proc (); dependency: seq[States]): JsObject	
+useMemo	palladian/hooks.html#useMemo,proc)	hooks: useMemo(cb: proc (): bool): bool	
+useMemo	palladian/hooks.html#useMemo,proc),array	hooks: useMemo(cb: proc (): bool; dependency: array): bool	
+useMemo	palladian/hooks.html#useMemo,proc),seq[States]	hooks: useMemo(cb: proc (): bool; dependency: seq[States]): bool	
+useMemo	palladian/hooks.html#useMemo,proc)_2	hooks: useMemo(cb: proc (): int): int	
+useMemo	palladian/hooks.html#useMemo,proc),array_2	hooks: useMemo(cb: proc (): int; dependency: array): int	
+useMemo	palladian/hooks.html#useMemo,proc),seq[States]_2	hooks: useMemo(cb: proc (): int; dependency: seq[States]): int	
+useMemo	palladian/hooks.html#useMemo,proc)_3	hooks: useMemo(cb: proc (): float): float	
+useMemo	palladian/hooks.html#useMemo,proc),array_3	hooks: useMemo(cb: proc (): float; dependency: array): float	
+useMemo	palladian/hooks.html#useMemo,proc),seq[States]_3	hooks: useMemo(cb: proc (): float; dependency: seq[States]): float	
+useMemo	palladian/hooks.html#useMemo,proc)_4	hooks: useMemo(cb: proc (): cstring): cstring	
+useMemo	palladian/hooks.html#useMemo,proc),array_4	hooks: useMemo(cb: proc (): cstring; dependency: array): cstring	
+useMemo	palladian/hooks.html#useMemo,proc),seq[States]_4	hooks: useMemo(cb: proc (): cstring; dependency: seq[States]): cstring	
+useMemo	palladian/hooks.html#useMemo,proc)_5	hooks: useMemo(cb: proc (): JsObject): JsObject	
+useMemo	palladian/hooks.html#useMemo,proc),array_5	hooks: useMemo(cb: proc (): JsObject; dependency: array): JsObject	
+useMemo	palladian/hooks.html#useMemo,proc),seq[States]_5	hooks: useMemo(cb: proc (): JsObject; dependency: seq[States]): JsObject	
+useCallback	palladian/hooks.html#useCallback,proc)	hooks: useCallback(cb: proc ()): (proc ())	
+useCallback	palladian/hooks.html#useCallback,proc),array	hooks: useCallback(cb: proc (); dependency: array): (proc ())	
+useCallback	palladian/hooks.html#useCallback,proc),seq[States]	hooks: useCallback(cb: proc (); dependency: seq[States]): (proc ())	
 useRef	palladian/hooks.html#useRef	hooks: useRef(): RefObject	
 false	palladian/hooks.html#false	BoolSignalValue.false	
 true	palladian/hooks.html#true	BoolSignalValue.true	
