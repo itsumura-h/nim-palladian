@@ -3,7 +3,7 @@ import std/jsffi
 import std/jsconsole
 import ../../../src/palladian
 import ../../../src/palladian/format
-import ../consts
+import ../settings
 
 
 proc Drawer*(props:ComponentProps):Component {.exportc.} =

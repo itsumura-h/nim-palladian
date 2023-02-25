@@ -92,6 +92,10 @@ proc SignalComponentB():Component {.exportc.} =
 """
 
 proc SignalPage*():Component {.exportc.} =
+  useLayoutEffect(proc() =
+    document.title = "Signal / Nim Palladian"
+  )
+
   return html(fmt"""
     <${Article}>
       <h1>Signal</h1>
