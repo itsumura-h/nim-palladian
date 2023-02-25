@@ -38,8 +38,8 @@ jobs:
         run: nimble install -y
       - name: Build palladian
         run: |
-        cd examples/document
-        palladian build -b="https://itsumura-h.github.io/nim-palladian"
+          cd examples/document
+          palladian build -b="https://itsumura-h.github.io/nim-palladian"
       - name: move generated file
         run: mv examples/document/dist githubpage
       - name: Setup Pages
