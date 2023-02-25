@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "Anonymous"
-description   = "A new awesome nimble package"
+description   = "Palladian official document created by palladian."
 license       = "MIT"
 # srcDir        = "src"
 # skipFiles = @["server.nim"]
