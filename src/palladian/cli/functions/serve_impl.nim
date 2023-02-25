@@ -1,4 +1,3 @@
-import std/os
 import std/strutils
 import std/asyncdispatch
 import std/asynchttpserver
