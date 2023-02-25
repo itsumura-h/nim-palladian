@@ -36,10 +36,14 @@ jobs:
         uses: iffy/install-nim@v4.5.0
       - name: Install palladian
         run: nimble install -y
-      -name: Build github-page
+      - name: Build github-page
         run: >
+          pwd
+          ls -la
           mkdir githubpage
+          ls -la
           cd example/document
+          ls -la
           palladian build
           cp index.html ../../githubpage/
           cp public ../../githubpage/
