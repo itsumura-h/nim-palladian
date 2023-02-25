@@ -37,13 +37,9 @@ jobs:
       - name: Install palladian
         run: nimble install -y
       - name: Build palladian
-        run: palladian build
+        run: palladian build -b="https://itsumura-h.github.io/nim-palladian"
       - name: move generated file
-        run: |
-          mkdir githubpage
-          cd examples/document
-          cp index.html ../../githubpage/
-          cp -r public ../../githubpage/
+        run: mv examples/document/dist githubpage
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

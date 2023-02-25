@@ -1,6 +1,6 @@
-import ../../src/palladian
-import ../../src/palladian/format
-import ../../src/palladian/router
+import ../../../src/palladian
+import ../../../src/palladian/format
+import ../../../src/palladian/router
 
 proc Header*():Component {.exportc.} =
   return html(fmt"""
@@ -11,6 +11,5 @@ proc Header*():Component {.exportc.} =
       <div class="flex-1">
         <${Link} href="/" class="btn btn-ghost normal-case text-xl">Nim palladian<//>
       </div>
-
     </nav>
   """)

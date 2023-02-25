@@ -2,9 +2,9 @@ import std/dom
 import std/jsffi
 import std/json
 import std/jsconsole
-import ../../src/palladian
-import ../../src/palladian/format
-import ../../src/palladian/hooks
+import ../../../src/palladian
+import ../../../src/palladian/format
+import ../../../src/palladian/hooks
 import ../components/code_block
 
 type User = object

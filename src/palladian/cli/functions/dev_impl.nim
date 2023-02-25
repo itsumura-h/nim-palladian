@@ -7,7 +7,6 @@ import std/tables
 import std/terminal
 import std/times
 
-
 let
   sleepTime = 2
   currentDir = getCurrentDir()

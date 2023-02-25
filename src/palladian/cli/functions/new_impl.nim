@@ -14,7 +14,7 @@ const HTML_BODY = """
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="/public/app.js"></script>
+  <script type="module" src="{% BASE_URL %}/public/app.js"></script>
 </body>
 </html>
 """
@@ -182,6 +182,7 @@ task docs, "generate nim api docs":
   let cmd = "nim doc -b:js --project --index:on --outdir:docs app.nim"
   exec(cmd)
 """
+
 
 proc create(dirPath, packageName:string):int =
   try:
