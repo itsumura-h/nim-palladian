@@ -24,7 +24,7 @@ proc App():Component {.exportc.} =
 
         <div class="drawer-content bg-base-200 pb-16">
           <${Router}>
-            <${TopPage} path="${BASE_URL}/" />
+            <${TopPage} path="${BASE_URL}" />
             <${UseStatePage} path="${BASE_URL}/use-state" />
             <${SignalPage} path="${BASE_URL}/signal" />
             <${EffectSystemPage} path="${BASE_URL}/effect-system" />
