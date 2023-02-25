@@ -3,6 +3,7 @@ import std/jsffi
 import std/jsconsole
 import ../../../src/palladian
 import ../../../src/palladian/format
+import ../consts
 
 
 proc Drawer*(props:ComponentProps):Component {.exportc.} =
@@ -13,11 +14,11 @@ proc Drawer*(props:ComponentProps):Component {.exportc.} =
   return html(fmt"""
     <ul class="min-h-screen menu p-4 w-80 bg-base-100 text-base-content">
       <!-- Sidebar content here -->
-      <li><${Link} href="/" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
-      <li><${Link} href="/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
-      <li><${Link} href="/effect-system" activeClassName="active" onclick=${changeDrawer}>Effect system<//></li>
-      <li><${Link} href="/signal" activeClassName="active" onclick=${changeDrawer}>Signal<//></li>
-      <li><${Link} href="/controll-flow" activeClassName="active" onclick=${changeDrawer}>controll flow<//></li>
-      <li><${Link} href="/api-access" activeClassName="active" onclick=${changeDrawer}>api access<//></li>
+      <li><${Link} href="${BASE_URL}/" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
+      <li><${Link} href="${BASE_URL}/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
+      <li><${Link} href="${BASE_URL}/effect-system" activeClassName="active" onclick=${changeDrawer}>Effect system<//></li>
+      <li><${Link} href="${BASE_URL}/signal" activeClassName="active" onclick=${changeDrawer}>Signal<//></li>
+      <li><${Link} href="${BASE_URL}/controll-flow" activeClassName="active" onclick=${changeDrawer}>controll flow<//></li>
+      <li><${Link} href="${BASE_URL}/api-access" activeClassName="active" onclick=${changeDrawer}>api access<//></li>
     </ul>
   """)

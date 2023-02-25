@@ -4,6 +4,7 @@ import ../../src/palladian
 import ../../src/palladian/hooks
 import ../../src/palladian/format
 import ../../src/palladian/router
+import ./consts
 import ./components/header
 import ./components/drawer
 import ./pages/top_page
@@ -23,12 +24,12 @@ proc App():Component {.exportc.} =
 
         <div class="drawer-content bg-base-200 pb-16">
           <${Router}>
-            <${TopPage} path="/" />
-            <${UseStatePage} path="/use-state" />
-            <${SignalPage} path="/signal" />
-            <${EffectSystemPage} path="/effect-system" />
-            <${ControllFlowPage} path="/controll-flow" />
-            <${ApiAccessPage} path="/api-access" />
+            <${TopPage} path="${BASE_URL}/" />
+            <${UseStatePage} path="${BASE_URL}/use-state" />
+            <${SignalPage} path="${BASE_URL}/signal" />
+            <${EffectSystemPage} path="${BASE_URL}/effect-system" />
+            <${ControllFlowPage} path="${BASE_URL}/controll-flow" />
+            <${ApiAccessPage} path="${BASE_URL}/api-access" />
           <//>
           <br />
         </div>
