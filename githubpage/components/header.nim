@@ -1,6 +1,6 @@
-import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/router
+import ../../src/palladian
+import ../../src/palladian/format
+import ../../src/palladian/router
 
 proc Header*():Component {.exportc.} =
   return html(fmt"""

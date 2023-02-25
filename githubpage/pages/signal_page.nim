@@ -1,8 +1,8 @@
 import std/dom
 import std/math
-import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
+import ../../src/palladian
+import ../../src/palladian/format
+import ../../src/palladian/hooks
 
 
 let boolSignal {.exportc.} = signal(false)

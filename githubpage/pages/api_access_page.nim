@@ -4,10 +4,10 @@ import std/jsffi
 import std/jsfetch
 import std/json
 import std/jsconsole
-import ../../../src/palladian
-import ../../../src/palladian/hooks
-import ../../../src/palladian/controll_flow
-import ../../../src/palladian/format
+import ../../src/palladian
+import ../../src/palladian/hooks
+import ../../src/palladian/controll_flow
+import ../../src/palladian/format
 import ../components/text_body
 
 {.emit:"""

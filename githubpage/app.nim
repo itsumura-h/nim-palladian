@@ -1,9 +1,9 @@
 import std/dom
 import std/jsconsole
-import ../../src/palladian
-import ../../src/palladian/hooks
-import ../../src/palladian/format
-import ../../src/palladian/router
+import ../src/palladian
+import ../src/palladian/hooks
+import ../src/palladian/format
+import ../src/palladian/router
 import ./components/header
 import ./components/drawer
 import ./pages/top_page
