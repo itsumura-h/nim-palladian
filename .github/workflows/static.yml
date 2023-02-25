@@ -35,27 +35,14 @@ jobs:
         # uses: iffy/install-nim@560f0647083257e632182be888862d69eeb6f2c4
         uses: iffy/install-nim@v4.5.0
       - name: Install palladian
-        run: nimble install -y
-      # - name: Build github-page
-      #   run: |
-      #     pwd
-      #     ls -la
-      #     mkdir githubpage
-      #     ls -la
-      #     cd example/document
-      #     ls -la
-      #     palladian build
-      #     cp index.html ../../githubpage/
-      #     cp public ../../githubpage/
-      #     cd ../../githubpage
-      #     ls -la
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v3
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     # Upload entire repository
-      #     path: '.'
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v1
+        run: pwd; ls -la; nimble install -y
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v3
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v1
+#         with:
+#           # Upload entire repository
+#           path: '.'
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v1
