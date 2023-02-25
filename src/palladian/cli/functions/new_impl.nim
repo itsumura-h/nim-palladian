@@ -183,10 +183,7 @@ task docs, "generate nim api docs":
   exec(cmd)
 """
 
-proc create(dirPath, packageDir:string):int =
-  echo dirPath
-  echo packageDir
-
+proc create(dirPath, packageName:string):int =
   try:
     createDir(dirPath)
     # create empty dirs
@@ -196,7 +193,7 @@ proc create(dirPath, packageDir:string):int =
     createDir(&"{dirPath}/tests")
     # create files
     block:
-      let f = open(&"{dirPath}/{packageDir}.nimble", fmWrite)
+      let f = open(&"{dirPath}/{packageName}.nimble", fmWrite)
       defer: f.close()
       f.write(NIMBLE_FILE)
 
@@ -225,6 +222,19 @@ proc create(dirPath, packageDir:string):int =
       defer: f.close()
       f.write(ABOUT_PAGE_BODY.replace("\\", ""))
 
+    echo &"""
+.
+├── app.nim
+├── components
+├── index.html
+├── pages
+│   ├── about_page.nim
+│   └── top_page.nim
+├── public
+├── {packageName}.nimble
+└── tests
+"""
+
     return 0
   except:
     echo getCurrentExceptionMsg()
@@ -236,16 +246,16 @@ proc new*(args:seq[string]):int =
   ## Create new project
   var
     message:string
-    packageDir:string
+    packageName:string
     dirPath:string
 
   try:
     if args[0] == ".":
       dirPath = getCurrentDir()
-      packageDir = dirPath.split("/")[^1]
+      packageName = dirPath.split("/")[^1]
     else:
-      packageDir = args[0]
-      dirPath = getCurrentDir() & "/" & packageDir
+      packageName = args[0]
+      dirPath = getCurrentDir() & "/" & packageName
       if dirExists(dirPath): return 0
   except:
     message = "Missing args"
@@ -254,4 +264,4 @@ proc new*(args:seq[string]):int =
 
   message = &"create Nim frontend palladian project {dirPath}"
 
-  return create(dirPath, packageDir)
+  return create(dirPath, packageName)
