@@ -92,6 +92,10 @@ proc SignalComponentB():Component {.exportc.} =
 """
 
 proc SignalPage*():Component {.exportc.} =
+  useLayoutEffect(proc() =
+    document.title = "Signal / Nim Palladian"
+  )
+
   return html(fmt"""
     <${Article}>
       <h1>Signal</h1>
@@ -111,7 +115,7 @@ proc SignalPage*():Component {.exportc.} =
       </p>
     <//>
     <${Article}>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${signalCode}
       <//>
       <p>Both <code>SignalComponentA</code> and <code>SignalComponentB</code> are rendered synchronously.</p>

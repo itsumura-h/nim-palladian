@@ -8,6 +8,7 @@ import ./consts
 import ./components/header
 import ./components/drawer
 import ./pages/top_page
+import ./pages/getting_start_page
 import ./pages/use_state_page
 import ./pages/effect_system_page
 import ./pages/signal_page
@@ -24,7 +25,8 @@ proc App():Component {.exportc.} =
 
         <div class="drawer-content bg-base-200 pb-16">
           <${Router}>
-            <${TopPage} path="${BASE_URL}/" />
+            <${TopPage} path="${BASE_URL}" />
+            <${GettingStartPage} path="${BASE_URL}/getting-start" />
             <${UseStatePage} path="${BASE_URL}/use-state" />
             <${SignalPage} path="${BASE_URL}/signal" />
             <${EffectSystemPage} path="${BASE_URL}/effect-system" />

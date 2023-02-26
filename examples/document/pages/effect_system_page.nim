@@ -86,7 +86,7 @@ proc StringEffectComponent():Component {.exportc.} =
         <a href="https://preactjs.com/guide/v10/hooks#side-effects" target="_blank">Preact - Side Effects</a>
       </p>
 
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${sampleCode}
       <//>
       <${StringEffectComponent} />
@@ -95,8 +95,6 @@ proc StringEffectComponent():Component {.exportc.} =
       <h2>useLayoutEffect</h2>
       <p>
         <code>useLayoutEffect</code> is another hook that handles side effects and is used to execute side effects after the component is rendered but before the browser rendering process is executed.
-        <code>useLayoutEffect</code>, like <code>useEffect</code>, is used to execute side effects, but unlike <code>useEffect</code>, it is executed before the browser renders the page.
-        It is used to execute side effects, but unlike <code>useEffect</code>, it is executed before the browser renders the page.<br/>
         Use <code>useEffect</code> for processes that do not need to be executed immediately or that have no visual impact, and <code>useLayoutEffect</code> for processes that absolutely must be executed when the page is initially displayed.
       </p>
       <p>

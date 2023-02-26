@@ -102,6 +102,10 @@ proc ShowControllComponent():Component {.exportc.} =
 
 
 proc ControllFlowPage*():Component {.exportc.} =
+  useLayoutEffect(proc() =
+    document.title = "Controll flow / Nim Palladian"
+  )
+
   return html(fmt"""
     <${Article}>
       <h1>Controll flow</h1>
@@ -119,7 +123,7 @@ proc ControllFlowPage*():Component {.exportc.} =
 
     <${Article}>
       <h2>For</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${forControllCode}
       <//>
       <${ForControllComponent} />
@@ -127,7 +131,7 @@ proc ControllFlowPage*():Component {.exportc.} =
 
     <${Article}>
       <h2>Show</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${showControllCode}
       <//>
       <${ShowControllComponent} />
