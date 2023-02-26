@@ -58,7 +58,7 @@ proc TopPage*():Component {.exportc.} =
   """
 
   useLayoutEffect(proc()=
-    document.title = "Toppage / Nim Palladian"
+    document.title = "Top / Nim Palladian"
   , [])
 
   return html(fmt"""
@@ -76,7 +76,7 @@ proc TopPage*():Component {.exportc.} =
           <li>The evolution of CDN that allow development without NodeJS.</li>
           <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
         </ul>
-        <${CodeBlock}>
+        <${CodeBlock} lang="nim">
           ${sampleCode}
         <//>
         <${Counter} />

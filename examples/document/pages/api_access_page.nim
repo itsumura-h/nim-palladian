@@ -134,7 +134,7 @@ proc ApiAccessPage*():Component {.exportc.} =
       </p>
     <//>
     <${Article}>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${apiAccessCode}
       <//>
       <${ApiAccessComponent} />

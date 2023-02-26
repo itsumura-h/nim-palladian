@@ -9,6 +9,7 @@ import ../libs/highlight
 
 proc CodeBlock(props:ComponentProps):Component {.exportc.} =
   let codeRef {.exportc.} = useRef()
+  let lang {.exportc.} = props.lang
 
   useLayoutEffect(proc() =
     var code = $props.children
@@ -18,6 +19,6 @@ proc CodeBlock(props:ComponentProps):Component {.exportc.} =
   , [])
 
   return html(fmt"""
-    <pre><code class="language-nim" ref=${codeRef}>
+    <pre><code class="language-${lang}" ref=${codeRef}>
     </code></pre>
   """)

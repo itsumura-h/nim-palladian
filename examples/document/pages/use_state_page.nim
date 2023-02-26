@@ -128,25 +128,25 @@ proc UseStatePage*():Component {.exportc.} =
       </p>
 
       <h2>Bool state</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${boolStateCode}
       <//>
       <${BoolStateComponent} />
 
       <h2>Int state</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${intStateCode}
       <//>
       <${IntStateComponent} />
 
       <h2>Float state</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${floatStateCode}
       <//>
       <${FloatStateComponent} />
 
       <h2>String state</h2>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${stringStateCode}
       <//>
       <${StringStateComponent} />

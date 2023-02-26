@@ -115,7 +115,7 @@ proc SignalPage*():Component {.exportc.} =
       </p>
     <//>
     <${Article}>
-      <${CodeBlock}>
+      <${CodeBlock} lang="nim">
         ${signalCode}
       <//>
       <p>Both <code>SignalComponentA</code> and <code>SignalComponentB</code> are rendered synchronously.</p>

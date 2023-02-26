@@ -27,6 +27,7 @@ const GITIGNORED = """
 
 app.js
 *.out
+dist
 """
 
 const APP_BODY = """
