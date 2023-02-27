@@ -1,8 +1,6 @@
 import std/dom
 import std/jsffi
 import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
 import ../libs/highlight
 import ../components/code_block
 
@@ -26,6 +24,8 @@ proc StringEffectComponent():Component {.exportc.} =
 
 
 proc EffectSystemPage*():Component {.exportc.} =
+  document.title = "Effect system / Nim Palladian"
+
   let sampleCode {.exportc.} :cstring = """
 proc StringEffectComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")
@@ -44,10 +44,6 @@ proc StringEffectComponent():Component {.exportc.} =
     <p>${stringCount}</p>
   \"\"")
   """
-
-  useLayoutEffect(proc() =
-    document.title = "Effect system / Nim Palladian"
-  , [])
 
   return html(fmt"""
     <${Article}>

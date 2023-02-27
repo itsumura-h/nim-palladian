@@ -1,8 +1,6 @@
 import std/dom
 import std/math
 import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
 
 
 let boolSignal {.exportc.} = signal(false)
@@ -92,9 +90,7 @@ proc SignalComponentB():Component {.exportc.} =
 """
 
 proc SignalPage*():Component {.exportc.} =
-  useLayoutEffect(proc() =
-    document.title = "Signal / Nim Palladian"
-  )
+  document.title = "Signal / Nim Palladian"
 
   return html(fmt"""
     <${Article}>

@@ -1,6 +1,4 @@
 import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/router
 import ../consts
 
 proc Header*():Component {.exportc.} =

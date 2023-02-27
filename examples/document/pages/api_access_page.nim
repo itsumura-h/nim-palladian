@@ -5,9 +5,6 @@ import std/jsfetch
 import std/json
 import std/jsconsole
 import ../../../src/palladian
-import ../../../src/palladian/hooks
-import ../../../src/palladian/controll_flow
-import ../../../src/palladian/format
 import ../components/text_body
 
 {.emit:"""
@@ -67,7 +64,7 @@ proc ApiAccessComponent():Component {.exportc.} =
     <//>
   """)
 
-let apiAccessCode {.exportc.}: cstring = """
+let apiAccessCode {.exportc.} :cstring = """
 type BtcPrice = ref object
   usd, eur, gbp:float
   time:cstring
@@ -121,9 +118,7 @@ proc ApiAccessComponent():Component {.exportc.} =
 """
 
 proc ApiAccessPage*():Component {.exportc.} =
-  useLayoutEffect(proc() =
-    document.title = "API Access / Nim Palladian"
-  )
+  document.title = "API Access / Nim Palladian"
 
   return html(fmt"""
     <${Article}>

@@ -3,8 +3,6 @@ import std/jsffi
 import std/json
 import std/jsconsole
 import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
 import ../components/code_block
 
 type User = object
@@ -102,9 +100,7 @@ proc ShowControllComponent():Component {.exportc.} =
 
 
 proc ControllFlowPage*():Component {.exportc.} =
-  useLayoutEffect(proc() =
-    document.title = "Controll flow / Nim Palladian"
-  )
+  document.title = "Controll flow / Nim Palladian"
 
   return html(fmt"""
     <${Article}>

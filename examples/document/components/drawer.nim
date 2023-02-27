@@ -2,7 +2,6 @@ import std/dom
 import std/jsffi
 import std/jsconsole
 import ../../../src/palladian
-import ../../../src/palladian/format
 import ../consts
 
 

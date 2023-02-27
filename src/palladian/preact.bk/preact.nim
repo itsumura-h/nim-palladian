@@ -1,8 +1,6 @@
-import std/asyncjs
-import std/dom
 import std/jsffi
-import std/json
-import std/macros
+import std/dom
+import ./importlibs
 
 {.emit:"""
 import {h, render} from 'https://esm.sh/preact@10.12.1';

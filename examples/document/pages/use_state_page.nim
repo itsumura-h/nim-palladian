@@ -2,8 +2,6 @@ import std/jsffi
 import std/dom
 import std/math
 import ../../../src/palladian
-import ../../../src/palladian/hooks
-import ../../../src/palladian/format
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
@@ -107,9 +105,7 @@ proc StringStateComponent():Component {.exportc.} =
 
 
 proc UseStatePage*():Component {.exportc.} =
-  useLayoutEffect(proc()=
-    document.title = "useState / Nim Palladian"
-  , [])
+  document.title = "useState / Nim Palladian"
 
   return html(fmt"""
     <${Article}>
