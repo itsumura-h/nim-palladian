@@ -7,6 +7,7 @@ import std/json
 import {
   createSignal,
   createEffect,
+  createRenderEffect,
   createMemo,
   onCleanup,
   Show,
@@ -59,6 +60,15 @@ proc createSignal*(arg: int): (IntSignalGetter, IntSignalSetter) =
   let setter = to(state[1], IntSignalSetter)
   return (getter, setter)
 
+type FloatSignalGetter = proc():float
+type FloatSignalSetter = proc(arg:float)
+proc floatCreateSignal(arg: float): JsObject {.importjs: "createSignal(#)".}
+proc createSignal*(arg: float): (FloatSignalGetter, FloatSignalSetter) =
+  let state = floatCreateSignal(arg)
+  let getter = to(state[0], FloatSignalGetter)
+  let setter = to(state[1], FloatSignalSetter)
+  return (getter, setter)
+
 type StringSignalGetter = proc():cstring
 type StringSignalSetter = proc(arg:cstring)
 proc stringCreateSignal(arg: cstring): JsObject {.importjs: "createSignal(#)".}
@@ -82,6 +92,10 @@ type States* = cstring|int|float|bool|JsonNode|JsObject
 
 proc createEffect*(arg:proc()) {.importjs:"createEffect(#)".}
 proc createEffect*(cb: proc (): Future[void]) {.importjs: "createEffect(#)".}
+
+proc createRenderEffect*(arg:proc()) {.importjs:"createRenderEffect(#)".}
+proc createRenderEffect*(cb: proc (): Future[void]) {.importjs: "createRenderEffect(#)".}
+
 
 proc createMemo*(cb: (proc():bool)):(proc():bool) {.importjs: "createMemo(#)".}
 proc createMemo*(cb: (proc():int)):(proc():int) {.importjs: "createMemo(#)".}
