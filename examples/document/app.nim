@@ -1,5 +1,4 @@
 import std/dom
-import std/jsconsole
 import ../../src/palladian
 import ./consts
 import ./components/header
@@ -30,7 +29,6 @@ proc App():Component {.exportc.} =
             <${ControllFlowPage} path="${BASE_URL}/controll-flow" />
             <${ApiAccessPage} path="${BASE_URL}/api-access" />
           <//>
-          <br />
         </div>
 
         <div class="drawer-side">
