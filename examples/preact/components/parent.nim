@@ -3,10 +3,6 @@ import std/jsffi
 import std/jsconsole
 import std/json
 import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
-import ../../../src/palladian/router
-import ../../../src/palladian/controll_flow
 import ./loop
 
 let msg* {.exportc.} = signal("message")

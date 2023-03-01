@@ -64,6 +64,10 @@ proc StringEffectComponent():Component {.exportc.} =
         Also, if the data retrieved from the API changes the state of the component, <code>useState</code> is used to update the state of the component and trigger a redraw.<br/>
         <code>useEffect</code> is used in the function component to perform side effects; the function passed to <code>useEffect</code> is executed only once, when the component is mounted for the first time. They are also executed when dependent data is changed. Thus, useEffect can be used to execute side effects within a component.
       </p>
+      <p>
+        Also keep in mind if you don't need to use side effects. See also<br/>
+        <a href="https://beta.reactjs.org/learn/you-might-not-need-an-effect" target="_blank">React - You Might Not Need an Effect</a>
+      </p>
     <//>
     <${Article}>
       <h2>use effect</h2>

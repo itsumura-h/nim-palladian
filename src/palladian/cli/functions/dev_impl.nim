@@ -30,7 +30,7 @@ setControlCHook(ctrlC)
 
 proc buildCommand() =
   try:
-    let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app"
+    let cmd = "nim js -d:nimExperimentalAsyncjsThen -d:release -o:./public/app.js app"
     echo cmd
     if execShellCmd(cmd) > 0:
       raise newException(Exception, "")

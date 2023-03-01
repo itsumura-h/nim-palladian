@@ -105,6 +105,26 @@ function page2(){
   return eval('html`' + content + '`')
 }
 
+const Foo = () => {
+  const [msg, setMsg] = useState("")
+
+  useEffect(() => {
+    // ここがコールバック関数
+    console.log("Fooがマウントされました！");
+    // ↓これがクリーンアップ関数
+    return () => {
+      console.log("Fooがアンマウントされる！");
+    };
+  });
+
+  return html`
+    <div>
+      <input type="text" oninput=${e=> setMsg(e.target.value)}/>
+      <p>${msg}</p>
+    </div>
+  `;
+};
+
 function App (props) {
   return html`
     <h1>Hello ${props.name}!</h1>
@@ -114,6 +134,7 @@ function App (props) {
       <${page2} path="/page2" />
     <//>
     <${Loop} />
+    <${Foo} />
   `;
 }
 

@@ -1,6 +1,8 @@
-when defined(js):
-  import ./palladian/preact; export preact
+# when defined(js):
+#   import ./palladian/preact; export preact
   # import ./palladian/solidjs; export solidjs
+
+import ./palladian/preact; export preact
 
 # ==================== CLI ====================
 when isMainModule:

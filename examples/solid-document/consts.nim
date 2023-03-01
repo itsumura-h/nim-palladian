@@ -1,1 +1,2 @@
-let BASE_URL* {.exportc.} :cstring = "/nim-palladian"
+proc BASE_URL*():cstring {.exportc.} =
+  "/nim-palladian"

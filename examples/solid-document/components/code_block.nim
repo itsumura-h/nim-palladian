@@ -11,7 +11,7 @@ proc CodeBlock(props:ComponentProps):Component {.exportc.} =
   proc lang():cstring {.exportc.} =
     props.lang.to(cstring)
 
-  createEffect(proc() =
+  createRenderEffect(proc() =
     var code = $props.children
     console.log(code)
     code = code.replace("\\", "").dedent()

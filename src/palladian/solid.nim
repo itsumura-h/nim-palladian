@@ -23,13 +23,6 @@ type Component* = JsObject
 proc html*(arg:cstring):Component {.importjs:"eval('html`' + # + '`')".}
 template html*(arg:string):Component = html(arg.cstring)
 
-
-{.emit: """
-function renderApp(component, dom){
-  render(component, dom)
-}
-""".}
-proc renderApp*(component: proc():Component, dom: Element) {.importjs: "renderApp(#, #)".}
 proc render*(component: proc():Component, dom: Element) {.importjs: "render(#, #)".}
 
 type ComponentProps* = JsObject

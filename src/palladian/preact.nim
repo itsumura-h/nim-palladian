@@ -1,7 +1,6 @@
 import std/asyncjs
 import std/dom
 import std/jsffi
-import std/json
 import std/macros
 
 {.emit:"""
@@ -95,16 +94,6 @@ proc useState*(arg: JsObject): (JsObject, ObjectStateSetter) =
   return (value, setter)
 
 
-type JsonStateSetter = proc(arg: JsonNode)
-
-proc jsonUseState(arg: JsonNode): JsObject {.importjs: "useState(#)".}
-proc useState*(arg: JsonNode): (JsonNode, JsonStateSetter) =
-  let state = jsonUseState(arg)
-  let value = to(state[0], JsonNode)
-  let setter = to(state[1], JsonStateSetter)
-  return (value, setter)
-
-
 macro useState*(arg:typedesc):untyped =
   let typ = arg.getTypeImpl
   result = quote do:
@@ -121,21 +110,29 @@ macro useState*(arg:typedesc):untyped =
   # echo result.repr
 
 
-type States* = cstring|int|float|bool|JsonNode|JsObject
+type States* = cstring|int|float|bool|JsObject
+type CleanUpCallback* = proc()
 
 proc useEffect*(cb: proc()) {.importjs: "useEffect(#)".}
 proc useEffect*(cb: proc(), dependency: array) {.importjs: "useEffect(#, [])".}
 proc useEffect*(cb: proc(), dependency: seq[States]) {.importjs: "useEffect(#, #)".}
-proc useEffect*(cb: proc (): Future[void]) {.importjs: "useEffect(#)".}
-proc useEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useEffect(#, [])".}
-proc useEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useEffect(#, #)".}
+proc useEffect*(cb: proc(): Future[void]) {.importjs: "useEffect(#)".}
+proc useEffect*(cb: proc(): Future[void], dependency: array) {.importjs: "useEffect(#, [])".}
+proc useEffect*(cb: proc(): Future[void], dependency: seq[States]) {.importjs: "useEffect(#, #)".}
+proc useEffect*(cb: proc(): CleanUpCallback) {.importjs: "useEffect(#)".}
+proc useEffect*(cb: proc(): CleanUpCallback, dependency: array) {.importjs: "useEffect(#, [])".}
+proc useEffect*(cb: proc(): CleanUpCallback, dependency: seq[States]) {.importjs: "useEffect(#, #)".}
+
 
 proc useLayoutEffect*(cb: proc()) {.importjs: "useLayoutEffect(#)".}
 proc useLayoutEffect*(cb: proc(), dependency: array) {.importjs: "useLayoutEffect(#, [])".}
 proc useLayoutEffect*(cb: proc(), dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
-proc useLayoutEffect*(cb: proc (): Future[void]) {.importjs: "useLayoutEffect(#)".}
-proc useLayoutEffect*(cb: proc (): Future[void], dependency: array) {.importjs: "useLayoutEffect(#, [])".}
-proc useLayoutEffect*(cb: proc (): Future[void], dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
+proc useLayoutEffect*(cb: proc(): Future[void]) {.importjs: "useLayoutEffect(#)".}
+proc useLayoutEffect*(cb: proc(): Future[void], dependency: array) {.importjs: "useLayoutEffect(#, [])".}
+proc useLayoutEffect*(cb: proc(): Future[void], dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
+proc useLayoutEffect*(cb: proc(): CleanUpCallback) {.importjs: "useLayoutEffect(#)".}
+proc useLayoutEffect*(cb: proc(): CleanUpCallback, dependency: array) {.importjs: "useLayoutEffect(#, [])".}
+proc useLayoutEffect*(cb: proc(): CleanUpCallback, dependency: seq[States]) {.importjs: "useLayoutEffect(#, #)".}
 
 
 proc useMemo*(cb: proc():bool):bool {.importjs: "useMemo(#)".}
@@ -198,12 +195,6 @@ type ObjSignalValue* = JsObject
 proc signal*(arg: JsObject): ObjSignal {.importjs: "signal(#)".}
 proc value*(self: ObjSignal): ObjSignalValue {.importjs: "#.value".}
 proc `value=`*(self: ObjSignal, val: JsObject) {.importjs: "#.value = #".}
-
-type JsonSignal = object of JsObject
-type JsonSignalValue* = JsonNode
-proc signal*(arg: JsonNode): JsonSignal {.importjs: "signal(#)".}
-proc value*(self: JsonSignal): JsonSignalValue {.importjs: "#.value".}
-proc `value=`*(self: JsonSignal, val: JsonNode) {.importjs: "#.value = #".}
 
 
 {.emit:"""
