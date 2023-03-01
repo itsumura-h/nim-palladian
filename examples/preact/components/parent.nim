@@ -2,7 +2,7 @@ import std/dom
 import std/jsffi
 import std/jsconsole
 import std/json
-import ../../../src/palladian
+import ../../../src/palladian/lib
 import ./loop
 
 let msg* {.exportc.} = signal("message")

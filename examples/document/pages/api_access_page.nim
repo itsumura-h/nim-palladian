@@ -4,7 +4,7 @@ import std/jsffi
 import std/jsfetch
 import std/json
 import std/jsconsole
-import ../../../src/palladian
+import ../../../src/palladian/lib
 import ../components/text_body
 
 {.emit:"""

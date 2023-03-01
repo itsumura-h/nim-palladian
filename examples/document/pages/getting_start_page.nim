@@ -1,6 +1,6 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian
+import ../../../src/palladian/lib
 import ../components/text_body
 
 proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =

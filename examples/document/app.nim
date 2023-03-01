@@ -1,5 +1,5 @@
 import std/dom
-import ../../src/palladian
+import ../../src/palladian/lib
 import ./consts
 import ./components/header
 import ./components/drawer

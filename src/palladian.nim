@@ -1,11 +1,9 @@
-# when defined(js):
-#   import ./palladian/preact; export preact
-  # import ./palladian/solidjs; export solidjs
+when defined(js):
+  # Imports for just generate API docs
+  import ./palladian/lib
 
-import ./palladian/preact; export preact
-
-# ==================== CLI ====================
 when isMainModule:
+  # ==================== CLI ====================
   import cligen
   import ./palladian/cli/functions/new_impl
   import ./palladian/cli/functions/dev_impl

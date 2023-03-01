@@ -1,7 +1,7 @@
 import std/asyncjs
 import std/dom
 import std/jsconsole
-import ../../src/palladian
+import ../../src/palladian/lib
 import ./pages/home
 import ./pages/about
 

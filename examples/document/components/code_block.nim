@@ -1,7 +1,7 @@
 import std/dom
 import std/jsffi
 import std/strutils
-import ../../../src/palladian
+import ../../../src/palladian/lib
 import ../libs/highlight
 
 

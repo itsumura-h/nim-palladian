@@ -1,7 +1,7 @@
 import std/dom
 import std/jsffi
 import std/sequtils
-import ../../../src/palladian/preact
+import ../../../src/palladian/lib
 
 proc Loop*():Component {.exportc.} =
   let values = @["a", "b", "c", "d", "e"]
