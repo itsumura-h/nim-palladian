@@ -1,7 +1,7 @@
 import std/jsffi
 import std/dom
 import std/format
-import ../../src/palladian/preact
+import ../../src/palladian/lib/preact
 
 proc Func1():Component {.exportc.} =
   return html("""

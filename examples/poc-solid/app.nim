@@ -3,13 +3,15 @@ import std/jsffi
 import ../../src/palladian/solid
 import ./components/parent
 import ./components/loop
+import ./components/api
 
-proc App() {.exportc.} =
-  render("""
-    <${Router} />
-      <${Parent} name="Solid" />
+proc App():Component {.exportc.} =
+  return html(fmt"""
+    <${Router}>
+      <${Parent} name="SolidJS" />
       <${Loop} />
+      <${ApiAccessComponent} />
     <//>
   """)
 
-renderApp(App, document.getElementById("app"))
+render(App, document.getElementById("app"))

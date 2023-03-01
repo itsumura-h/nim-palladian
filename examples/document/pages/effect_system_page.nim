@@ -1,8 +1,6 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
+import ../../../src/palladian/lib
 import ../libs/highlight
 import ../components/code_block
 
@@ -26,6 +24,8 @@ proc StringEffectComponent():Component {.exportc.} =
 
 
 proc EffectSystemPage*():Component {.exportc.} =
+  document.title = "Effect system / Nim Palladian"
+
   let sampleCode {.exportc.} :cstring = """
 proc StringEffectComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")
@@ -45,10 +45,6 @@ proc StringEffectComponent():Component {.exportc.} =
   \"\"")
   """
 
-  useLayoutEffect(proc() =
-    document.title = "useEffect / Nim Palladian"
-  , [])
-
   return html(fmt"""
     <${Article}>
       <h1>Effect system</h1>
@@ -67,6 +63,10 @@ proc StringEffectComponent():Component {.exportc.} =
         For this reason, <code>useEffect</code> to retrieve data from the external API after the component has been rendered.
         Also, if the data retrieved from the API changes the state of the component, <code>useState</code> is used to update the state of the component and trigger a redraw.<br/>
         <code>useEffect</code> is used in the function component to perform side effects; the function passed to <code>useEffect</code> is executed only once, when the component is mounted for the first time. They are also executed when dependent data is changed. Thus, useEffect can be used to execute side effects within a component.
+      </p>
+      <p>
+        Also keep in mind if you don't need to use side effects. See also<br/>
+        <a href="https://beta.reactjs.org/learn/you-might-not-need-an-effect" target="_blank">React - You Might Not Need an Effect</a>
       </p>
     <//>
     <${Article}>

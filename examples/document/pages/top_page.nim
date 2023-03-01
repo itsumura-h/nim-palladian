@@ -1,9 +1,7 @@
 import std/dom
 import std/jsffi
 import std/strutils
-import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
+import ../../../src/palladian/lib
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
@@ -32,6 +30,8 @@ proc Counter():Component {.exportc.} =
   """)
 
 proc TopPage*():Component {.exportc.} =
+  document.title = "Top / Nim Palladian"
+
   let sampleCode {.exportc.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =
       let children {.exportc.} = props.children
@@ -56,10 +56,6 @@ proc TopPage*():Component {.exportc.} =
         <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
       \"\"")
   """
-
-  useLayoutEffect(proc()=
-    document.title = "Top / Nim Palladian"
-  , [])
 
   return html(fmt"""
     <div>

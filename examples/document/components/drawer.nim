@@ -1,8 +1,7 @@
 import std/dom
 import std/jsffi
 import std/jsconsole
-import ../../../src/palladian
-import ../../../src/palladian/format
+import ../../../src/palladian/lib
 import ../consts
 
 
@@ -16,9 +15,12 @@ proc Drawer*(props:ComponentProps):Component {.exportc.} =
       <!-- Sidebar content here -->
       <li><${Link} href="${BASE_URL}" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
       <li><${Link} href="${BASE_URL}/getting-start" activeClassName="active" onclick=${changeDrawer}>Getting start<//></li>
-      <li><${Link} href="${BASE_URL}/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
-      <li><${Link} href="${BASE_URL}/effect-system" activeClassName="active" onclick=${changeDrawer}>Effect system<//></li>
-      <li><${Link} href="${BASE_URL}/signal" activeClassName="active" onclick=${changeDrawer}>Signal<//></li>
+      <ul class="pl-4">
+        <h2 class="font-extrabold">Hooks</h2>
+        <li><${Link} href="${BASE_URL}/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
+        <li><${Link} href="${BASE_URL}/effect-system" activeClassName="active" onclick=${changeDrawer}>Effect system<//></li>
+        <li><${Link} href="${BASE_URL}/signal" activeClassName="active" onclick=${changeDrawer}>Signal<//></li>
+      </ul>
       <li><${Link} href="${BASE_URL}/controll-flow" activeClassName="active" onclick=${changeDrawer}>controll flow<//></li>
       <li><${Link} href="${BASE_URL}/api-access" activeClassName="active" onclick=${changeDrawer}>api access<//></li>
     </ul>

@@ -1,4 +1,4 @@
-import ../../../src/palladian
+import ../../../src/palladian/lib
 import ../components/parent
 
 proc Home():Component {.exportc.} =

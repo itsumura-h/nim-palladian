@@ -18,5 +18,5 @@ requires "palladian >= 0.0.1"
 import std/os
 task docs, "generate nim api docs":
   rmDir(getCurrentDir() /  "docs")
-  let cmd = "nim doc -b:js --project --index:on --outdir:docs src/palladian.nim"
+  let cmd = "nim doc -b:js --project --index:on --outdir:docs src/palladian/lib.nim"
   exec(cmd)

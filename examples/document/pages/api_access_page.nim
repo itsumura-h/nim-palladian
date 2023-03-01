@@ -4,10 +4,7 @@ import std/jsffi
 import std/jsfetch
 import std/json
 import std/jsconsole
-import ../../../src/palladian
-import ../../../src/palladian/hooks
-import ../../../src/palladian/controll_flow
-import ../../../src/palladian/format
+import ../../../src/palladian/lib
 import ../components/text_body
 
 {.emit:"""
@@ -19,10 +16,10 @@ type BtcPrice = ref object
   usd, eur, gbp:float
   time:cstring
 
-proc ApiAccessComponent():Component {.exportc.} =
+proc BtcPriceComponent():Component {.exportc.} =
   let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
 
-  useEffect(proc() {.async.}=
+  useEffect(proc() {.async.} =
     await sleep(2) # for just show loading clearly
     let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json".cstring)
     let json = await res.json()
@@ -67,7 +64,7 @@ proc ApiAccessComponent():Component {.exportc.} =
     <//>
   """)
 
-let apiAccessCode {.exportc.}: cstring = """
+let btcPriceCode {.exportc.} :cstring = """
 type BtcPrice = ref object
   usd, eur, gbp:float
   time:cstring
@@ -120,10 +117,125 @@ proc ApiAccessComponent():Component {.exportc.} =
   \"\"")
 """
 
+
+proc StarWarsSearchComponent():Component {.exportc.} =
+  let (name, setName) = useState("")
+  let (users {.exportc.}, setUsers) = useState(newJsObject())
+
+  proc updateName(e:Event) {.exportc.} =
+    setName(e.target.value)
+
+  let isDisplay {.exportc.} = useMemo(proc():bool =
+    return users.len > 0
+  , @[users])
+
+  useEffect(proc():CleanUpCallback =
+    var ignore = false
+
+    proc getCharactor() {.async.} =
+      let url:cstring = "https://swapi.dev/api/people?search="
+      let res = await fetch(url & name)
+      let resJson = await res.json()
+      if not ignore:
+        setUsers(resJson["results"])
+
+    discard getCharactor()
+
+    return proc() =
+      ignore = true
+  , @[name])
+
+  return html(fmt"""
+    <input type="text" oninput=${updateName} class="w-full" placeholder="Type name of character in Star Wars" />
+    <${Show} when=${isDisplay} fallback=${
+      html`
+        <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
+      `
+    }>
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>birth year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <${For} each=${users}>
+          ${user=>
+            html`
+              <tr>
+                <td>${user.name}</td>
+                <td>${user.birth_year}</td>
+              </tr>
+            `
+          }
+        <//>
+        </tbody>
+      </table>
+    <//>
+  """)
+
+let starWarkSearchCode {.exportc.} :cstring = """
+proc StarWarsSearchComponent():Component {.exportc.} =
+  let (name, setName) = useState("")
+  let (users {.exportc.}, setUsers) = useState(newJsObject())
+
+  proc updateName(e:Event) {.exportc.} =
+    setName(e.target.value)
+
+  let isDisplay {.exportc.} = useMemo(proc():bool =
+    return users.len > 0
+  , @[users])
+
+  useEffect(proc():CleanUpCallback =
+    var ignore = false
+
+    proc getCharactor() {.async.} =
+      let url:cstring = "https://swapi.dev/api/people?search="
+      let res = await fetch(url & name)
+      let resJson = await res.json()
+      if not ignore:
+        setUsers(resJson["results"])
+
+    discard getCharactor()
+
+    return proc() =
+      ignore = true
+  , @[name])
+
+  return html(fmt\"\""
+    <input type="text" oninput=${updateName} class="w-full" placeholder="Type name" />
+    <${Show} when=${hasUsers} fallback=${
+      html`
+        <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
+      `
+    }>
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>birth year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <${For} each=${users}>
+          ${user=>
+            html`
+              <tr>
+                <td>${user.name}</td>
+                <td>${user.birth_year}</td>
+              </tr>
+            `
+          }
+        <//>
+        </tbody>
+      </table>
+    <//>
+  \"\"")
+"""
+
 proc ApiAccessPage*():Component {.exportc.} =
-  useLayoutEffect(proc() =
-    document.title = "API Access / Nim Palladian"
-  )
+  document.title = "API Access / Nim Palladian"
 
   return html(fmt"""
     <${Article}>
@@ -135,8 +247,22 @@ proc ApiAccessPage*():Component {.exportc.} =
     <//>
     <${Article}>
       <${CodeBlock} lang="nim">
-        ${apiAccessCode}
+        ${btcPriceCode}
       <//>
-      <${ApiAccessComponent} />
+      <${BtcPriceComponent} />
+    <//>
+    <${Article}>
+      <h2>Cleanup</h2>
+      <p>
+        See also<br/>
+        <a href="https://dev.to/takuyakikuchi/problems-with-data-fetching-effect-and-cleanup-1397" target="_blank">Problems with data fetching Effect, and Cleanup</a><br/>
+        <a href="https://beta.reactjs.org/learn/synchronizing-with-effects#fetching-data" target="_blank">React - Synchronizing with Effects - Fetching data </a>
+      </p>
+    <//>
+    <${Article}>
+      <${CodeBlock} lang="nim">
+        ${starWarkSearchCode}
+      <//>
+      <${StarWarsSearchComponent} />
     <//>
   """)

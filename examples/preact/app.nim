@@ -1,16 +1,30 @@
+import std/asyncjs
 import std/dom
-import ../../src/palladian
-import ../../src/palladian/format
-import ../../src/palladian/router
+import std/jsconsole
+import ../../src/palladian/lib
 import ./pages/home
 import ./pages/about
 
+proc Foo():Component {.exportc.} =
+  let (msg {.exportc.}, setMsg {.exportc.}) = useState("")
+
+  useEffect(proc():CleanUpCallback =
+    console.log("Foo is mounted")
+
+    return proc() =
+      console.log("Foo is unmounted")
+  )
+
+  return html("""
+    <div>
+      <input type="text" oninput=${e=> setMsg(e.target.value)}/>
+      <p>${msg}</p>
+    </div>
+  """)
+
 proc App():Component {.exportc.} =
   return html(fmt"""
-    <${Router}>
-      <${Home} path="/" />
-      <${About} path="/about" />
-    <//>
+    <${Foo} />
   """)
 
 

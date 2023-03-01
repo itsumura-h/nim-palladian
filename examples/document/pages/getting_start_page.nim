@@ -1,14 +1,10 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian
-import ../../../src/palladian/format
-import ../../../src/palladian/hooks
+import ../../../src/palladian/lib
 import ../components/text_body
 
 proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
-  useLayoutEffect(proc() =
-    document.title = "Getting start / Nim Palladian"
-  ,[])
+  document.title = "Getting start / Nim Palladian"
 
   return html(fmt"""
     <${Article}>
@@ -58,7 +54,7 @@ palladian dev
 
       <h2>production build</h2>
       <p>
-        Use the <code>build</code> command to output a JavaScript file optimized for production use.
+        Use the <code>build</code> command to output a JavaScript file optimized for production use.<br/>
         A <code>dist</code> directory will be created in the project directory, and the output will be in that directory.
         <${CodeBlock} lang="shell">
           palladian build
