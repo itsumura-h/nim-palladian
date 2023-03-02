@@ -52,7 +52,7 @@ palladian dev
         <//>
       </p>
 
-      <h2>production build</h2>
+      <h2>Production build</h2>
       <p>
         Use the <code>build</code> command to output a JavaScript file optimized for production use.<br/>
         A <code>dist</code> directory will be created in the project directory, and the output will be in that directory.

@@ -35,7 +35,7 @@ proc buildCommand() =
     if execShellCmd(cmd) > 0:
       raise newException(Exception, "")
     echoMsg(bgGreen, &"Running dev server at http://localhost:{port}")
-    echoMsg(bgGreen, "[SUCCESS] Building js application")
+    echoMsg(bgGreen, "[SUCCESS] Building JavaScript application")
   except:
     echoMsg(bgRed, "[FAILED] Build error")
     echo getCurrentExceptionMsg()
