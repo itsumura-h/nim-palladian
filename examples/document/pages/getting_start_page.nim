@@ -3,6 +3,27 @@ import std/jsffi
 import ../../../src/palladian/lib
 import ../components/text_body
 
+let generatedHtml {.exportc.} :cstring = """
+<!DOCTYPE html>
+<html lang="en" data-theme="halloween">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% BASE_URL %}/public/typography.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% BASE_URL %}/public/prism.css">
+    <script defer type="module" src="{% BASE_URL %}/public/app.js"></script>
+    <title>Nim Palladian</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="{% BASE_URL %}/public/prism.js"></script>
+  </body>
+</html>
+"""
+
 proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Getting start / Nim Palladian"
 
@@ -52,7 +73,7 @@ palladian dev
         <//>
       </p>
 
-      <h2>production build</h2>
+      <h2>Production build</h2>
       <p>
         Use the <code>build</code> command to output a JavaScript file optimized for production use.<br/>
         A <code>dist</code> directory will be created in the project directory, and the output will be in that directory.
@@ -60,5 +81,15 @@ palladian dev
           palladian build
         <//>
       </p>
+      <p>
+        The HTML file automatically generated at the start of the project has a section of <code>{% BASE_URL %}</code>. It is possible to embed a specific string here at build time.<br/>
+        In the document example this will be replaced <code>https://itsumura-h.github.io/nim-palladian</code> by <code>-b / --baseUrl</code> option.
+      </p>
+      <${CodeBlock} lang="html">
+        ${generatedHtml}
+      <//>
+      <${CodeBlock} lang="shell">
+        palladian build -b="https://itsumura-h.github.io/nim-palladian"
+      <//>
     <//>
   """)

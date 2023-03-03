@@ -112,13 +112,16 @@ proc ControllFlowPage*():Component {.exportc.} =
         By using these control flows, what is being done there becomes explicit and the development experience improves.
       </p>
       <p>
-        See also<br/>
-        <a href="https://www.solidjs.com/docs/latest/api#control-flow" target="_blank">SolidJS - Control Flow</a>
+        See also <br/>
+        <a href="https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1" target="_blank">developit/*signal-map.md</a>
       </p>
     <//>
 
     <${Article}>
       <h2>For</h2>
+      <p>
+        See also <a href="https://www.solidjs.com/docs/latest/api#for" target="_blank">SolidJS - For</a>
+      </p>
       <${CodeBlock} lang="nim">
         ${forControllCode}
       <//>
@@ -127,6 +130,9 @@ proc ControllFlowPage*():Component {.exportc.} =
 
     <${Article}>
       <h2>Show</h2>
+      <p>
+        See also <a href="https://www.solidjs.com/docs/latest/api#show" target="_blank">SolidJS - Show</a>
+      </p>
       <${CodeBlock} lang="nim">
         ${showControllCode}
       <//>

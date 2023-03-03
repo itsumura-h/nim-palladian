@@ -199,7 +199,7 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
     discard getCharactor()
 
-    return proc() =
+    return proc() = # ========== THIS IS A CLEAN UP CODE ==========
       ignore = true
   , @[name])
 

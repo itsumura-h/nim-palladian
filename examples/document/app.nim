@@ -5,6 +5,7 @@ import ./components/header
 import ./components/drawer
 import ./pages/top_page
 import ./pages/getting_start_page
+import ./pages/how_to_create_component_page
 import ./pages/use_state_page
 import ./pages/effect_system_page
 import ./pages/signal_page
@@ -23,6 +24,7 @@ proc App():Component {.exportc.} =
           <${Router}>
             <${TopPage} path="${BASE_URL}" />
             <${GettingStartPage} path="${BASE_URL}/getting-start" />
+            <${HowToCreateComponentPage} path="${BASE_URL}/how-to-create-component" />
             <${UseStatePage} path="${BASE_URL}/use-state" />
             <${SignalPage} path="${BASE_URL}/signal" />
             <${EffectSystemPage} path="${BASE_URL}/effect-system" />

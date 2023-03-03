@@ -51,12 +51,12 @@ proc StringEffectComponent():Component {.exportc.} =
       <p>
         A side effect in a Web front end is a process that must be performed after a component has been rendered. Specifically, the following side effects are covered.
       </p>
-      <ul>
+      <${Ul}>
         <li>Retrieving data from an external API</li>
         <li>Modifying the DOM</li>
         <li>Start a timer</li>
         <li>Registering an event listener</li>
-      </ul>
+      <//>
       <p>
         These side effects can be executed within a component, but since they are not directly related to component rendering, they require a dedicated method to perform the side effect.<br/>
         For example, if data is to be retrieved from an external API, the data must be retrieved from the API after the component has been rendered.

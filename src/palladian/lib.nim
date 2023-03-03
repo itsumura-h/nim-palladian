@@ -198,8 +198,8 @@ proc value*(self: ObjSignal): ObjSignalValue {.importjs: "#.value".}
 proc `value=`*(self: ObjSignal, val: JsObject) {.importjs: "#.value = #".}
 
 
+# https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
 {.emit:"""
-// https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
 let Item = ({ v, k, f }) => f(v, k);
 
 export function For({ each, children: f }) {
