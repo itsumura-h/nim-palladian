@@ -15,6 +15,7 @@ proc Drawer*(props:ComponentProps):Component {.exportc.} =
       <!-- Sidebar content here -->
       <li><${Link} href="${BASE_URL}" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
       <li><${Link} href="${BASE_URL}/getting-start" activeClassName="active" onclick=${changeDrawer}>Getting start<//></li>
+      <li><${Link} href="${BASE_URL}/how-to-create-component" activeClassName="active" onclick=${changeDrawer}>How to create component<//></li>
       <ul class="pl-4">
         <h2 class="font-extrabold">Hooks</h2>
         <li><${Link} href="${BASE_URL}/use-state" activeClassName="active" onclick=${changeDrawer}>useState<//></li>
