@@ -61,7 +61,7 @@ proc TopPage*():Component {.exportc.} =
     <div>
       <${Hero}>
         <h1>Nim Palladian🏛️</h1>
-        <p>Palladian is a Nim front-end framework for SPA based on and wrapped around <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
+        <p>Palladian is a Nim front-end framework for SPA based on and wrapping <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
       <//>
       <${Article}>
         <h2>Features</h2>
