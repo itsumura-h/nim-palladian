@@ -5,26 +5,26 @@ import std/strutils
 import ../../../src/palladian/lib
 import ../components/text_body
 import ../components/code_block
+import ../components/scroll_top
 import ../libs/highlight
-import ../libs/scroll
 import ../consts
 
 proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(fmt"""
-  <div class="hero">
-    <div class="hero-content text-center">
-      <article>
-        <h1 class="text-4xl font-extrabold mb-9">
-          Nim Palladian
-          <img src="${PalladianLogoUrl}" class="inline align-baseline w-8" />
-        </h1>
-        <div class="prose max-w-md">
-          <p>Palladian is a Nim front-end framework for SPA based on and wrapping <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
-        </div>
-      </article>
+    <div class="hero">
+      <div class="hero-content text-center">
+        <article>
+          <h1 class="text-4xl font-extrabold mb-9">
+            Nim Palladian
+            <img src="${PalladianLogoUrl}" class="inline align-baseline w-8" />
+          </h1>
+          <div class="prose max-w-md">
+            <p>Palladian is a Nim front-end framework for SPA based on and wrapping <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
   """)
 
 proc Title(props:ComponentProps):Component {.exportc.} =
@@ -50,13 +50,14 @@ proc Counter():Component {.exportc.} =
     <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
   """)
 
-proc TopPage*():Component {.exportc.} =
+proc TopPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Top / Nim Palladian"
 
-  useLayoutEffect(proc() =
-    let el = document.getElementsByClassName("drawer-content")[0]
-    el.scrollTo(0, 0)
-  , [])
+  # useLayoutEffect(proc() =
+  #   let el = drawerContentRef.current
+  #   # let el = document.getElementsByClassName("drawer-content")[0]
+  #   el.scrollTo(0, 0)
+  # , [])
 
   let sampleCode {.exportc.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =
@@ -84,7 +85,7 @@ proc TopPage*():Component {.exportc.} =
   """
 
   return html(fmt"""
-    <div>
+    <${ScrollTop}>
       <${PalladianHero} />
       <${Article}>
         <h2>Features</h2>
@@ -111,5 +112,5 @@ proc TopPage*():Component {.exportc.} =
           Furthermore, unlike React, Preact can use the browser standard API for DOM manipulation.
         </p>
       <//>
-    </div>
+    <//>
   """)

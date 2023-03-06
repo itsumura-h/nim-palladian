@@ -162,7 +162,7 @@ proc useCallback*(cb: proc(), dependency: array):(proc()) {.importjs: "useCallba
 proc useCallback*(cb: proc(), dependency: seq[States]):(proc()) {.importjs: "useCallback(#, #)", discardable.}
 
 
-type RefObject = object
+type RefObject* = object
   current*:Element
 
 proc useRef*():RefObject {.importjs:"useRef(null)".}
