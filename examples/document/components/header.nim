@@ -1,4 +1,4 @@
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../consts
 
 proc Header*():Component {.exportc.} =

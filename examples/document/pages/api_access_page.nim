@@ -3,10 +3,9 @@ import std/dom
 import std/jsffi
 import std/jsfetch
 import std/json
-import std/jsconsole
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
-import ../libs/scroll
+import ../consts
 
 {.emit:"""
 const sleep = (second) => new Promise(resolve => setTimeout(resolve, second * 1000))
@@ -235,40 +234,37 @@ proc StarWarsSearchComponent():Component {.exportc.} =
   \"\"")
 """
 
-proc ApiAccessPage*():Component {.exportc.} =
+proc ApiAccessPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "API Access / Nim Palladian"
 
-  useLayoutEffect(proc() =
-    let el = document.getElementsByClassName("drawer-content")[0]
-    el.scrollTo(0, 0)
-  , [])
-
   return html(fmt"""
-    <${Article}>
-      <h1>API Access</h1>
-      <p>
-        Here is the example to fetch data from API and display in DOM.<br/>
-        To fetch data, you can use <code><a href="https://nim-lang.org/docs/jsfetch.html" target="_blank">jsfetch</a></code> Nim std lib.
-      </p>
-    <//>
-    <${Article}>
-      <${CodeBlock} lang="nim">
-        ${btcPriceCode}
+    <${ScrollTop}>
+      <${Article}>
+        <h1>API Access</h1>
+        <p>
+          Here is the example to fetch data from API and display in DOM.<br/>
+          To fetch data, you can use <code><a href="https://nim-lang.org/docs/jsfetch.html" target="_blank">jsfetch</a></code> Nim std lib.
+        </p>
       <//>
-      <${BtcPriceComponent} />
-    <//>
-    <${Article}>
-      <h2>Cleanup</h2>
-      <p>
-        See also<br/>
-        <a href="https://dev.to/takuyakikuchi/problems-with-data-fetching-effect-and-cleanup-1397" target="_blank">Problems with data fetching Effect, and Cleanup</a><br/>
-        <a href="https://beta.reactjs.org/learn/synchronizing-with-effects#fetching-data" target="_blank">React - Synchronizing with Effects - Fetching data </a>
-      </p>
-    <//>
-    <${Article}>
-      <${CodeBlock} lang="nim">
-        ${starWarkSearchCode}
+      <${Article}>
+        <${CodeBlock} lang="nim">
+          ${btcPriceCode}
+        <//>
+        <${BtcPriceComponent} />
       <//>
-      <${StarWarsSearchComponent} />
+      <${Article}>
+        <h2>Cleanup</h2>
+        <p>
+          See also<br/>
+          <a href="https://dev.to/takuyakikuchi/problems-with-data-fetching-effect-and-cleanup-1397" target="_blank">Problems with data fetching Effect, and Cleanup</a><br/>
+          <a href="https://beta.reactjs.org/learn/synchronizing-with-effects#fetching-data" target="_blank">React - Synchronizing with Effects - Fetching data </a>
+        </p>
+      <//>
+      <${Article}>
+        <${CodeBlock} lang="nim">
+          ${starWarkSearchCode}
+        <//>
+        <${StarWarsSearchComponent} />
+      <//>
     <//>
   """)

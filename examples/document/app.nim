@@ -1,8 +1,9 @@
 import std/dom
-import ../../src/palladian/lib
+import ../../src/palladian
 import ./consts
 import ./components/header
 import ./components/drawer
+import ./components/scroll_top
 import ./pages/top_page
 import ./pages/getting_start_page
 import ./pages/how_to_create_component_page
@@ -14,13 +15,16 @@ import ./pages/api_access_page
 
 
 proc App():Component {.exportc.} =
+  drawerContentRef = useRef()
+  drawerStatusRef = useRef()
+
   return html(fmt"""
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
       <div class="drawer drawer-mobile">
-        <input id="drawer-id" type="checkbox" class="drawer-toggle"/>
+        <input id="drawer-id" type="checkbox" class="drawer-toggle" ref=${drawerStatusRef}/>
 
-        <div class="drawer-content bg-base-200 pb-16">
+        <div class="drawer-content bg-base-200 pb-16" ref=${drawerContentRef}>
           <${Router}>
             <${TopPage} path="${BaseUrl}" />
             <${GettingStartPage} path="${BaseUrl}/getting-start" />

@@ -44,7 +44,7 @@ proc runServer(portArg:int) =
   try:
     if p != nil:
       p.close()
-    p = startProcess(&"palladian serve -p {portArg}", options={poStdErrToStdOut, poParentStreams, poEvalCommand})
+    p = startProcess(&"palladian_cli serve -p {portArg}", options={poStdErrToStdOut, poParentStreams, poEvalCommand})
     # echoMsg(bgGreen, &"[SUCCESS] Running dev server http://localhost:{port}")
     port = portArg
   except:

@@ -1,5 +1,5 @@
 import std/jsffi
-import ../../../src/palladian/lib
+import ../../../src/palladian
 
 proc Hero*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props

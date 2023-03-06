@@ -1,11 +1,11 @@
 import std/jsffi
 import std/dom
 import std/math
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
-import ../libs/scroll
+import ../consts
 
 
 proc BoolStateComponent():Component {.exportc.} =
@@ -105,52 +105,49 @@ proc StringStateComponent():Component {.exportc.} =
 """
 
 
-proc UseStatePage*():Component {.exportc.} =
+proc UseStatePage*(props:ComponentProps):Component {.exportc.} =
   document.title = "useState / Nim Palladian"
 
-  useLayoutEffect(proc() =
-    let el = document.getElementsByClassName("drawer-content")[0]
-    el.scrollTo(0, 0)
-  , [])
-
   return html(fmt"""
-    <${Article}>
-      <h1>useState</h1>
-      <p>
-        <code>useState</code> is a hook provided by Preact that allows you to add state to functional components.
-        <br />
-        State refers to the data that is held by a component and can change over time, often in response to user interactions or other events.
-      </p>
-      <p>
-        The useState hook takes an initial value as an argument and returns an array with two items: the current state value and a function that can be used to update that value.
-      </p>
-      <p>
-        See also<br/>
-        <a href="https://preactjs.com/guide/v10/hooks/#usestate" target="_blank">Preact - useState</a>
-      </p>
+    <${ScrollTop}>
+      <${Article}>
+        <h1>useState</h1>
+        <p>
+          <code>useState</code> is a hook provided by Preact that allows you to add state to functional components.
+          <br />
+          State refers to the data that is held by a component and can change over time, often in response to user interactions or other events.
+        </p>
+        <p>
+          The useState hook takes an initial value as an argument and returns an array with two items: the current state value and a function that can be used to update that value.
+        </p>
+        <p>
+          See also<br/>
+          <a href="https://preactjs.com/guide/v10/hooks/#usestate" target="_blank">Preact - useState</a>
+        </p>
 
-      <h2>Bool state</h2>
-      <${CodeBlock} lang="nim">
-        ${boolStateCode}
-      <//>
-      <${BoolStateComponent} />
+        <h2>Bool state</h2>
+        <${CodeBlock} lang="nim">
+          ${boolStateCode}
+        <//>
+        <${BoolStateComponent} />
 
-      <h2>Int state</h2>
-      <${CodeBlock} lang="nim">
-        ${intStateCode}
-      <//>
-      <${IntStateComponent} />
+        <h2>Int state</h2>
+        <${CodeBlock} lang="nim">
+          ${intStateCode}
+        <//>
+        <${IntStateComponent} />
 
-      <h2>Float state</h2>
-      <${CodeBlock} lang="nim">
-        ${floatStateCode}
-      <//>
-      <${FloatStateComponent} />
+        <h2>Float state</h2>
+        <${CodeBlock} lang="nim">
+          ${floatStateCode}
+        <//>
+        <${FloatStateComponent} />
 
-      <h2>String state</h2>
-      <${CodeBlock} lang="nim">
-        ${stringStateCode}
+        <h2>String state</h2>
+        <${CodeBlock} lang="nim">
+          ${stringStateCode}
+        <//>
+        <${StringStateComponent} />
       <//>
-      <${StringStateComponent} />
     <//>
   """)

@@ -34,9 +34,6 @@ const APP_BODY = """
 import std/dom
 import std/jsffi
 import palladian
-import palladian/hooks
-import palladian/format
-import palladian/router
 import ./pages/top_page
 import ./pages/about_page
 
@@ -85,9 +82,6 @@ const TOP_PAGE_BODY = """
 import std/dom
 import std/jsffi
 import palladian
-import palladian/hooks
-import palladian/format
-import palladian/router
 
 
 proc TopPage*():Component {.exportc.} =
@@ -125,9 +119,6 @@ const ABOUT_PAGE_BODY = """
 import std/dom
 import std/jsffi
 import palladian
-import palladian/hooks
-import palladian/format
-import palladian/router
 
 
 proc AboutPage*():Component {.exportc.} =
@@ -225,7 +216,9 @@ proc create(dirPath, packageName:string):int =
       f.write(ABOUT_PAGE_BODY.replace("\\", ""))
 
     echo &"""
-.
+Successfully created a new palladian project "{packageName}"
+
+{packageName}
 ├── app.nim
 ├── components
 ├── index.html

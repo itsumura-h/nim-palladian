@@ -1,10 +1,9 @@
 import std/dom
 import std/jsffi
 import std/json
-import std/jsconsole
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/code_block
-import ../libs/scroll
+import ../consts
 
 type User = object
   id:int
@@ -100,48 +99,45 @@ proc ShowControllComponent():Component {.exportc.} =
 """
 
 
-proc ControllFlowPage*():Component {.exportc.} =
+proc ControllFlowPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Controll flow / Nim Palladian"
 
-  useLayoutEffect(proc() =
-    let el = document.getElementsByClassName("drawer-content")[0]
-    el.scrollTo(0, 0)
-  , [])
-
   return html(fmt"""
-    <${Article}>
-      <h1>Controll flow</h1>
-      <p>
-        Palladian can use SolidJS-style control flow. This is a special <code>For</code> and <code>Show</code> component that handles looping and component display, respectively.<br/>
-        This can be achieved by looping through arrays directly in JSX or by comparing them with if statements,
-        but this is less readable because you have to read the process flow in detail to understand what is being done there.
-        By using these control flows, what is being done there becomes explicit and the development experience improves.
-      </p>
-      <p>
-        See also <br/>
-        <a href="https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1" target="_blank">developit/*signal-map.md</a>
-      </p>
-    <//>
-
-    <${Article}>
-      <h2>For</h2>
-      <p>
-        See also <a href="https://www.solidjs.com/docs/latest/api#for" target="_blank">SolidJS - For</a>
-      </p>
-      <${CodeBlock} lang="nim">
-        ${forControllCode}
+    <${ScrollTop}>
+      <${Article}>
+        <h1>Controll flow</h1>
+        <p>
+          Palladian can use SolidJS-style control flow. This is a special <code>For</code> and <code>Show</code> component that handles looping and component display, respectively.<br/>
+          This can be achieved by looping through arrays directly in JSX or by comparing them with if statements,
+          but this is less readable because you have to read the process flow in detail to understand what is being done there.
+          By using these control flows, what is being done there becomes explicit and the development experience improves.
+        </p>
+        <p>
+          See also <br/>
+          <a href="https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1" target="_blank">developit/*signal-map.md</a>
+        </p>
       <//>
-      <${ForControllComponent} />
-    <//>
 
-    <${Article}>
-      <h2>Show</h2>
-      <p>
-        See also <a href="https://www.solidjs.com/docs/latest/api#show" target="_blank">SolidJS - Show</a>
-      </p>
-      <${CodeBlock} lang="nim">
-        ${showControllCode}
+      <${Article}>
+        <h2>For</h2>
+        <p>
+          See also <a href="https://www.solidjs.com/docs/latest/api#for" target="_blank">SolidJS - For</a>
+        </p>
+        <${CodeBlock} lang="nim">
+          ${forControllCode}
+        <//>
+        <${ForControllComponent} />
       <//>
-      <${ShowControllComponent} />
+
+      <${Article}>
+        <h2>Show</h2>
+        <p>
+          See also <a href="https://www.solidjs.com/docs/latest/api#show" target="_blank">SolidJS - Show</a>
+        </p>
+        <${CodeBlock} lang="nim">
+          ${showControllCode}
+        <//>
+        <${ShowControllComponent} />
+      <//>
     <//>
   """)

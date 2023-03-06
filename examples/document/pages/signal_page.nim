@@ -1,7 +1,8 @@
 import std/dom
+import std/jsffi
 import std/math
-import ../../../src/palladian/lib
-import ../libs/scroll
+import ../../../src/palladian
+import ../consts
 
 
 let boolSignal {.exportc.} = signal(false)
@@ -90,42 +91,37 @@ proc SignalComponentB():Component {.exportc.} =
   \"\"")
 """
 
-proc SignalPage*():Component {.exportc.} =
+proc SignalPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Signal / Nim Palladian"
 
-  useLayoutEffect(proc() =
-    let el = document.getElementsByClassName("drawer-content")[0]
-    el.scrollTo(0, 0)
-  , [])
-
   return html(fmt"""
-    <${Article}>
-      <h1>Signal</h1>
-      <p>
-        Palladian allows the use of SolidJS style <code>signal</code>.
-      </p>
-      <p>
-        signal is a way to create and manage observable values. A signal represents a value that can change over time, and any components or functions that depend on that signal will be automatically updated when the signal changes.
-      </p>
-      <p>
-        Use <code>.value</code> to retrieve a value from a signal or to set a new value.
-      </p>
-      <p>
-        See also<br/>
-        <a href="https://preactjs.com/guide/v10/signals/" target="_blank">Preact - Signals</a><br/>
-        <a href="https://www.solidjs.com/docs/latest#createsignal" target="_blank">SolidJS - createSignal</a>
-      </p>
-    <//>
-    <${Article}>
-      <${CodeBlock} lang="nim">
-        ${signalCode}
+    <${ScrollTop}>
+      <${Article}>
+        <h1>Signal</h1>
+        <p>
+          Palladian allows the use of SolidJS style <code>signal</code>.
+        </p>
+        <p>
+          signal is a way to create and manage observable values. A signal represents a value that can change over time, and any components or functions that depend on that signal will be automatically updated when the signal changes.
+        </p>
+        <p>
+          Use <code>.value</code> to retrieve a value from a signal or to set a new value.
+        </p>
+        <p>
+          See also<br/>
+          <a href="https://preactjs.com/guide/v10/signals/" target="_blank">Preact - Signals</a><br/>
+          <a href="https://www.solidjs.com/docs/latest#createsignal" target="_blank">SolidJS - createSignal</a>
+        </p>
       <//>
-      <p>Both <code>SignalComponentA</code> and <code>SignalComponentB</code> are rendered synchronously.</p>
-      <div class="md:flex">
-        <${SignalComponentA} />
-        <${SignalComponentB} />
-      </div>
+      <${Article}>
+        <${CodeBlock} lang="nim">
+          ${signalCode}
+        <//>
+        <p>Both <code>SignalComponentA</code> and <code>SignalComponentB</code> are rendered synchronously.</p>
+        <div class="md:flex">
+          <${SignalComponentA} />
+          <${SignalComponentB} />
+        </div>
+      <//>
     <//>
-    <br />
-    <br />
   """)
