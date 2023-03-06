@@ -5,6 +5,8 @@ import ../consts
 
 
 let componentCode {.exportc.} :cstring = """
+import palladian
+
 proc Title*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(\"\""
@@ -19,11 +21,6 @@ html("<p>hello</p>") // Nim
 
 proc HowToCreateComponentPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "How to create component / Nim Palladian"
-
-  # useLayoutEffect(proc() =
-  #   let el = drawerContentRef.current
-  #   el.scrollTo(0, 0)
-  # , [])
 
   return html(fmt"""
     <${ScrollTop}>
