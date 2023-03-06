@@ -39,7 +39,7 @@ jobs:
       - name: Build palladian
         run: |
           cd examples/document
-          palladian build -b="https://itsumura-h.github.io/nim-palladian"
+          palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
