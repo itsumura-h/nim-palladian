@@ -57,8 +57,8 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           You can create directory first and then create a project within that directory.<br/>
           <${CodeBlock} lang="shell">
             mkdir sample_project
-  cd sample_project
-  palladian_cli new .
+cd sample_project
+palladian_cli new .
           <//>
         </p>
 
@@ -67,7 +67,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           You can start the development server using <code>dev</code> command<br/>
           <${CodeBlock} lang="shell">
             cd sample_project
-  palladian_cli dev
+palladian_cli dev
           <//>
           By default, the development server starts on port 3000. You can also change the port number to start using the <code>-p</code> option.<br/>
           <${CodeBlock} lang="shell">

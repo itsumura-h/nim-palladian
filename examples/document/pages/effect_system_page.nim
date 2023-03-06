@@ -105,7 +105,7 @@ proc StringEffectComponent():Component {.exportc.} =
         </p>
         <p>
           See also<br/>
-          <a href="https://reactjs.org/docs/hooks-reference.html#uselayouteffect" target="_blank">React - useLayoutEffect</a>
+          <a href="https://beta.reactjs.org/reference/react/useLayoutEffect" target="_blank">React - useLayoutEffect</a>
         </p>
       <//>
     <//>
