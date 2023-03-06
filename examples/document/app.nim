@@ -22,14 +22,14 @@ proc App():Component {.exportc.} =
 
         <div class="drawer-content bg-base-200 pb-16">
           <${Router}>
-            <${TopPage} path="${BASE_URL}" />
-            <${GettingStartPage} path="${BASE_URL}/getting-start" />
-            <${HowToCreateComponentPage} path="${BASE_URL}/how-to-create-component" />
-            <${UseStatePage} path="${BASE_URL}/use-state" />
-            <${SignalPage} path="${BASE_URL}/signal" />
-            <${EffectSystemPage} path="${BASE_URL}/effect-system" />
-            <${ControllFlowPage} path="${BASE_URL}/controll-flow" />
-            <${ApiAccessPage} path="${BASE_URL}/api-access" />
+            <${TopPage} path="${BaseUrl}" />
+            <${GettingStartPage} path="${BaseUrl}/getting-start" />
+            <${HowToCreateComponentPage} path="${BaseUrl}/how-to-create-component" />
+            <${UseStatePage} path="${BaseUrl}/use-state" />
+            <${SignalPage} path="${BaseUrl}/signal" />
+            <${EffectSystemPage} path="${BaseUrl}/effect-system" />
+            <${ControllFlowPage} path="${BaseUrl}/controll-flow" />
+            <${ApiAccessPage} path="${BaseUrl}/api-access" />
           <//>
         </div>
 
