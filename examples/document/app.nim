@@ -16,12 +16,13 @@ import ./pages/api_access_page
 
 proc App():Component {.exportc.} =
   drawerContentRef = useRef()
+  drawerStatusRef = useRef()
 
   return html(fmt"""
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
       <div class="drawer drawer-mobile">
-        <input id="drawer-id" type="checkbox" class="drawer-toggle"/>
+        <input id="drawer-id" type="checkbox" class="drawer-toggle" ref=${drawerStatusRef}/>
 
         <div class="drawer-content bg-base-200 pb-16" ref=${drawerContentRef}>
           <${Router}>
