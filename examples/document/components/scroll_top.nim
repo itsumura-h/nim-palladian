@@ -1,6 +1,6 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../consts
 
 proc scrollTo(el:Element, x, y:int) {.importjs:"#.scrollTo(#, #)".}

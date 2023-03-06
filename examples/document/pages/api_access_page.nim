@@ -4,7 +4,7 @@ import std/jsffi
 import std/jsfetch
 import std/json
 import std/jsconsole
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
 import ../consts
 

@@ -1,4 +1,4 @@
-import ../../src/palladian/lib
+import ../../src/palladian
 
 let BaseUrl* {.exportc.} :cstring = "/nim-palladian"
 let PalladianLogoUrl* {.exportc.} :cstring =

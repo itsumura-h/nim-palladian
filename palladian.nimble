@@ -8,8 +8,8 @@ srcDir        = "src"
 installExt    = @["nim"]
 skipFiles     = @["server.nim"]
 skipDirs      = @["palladian/cli"]
-bin           = @["palladian"]
-
+bin           = @["palladian/cli/palladian_cli"]
+binDir        = "src/bin"
 
 # Dependencies
 
@@ -19,5 +19,5 @@ requires "cligen >= 1.5.39"
 import std/os
 task docs, "generate nim api docs":
   rmDir(getCurrentDir() /  "docs")
-  let cmd = "nim doc -b:js --project --index:on --outdir:docs src/palladian.nim"
+  let cmd = "nim doc -d:doc -b:js --project --index:on --outdir:docs src/palladian.nim"
   exec(cmd)

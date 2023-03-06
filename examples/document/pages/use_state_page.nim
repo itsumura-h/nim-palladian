@@ -1,7 +1,7 @@
 import std/jsffi
 import std/dom
 import std/math
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight

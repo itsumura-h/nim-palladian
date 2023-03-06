@@ -2,7 +2,7 @@ import std/dom
 import std/jsffi
 import std/jsconsole
 import std/strutils
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
 import ../components/code_block
 import ../components/scroll_top

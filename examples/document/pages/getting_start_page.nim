@@ -1,7 +1,7 @@
 import std/dom
 import std/jsffi
 import std/jsconsole
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/text_body
 import ../consts
 
@@ -56,7 +56,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
         <p>
           Creating project using <code>new</code> command.<br/>
           <${CodeBlock} lang="shell">
-            palladian new sample_project
+            palladian_cli new sample_project
           <//>
         </p>
         <p>
@@ -64,7 +64,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           <${CodeBlock} lang="shell">
             mkdir sample_project
   cd sample_project
-  palladian new .
+  palladian_cli new .
           <//>
         </p>
 
@@ -73,11 +73,11 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           You can start the development server using <code>dev</code> command<br/>
           <${CodeBlock} lang="shell">
             cd sample_project
-  palladian dev
+  palladian_cli dev
           <//>
           By default, the development server starts on port 3000. You can also change the port number to start using the <code>-p</code> option.<br/>
           <${CodeBlock} lang="shell">
-            palladian dev -p 3001
+            palladian_cli dev -p 3001
           <//>
         </p>
 
@@ -86,7 +86,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           Use the <code>build</code> command to output a JavaScript file optimized for production use.<br/>
           A <code>dist</code> directory will be created in the project directory, and the output will be in that directory.
           <${CodeBlock} lang="shell">
-            palladian build
+            palladian_cli build
           <//>
         </p>
         <p>
@@ -97,7 +97,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           ${generatedHtml}
         <//>
         <${CodeBlock} lang="shell">
-          palladian build -b="https://itsumura-h.github.io/nim-palladian"
+          palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
         <//>
       <//>
     <//>

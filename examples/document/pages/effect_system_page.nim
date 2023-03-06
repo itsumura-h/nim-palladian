@@ -1,6 +1,6 @@
 import std/dom
 import std/jsffi
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../libs/highlight
 import ../components/code_block
 import ../consts
