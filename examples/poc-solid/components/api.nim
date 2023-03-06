@@ -3,7 +3,6 @@ import std/dom
 import std/jsffi
 import std/jsfetch
 import std/json
-import std/jsconsole
 import ../../../src/palladian/solid
 
 type BtcPrice = ref object

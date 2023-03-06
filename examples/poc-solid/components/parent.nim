@@ -1,5 +1,4 @@
 import std/dom
-import std/jsconsole
 import std/jsffi
 import ../../../src/palladian/solid
 import ../pages/page1

@@ -27,11 +27,6 @@ proc StringEffectComponent():Component {.exportc.} =
 proc EffectSystemPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Effect system / Nim Palladian"
 
-  # useLayoutEffect(proc() =
-  #   let el = drawerContentRef.current
-  #   el.scrollTo(0, 0)
-  # , [])
-
   let sampleCode {.exportc.} :cstring = """
 proc StringEffectComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")

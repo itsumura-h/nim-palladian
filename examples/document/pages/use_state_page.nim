@@ -108,11 +108,6 @@ proc StringStateComponent():Component {.exportc.} =
 proc UseStatePage*(props:ComponentProps):Component {.exportc.} =
   document.title = "useState / Nim Palladian"
 
-  # useLayoutEffect(proc() =
-  #   let el = drawerContentRef.current
-  #   el.scrollTo(0, 0)
-  # , [])
-
   return html(fmt"""
     <${ScrollTop}>
       <${Article}>

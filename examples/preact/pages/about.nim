@@ -1,5 +1,5 @@
 import std/jsconsole
-import ../../../src/palladian/lib
+import ../../../src/palladian
 import ../components/parent
 
 proc About():Component {.exportc.} =

@@ -1,6 +1,5 @@
 import std/dom
 import std/jsffi
-import std/jsconsole
 import std/math
 import ../../../src/palladian
 import ../consts
@@ -94,11 +93,6 @@ proc SignalComponentB():Component {.exportc.} =
 
 proc SignalPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Signal / Nim Palladian"
-
-  # useLayoutEffect(proc() =
-  #   let el = drawerContentRef.current
-  #   el.scrollTo(0, 0)
-  # , [])
 
   return html(fmt"""
     <${ScrollTop}>

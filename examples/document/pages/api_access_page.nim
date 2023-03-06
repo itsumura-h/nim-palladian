@@ -3,7 +3,6 @@ import std/dom
 import std/jsffi
 import std/jsfetch
 import std/json
-import std/jsconsole
 import ../../../src/palladian
 import ../components/text_body
 import ../consts
@@ -237,11 +236,6 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
 proc ApiAccessPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "API Access / Nim Palladian"
-
-  # useLayoutEffect(proc() =
-  #   let el = drawerContentRef.current
-  #   el.scrollTo(0, 0)
-  # , [])
 
   return html(fmt"""
     <${ScrollTop}>
