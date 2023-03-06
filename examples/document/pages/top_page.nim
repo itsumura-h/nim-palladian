@@ -5,6 +5,25 @@ import ../../../src/palladian/lib
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
+import ../consts
+
+proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
+  let props {.exportc.} = props
+  return html(fmt"""
+  <div class="hero">
+    <div class="hero-content text-center">
+      <article>
+        <h1 class="text-4xl font-extrabold mb-9">
+          Nim Palladian
+          <img src="${PalladianLogoUrl}" class="inline align-baseline w-8" />
+        </h1>
+        <div class="prose max-w-md">
+          <p>Palladian is a Nim front-end framework for SPA based on and wrapping <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  """)
 
 proc Title(props:ComponentProps):Component {.exportc.} =
   let children {.exportc.} = props.children
@@ -59,10 +78,7 @@ proc TopPage*():Component {.exportc.} =
 
   return html(fmt"""
     <div>
-      <${Hero}>
-        <h1>Nim Palladian🏛️</h1>
-        <p>Palladian is a Nim front-end framework for SPA based on and wrapping <a href="https://preactjs.com/" target="_blank">Preact</a>.</p>
-      <//>
+      <${PalladianHero} />
       <${Article}>
         <h2>Features</h2>
         <${Ul}>
