@@ -1,7 +1,9 @@
 import std/dom
 import std/jsffi
+import std/jsconsole
 import ../../../src/palladian/lib
 import ../components/text_body
+import ../libs/scroll
 
 let generatedHtml {.exportc.} :cstring = """
 <!DOCTYPE html>
@@ -26,6 +28,11 @@ let generatedHtml {.exportc.} :cstring = """
 
 proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
   document.title = "Getting start / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   return html(fmt"""
     <${Article}>

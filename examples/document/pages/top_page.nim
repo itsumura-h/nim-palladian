@@ -1,10 +1,12 @@
 import std/dom
 import std/jsffi
+import std/jsconsole
 import std/strutils
 import ../../../src/palladian/lib
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
+import ../libs/scroll
 import ../consts
 
 proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
@@ -50,6 +52,11 @@ proc Counter():Component {.exportc.} =
 
 proc TopPage*():Component {.exportc.} =
   document.title = "Top / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   let sampleCode {.exportc.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =

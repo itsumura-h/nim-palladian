@@ -6,6 +6,7 @@ import std/json
 import std/jsconsole
 import ../../../src/palladian/lib
 import ../components/text_body
+import ../libs/scroll
 
 {.emit:"""
 const sleep = (second) => new Promise(resolve => setTimeout(resolve, second * 1000))
@@ -236,6 +237,11 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
 proc ApiAccessPage*():Component {.exportc.} =
   document.title = "API Access / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   return html(fmt"""
     <${Article}>

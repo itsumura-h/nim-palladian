@@ -4,6 +4,7 @@ import std/json
 import std/jsconsole
 import ../../../src/palladian/lib
 import ../components/code_block
+import ../libs/scroll
 
 type User = object
   id:int
@@ -101,6 +102,11 @@ proc ShowControllComponent():Component {.exportc.} =
 
 proc ControllFlowPage*():Component {.exportc.} =
   document.title = "Controll flow / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   return html(fmt"""
     <${Article}>

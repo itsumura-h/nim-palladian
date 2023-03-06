@@ -5,6 +5,7 @@ import ../../../src/palladian/lib
 import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
+import ../libs/scroll
 
 
 proc BoolStateComponent():Component {.exportc.} =
@@ -106,6 +107,11 @@ proc StringStateComponent():Component {.exportc.} =
 
 proc UseStatePage*():Component {.exportc.} =
   document.title = "useState / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   return html(fmt"""
     <${Article}>

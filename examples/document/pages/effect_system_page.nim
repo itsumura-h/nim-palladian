@@ -1,6 +1,7 @@
 import std/dom
 import std/jsffi
 import ../../../src/palladian/lib
+import ../libs/scroll
 import ../libs/highlight
 import ../components/code_block
 
@@ -25,6 +26,11 @@ proc StringEffectComponent():Component {.exportc.} =
 
 proc EffectSystemPage*():Component {.exportc.} =
   document.title = "Effect system / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   let sampleCode {.exportc.} :cstring = """
 proc StringEffectComponent():Component {.exportc.} =

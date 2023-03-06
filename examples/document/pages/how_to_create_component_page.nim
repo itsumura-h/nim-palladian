@@ -1,6 +1,7 @@
 import std/dom
 import std/jsffi
 import ../../../src/palladian/lib
+import ../libs/scroll
 
 let componentCode {.exportc.} :cstring = """
 proc Title*(props:ComponentProps):Component {.exportc.} =
@@ -16,6 +17,13 @@ html("<p>hello</p>") // Nim
 """
 
 proc HowToCreateComponentPage*(props:ComponentProps):Component {.exportc.} =
+  document.title = "How to create component / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
+
   return html(fmt"""
     <${Article}>
       <h1>How to create component</h1>

@@ -1,6 +1,7 @@
 import std/dom
 import std/math
 import ../../../src/palladian/lib
+import ../libs/scroll
 
 
 let boolSignal {.exportc.} = signal(false)
@@ -91,6 +92,11 @@ proc SignalComponentB():Component {.exportc.} =
 
 proc SignalPage*():Component {.exportc.} =
   document.title = "Signal / Nim Palladian"
+
+  useLayoutEffect(proc() =
+    let el = document.getElementsByClassName("drawer-content")[0]
+    el.scrollTo(0, 0)
+  , [])
 
   return html(fmt"""
     <${Article}>
