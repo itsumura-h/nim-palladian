@@ -25,3 +25,32 @@ https://gist.github.com/developit/af2a4488de152a84bff83e035bb8afc1
 Most modern front-end development is not done by server-side engineers on their own, but rather by designers using HTML created by Figma or TereportHQ, to which front-end engineers implement processing.
 Karax creates HTML with its own Nim functions, which would be very costly and impractical for collaboration and portability with designers and tools.
 Also, while its unique virtual DOM implementation is eye-catching, it has not kept pace with research into more efficient virtual DOM implementations and reactive UI without virtual DOM in the front-end world, and has not maintained a high quality level compared to other frameworks in the front-end world.
+
+## Getting start
+https://itsumura-h.github.io/nim-palladian/getting-start
+
+### Installing palladian
+```
+nimble install -y https://github.com/itsumura-h/nim-palladian
+```
+
+You can use  `palladian_cli` command after installed.
+
+### Creating project
+```sh
+palladian_cli new {project_name}
+```
+
+### Start the development server
+```sh
+cd {project_name}
+palladian_cli dev
+```
+You can access dev server in http://localhost:3000
+
+### Production build
+```sh
+palladian_cli build
+```
+
+`dist` directory is generated.

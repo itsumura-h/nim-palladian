@@ -1,8 +1,8 @@
 # Package
 
 version       = "0.1.0"
-author        = "Anonymous"
-description   = "A new awesome nimble package"
+author        = "Hidenobu Itsumura @dumblepytech1 as 'medy'"
+description   = "A Frontend Web Framework for Nim based on Preact"
 license       = "MIT"
 srcDir        = "src"
 installExt    = @["nim"]
