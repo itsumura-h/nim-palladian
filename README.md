@@ -31,7 +31,7 @@ https://itsumura-h.github.io/nim-palladian/getting-start
 
 ### Installing palladian
 ```
-nimble install -y palladia
+nimble install -y palladian
 ```
 
 You can use  `palladian_cli` command after installed.
