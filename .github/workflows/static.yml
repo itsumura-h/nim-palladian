@@ -41,6 +41,13 @@ jobs:
           cd examples/document
           palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
           cp 404.html dist/
+      - name: Minify JavaScript
+        uses: TeamTigers/minisauras@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        id: dir
+        with:
+          directory: 'examples/document/dist/'
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
