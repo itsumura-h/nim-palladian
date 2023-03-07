@@ -42,7 +42,7 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
         <p>
           Install palladian by Github repository URL.<br/>
           <${CodeBlock} lang="shell">
-              nimble install -y https://github.com/itsumura-h/nim-palladian
+              nimble install -y palladian
           <//>
         </p>
 
