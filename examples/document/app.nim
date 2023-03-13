@@ -12,13 +12,14 @@ import ./pages/effect_system_page
 import ./pages/signal_page
 import ./pages/controll_flow_page
 import ./pages/api_access_page
+include ../../src/palladian/sugar
 
 
-proc App():Component {.exportc.} =
+app App():
   drawerContentRef = useRef()
   drawerStatusRef = useRef()
 
-  return html(fmt"""
+  fmt"""
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
       <div class="drawer drawer-mobile">
@@ -43,7 +44,7 @@ proc App():Component {.exportc.} =
         </div>
       </div>
     </div>
-  """)
+  """
 
 
 renderApp(App, document.getElementById("app"))

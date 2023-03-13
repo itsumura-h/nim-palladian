@@ -1,12 +1,13 @@
 import std/dom
 import ../../src/palladian
+include ../../src/palladian/sugar
 
-let BaseUrl* {.exportc.} :cstring = "/nim-palladian"
-let PalladianLogoUrl* {.exportc.} :cstring =
+let BaseUrl* {.jso.} :cstring = "/nim-palladian"
+let PalladianLogoUrl* {.jso.} :cstring =
   when defined(release):
     ($BaseUrl & "/public/favicon32.png").cstring
   else:
     "/public/favicon32.png".cstring
 
-var drawerContentRef* {.exportc.}:RefObject
-var drawerStatusRef* {.exportc.}:RefObject
+var drawerContentRef* {.jso.}:RefObject
+var drawerStatusRef* {.jso.}:RefObject

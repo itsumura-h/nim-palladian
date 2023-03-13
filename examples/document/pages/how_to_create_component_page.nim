@@ -2,9 +2,10 @@ import std/dom
 import std/jsffi
 import ../../../src/palladian
 import ../consts
+include ../../../src/palladian/sugar
 
 
-let componentCode {.exportc.} :cstring = """
+let componentCode {.jso.} :cstring = """
 import palladian
 
 proc Title*(props:ComponentProps):Component {.exportc.} =
@@ -14,15 +15,15 @@ proc Title*(props:ComponentProps):Component {.exportc.} =
   \"\"")
 """
 
-let taggedTemplateCode {.exportc.} :cstring = """
+let taggedTemplateCode {.jso.} :cstring = """
 html`<p>hello</p>` // JavaScript
 html("<p>hello</p>") // Nim
 """
 
-proc HowToCreateComponentPage*(props:ComponentProps):Component {.exportc.} =
+component HowToCreateComponentPage:
   document.title = "How to create component / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>How to create component</h1>
@@ -49,4 +50,4 @@ proc HowToCreateComponentPage*(props:ComponentProps):Component {.exportc.} =
         </p>
       <//>
     <//>
-  """)
+  """

@@ -4,21 +4,22 @@ import std/json
 import ../../../src/palladian
 import ../components/code_block
 import ../consts
+include ../../../src/palladian/sugar
 
 type User = object
   id:int
   name:cstring
 
-proc ForControllComponent*():Component {.exportc.} =
+component ForControllComponent:
   let usersData = [
     User{id: 1, name: "Alice"},
     User{id: 2, name: "Bob"},
     User{id: 3, name: "Charlie"},
     User{id: 4, name: "Dave"},
   ]
-  let users{.exportc.} = usersData.toJs()
+  let users{.jso.} = usersData.toJs()
 
-  return html(fmt"""
+  fmt"""
     <table class="table w-full">
       <thead>
         <tr>
@@ -34,9 +35,9 @@ proc ForControllComponent*():Component {.exportc.} =
         <//>
       </tbody>
     </table>
-  """)
+  """
 
-let forControllCode {.exportc.} :cstring = """
+let forControllCode {.jso.} :cstring = """
 type User = object
   id:int
   name:cstring
@@ -70,20 +71,20 @@ proc ForControllComponent*():Component {.exportc.} =
 """
 
 
-proc ShowControllComponent():Component {.exportc.} =
-  let (message {.exportc.}, setMessage) = useState("")
+component ShowControllComponent:
+  let (message {.jso.}, setMessage) = useState("")
 
-  proc updateMessage(e:Event) {.exportc.} =
-    setMessage(e.target.value)
+  proc updateMessage(event) {.jso.} =
+    setMessage(event.target.value)
 
-  return html(fmt"""
+  fmt"""
     <input type="text" oninput=${updateMessage} placeholder="message" />
     <${Show} when=${message} fallback=${html`<p class="bg-pink-300 text-red-500 font-bold">Fill the message!</p>`}>
       <p>${message}</p>
     <//>
-  """)
+  """
 
-let showControllCode {.exportc.} :cstring = """
+let showControllCode {.jso.} :cstring = """
 proc ShowControllComponent():Component {.exportc.} =
   let (message {.exportc.}, setMessage) = useState("")
 
@@ -99,10 +100,10 @@ proc ShowControllComponent():Component {.exportc.} =
 """
 
 
-proc ControllFlowPage*(props:ComponentProps):Component {.exportc.} =
+component ControllFlowPage:
   document.title = "Controll flow / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>Controll flow</h1>
@@ -140,4 +141,4 @@ proc ControllFlowPage*(props:ComponentProps):Component {.exportc.} =
         <${ShowControllComponent} />
       <//>
     <//>
-  """)
+  """

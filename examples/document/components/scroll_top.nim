@@ -2,14 +2,12 @@ import std/dom
 import std/jsffi
 import ../../../src/palladian
 import ../consts
+include ../../../src/palladian/sugar
 
 proc scrollTo(el:Element, x, y:int) {.importjs:"#.scrollTo(#, #)".}
 
-proc ScrollTop*(props:ComponentProps):Component {.exportc.} =
-  let props {.exportc.} = props
-  useLayoutEffect(proc() =
-    let el = drawerContentRef.current
-    el.scrollTo(0, 0)
-  , [])
+component ScrollTop:
+  let props {.jso.} = props
+  useLayoutEffect(proc() = drawerContentRef.current.scrollTo(0, 0), [])
 
-  return html("${props.children}")
+  fmt"${props.children}"

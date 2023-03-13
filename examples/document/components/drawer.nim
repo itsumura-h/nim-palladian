@@ -2,13 +2,14 @@ import std/dom
 import std/jsffi
 import ../../../src/palladian
 import ../consts
+include ../../../src/palladian/sugar
 
 
-proc Drawer*(props:ComponentProps):Component {.exportc.} =
-  proc changeDrawer(e:Event) {.exportc.} =
+component Drawer:
+  event changeDrawer:
     drawerStatusRef.current.checked = not drawerStatusRef.current.checked
 
-  return html(fmt"""
+  fmt"""
     <ul class="min-h-screen menu p-4 w-80 bg-base-100 text-base-content">
       <!-- Sidebar content here -->
       <li><${Link} href="${BaseUrl}" activeClassName="active" onclick=${changeDrawer}>Top<//></li>
@@ -23,4 +24,4 @@ proc Drawer*(props:ComponentProps):Component {.exportc.} =
       <li><${Link} href="${BaseUrl}/controll-flow" activeClassName="active" onclick=${changeDrawer}>controll flow<//></li>
       <li><${Link} href="${BaseUrl}/api-access" activeClassName="active" onclick=${changeDrawer}>api access<//></li>
     </ul>
-  """)
+  """

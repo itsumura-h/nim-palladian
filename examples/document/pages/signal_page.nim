@@ -3,27 +3,28 @@ import std/jsffi
 import std/math
 import ../../../src/palladian
 import ../consts
+include ../../../src/palladian/sugar
 
 
-let boolSignal {.exportc.} = signal(false)
-let intSignal {.exportc.} = signal(0)
-let floatSignal {.exportc.} = signal(0.0)
-let stringSignal {.exportc.} = signal("")
+let boolSignal {.jso.} = signal(false)
+let intSignal {.jso.} = signal(0)
+let floatSignal {.jso.} = signal(0.0)
+let stringSignal {.jso.} = signal("")
 
-proc updateBoolSignal(e:Event) {.exportc.} =
+event updateBoolSignal:
   boolSignal.value = not boolSignal.value
 
-proc updateIntSignal(e:Event) {.exportc.} =
+event updateIntSignal:
   intSignal.value = intSignal.value + 1
 
-proc updateFloatSignal(e:Event) {.exportc.} =
+event updateFloatSignal:
   floatSignal.value = round(floatSignal.value + 0.1, 1)
 
-proc updateStringSignal(e:Event) {.exportc.} =
+event updateStringSignal:
   stringSignal.value = e.target.value
 
-proc SignalComponentA():Component {.exportc.} =
-  return html(fmt"""
+component SignalComponentA:
+  fmt"""
     <div class="p-6">
       <p>signal component A</p>
       <p>Click here --> <button onclick=${updateBoolSignal} class="btn btn-primary">${boolSignal.value.toString()}</button> </p>
@@ -32,10 +33,10 @@ proc SignalComponentA():Component {.exportc.} =
       <input type="text" oninput=${updateStringSignal} value=${stringSignal.value} placeholder="Type here" class="input w-full" />
       <p>${stringSignal}</p>
     </div>
-  """)
+  """
 
-proc SignalComponentB():Component {.exportc.} =
-  return html(fmt"""
+component SignalComponentB:
+  fmt"""
     <div class="p-6">
       <p>signal component B</p>
       <p>Click here --> <button onclick=${updateBoolSignal} class="btn btn-primary">${boolSignal.value.toString()}</button> </p>
@@ -44,9 +45,9 @@ proc SignalComponentB():Component {.exportc.} =
       <input type="text" oninput=${updateStringSignal} value=${stringSignal.value} placeholder="Type here" class="input w-full" />
       <p>${stringSignal}</p>
     </div>
-  """)
+  """
 
-let signalCode {.exportc.} :cstring = """
+let signalCode {.jso.} :cstring = """
 import std/math
 
 let boolSignal {.exportc.} = signal(false)
@@ -91,10 +92,10 @@ proc SignalComponentB():Component {.exportc.} =
   \"\"")
 """
 
-proc SignalPage*(props:ComponentProps):Component {.exportc.} =
+component SignalPage:
   document.title = "Signal / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>Signal</h1>
@@ -124,4 +125,4 @@ proc SignalPage*(props:ComponentProps):Component {.exportc.} =
         </div>
       <//>
     <//>
-  """)
+  """

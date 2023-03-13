@@ -4,30 +4,31 @@ import ../../../src/palladian
 import ../libs/highlight
 import ../components/code_block
 import ../consts
+include ../../../src/palladian/sugar
 
 
-proc StringEffectComponent():Component {.exportc.} =
-  let (stringState {.exportc.}, setStringState) = useState("")
-  let (stringCount {.exportc.}, setStringCount) = useState(0)
+component StringEffectComponent:
+  let (stringState {.jso.}, setStringState) = useState("")
+  let (stringCount {.jso.}, setStringCount) = useState(0)
 
-  proc updateState(e:Event) {.exportc.} =
-    setStringState(e.target.value)
+  proc updateState(event) {.jso.} =
+    setStringState(event.target.value)
 
   useEffect(proc() =
     setStringCount(stringState.len)
   , @[stringState])
 
-  return html(fmt"""
+  fmt"""
     <input type="text" oninput=${updateState} placeholder="Type here" class="input w-full" />
     <p>${stringState}</p>
     <p>count: ${stringCount}</p>
-  """)
+  """
 
 
-proc EffectSystemPage*(props:ComponentProps):Component {.exportc.} =
+component EffectSystemPage:
   document.title = "Effect system / Nim Palladian"
 
-  let sampleCode {.exportc.} :cstring = """
+  let sampleCode {.jso.} :cstring = """
 proc StringEffectComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")
   let (stringCount {.exportc.}, setStringCount) = useState(0)
@@ -46,7 +47,7 @@ proc StringEffectComponent():Component {.exportc.} =
   \"\"")
   """
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>Effect system</h1>
@@ -109,4 +110,4 @@ proc StringEffectComponent():Component {.exportc.} =
         </p>
       <//>
     <//>
-  """)
+  """

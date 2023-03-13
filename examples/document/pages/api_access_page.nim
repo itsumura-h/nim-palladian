@@ -6,6 +6,7 @@ import std/json
 import ../../../src/palladian
 import ../components/text_body
 import ../consts
+include ../../../src/palladian/sugar
 
 {.emit:"""
 const sleep = (second) => new Promise(resolve => setTimeout(resolve, second * 1000))
@@ -16,8 +17,8 @@ type BtcPrice = ref object
   usd, eur, gbp:float
   time:cstring
 
-proc BtcPriceComponent():Component {.exportc.} =
-  let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
+component BtcPriceComponent:
+  let (btcPrice {.jso.}, setBtcPrice) = useState(newJsObject())
 
   useEffect(proc() {.async.} =
     await sleep(2) # for just show loading clearly
@@ -32,11 +33,11 @@ proc BtcPriceComponent():Component {.exportc.} =
     setBtcPrice(btcPrice)
   , [])
 
-  let isFetched {.exportc.} = useMemo(proc():bool =
+  let isFetched {.jso.} = useMemo(proc():bool =
     return btcPrice.len > 0
   , @[btcPrice])
 
-  return html(fmt"""
+  fmt"""
     <${Show} when=${isFetched} fallback=${html`<p>...loading</p>`}>
       <p>updated ${btcPrice["time"]}</p>
       <table class="table w-full">
@@ -62,9 +63,9 @@ proc BtcPriceComponent():Component {.exportc.} =
         </tbody>
       </table>
     <//>
-  """)
+  """
 
-let btcPriceCode {.exportc.} :cstring = """
+let btcPriceCode {.jso.} :cstring = """
 type BtcPrice = ref object
   usd, eur, gbp:float
   time:cstring
@@ -118,14 +119,14 @@ proc ApiAccessComponent():Component {.exportc.} =
 """
 
 
-proc StarWarsSearchComponent():Component {.exportc.} =
+component StarWarsSearchComponent:
   let (name, setName) = useState("")
-  let (users {.exportc.}, setUsers) = useState(newJsObject())
+  let (users {.jso.}, setUsers) = useState(newJsObject())
 
-  proc updateName(e:Event) {.exportc.} =
-    setName(e.target.value)
+  proc updateName(event) {.jso.} =
+    setName(event.target.value)
 
-  let isDisplay {.exportc.} = useMemo(proc():bool =
+  let isDisplay {.jso.} = useMemo(proc():bool =
     return users.len > 0
   , @[users])
 
@@ -145,7 +146,7 @@ proc StarWarsSearchComponent():Component {.exportc.} =
       ignore = true
   , @[name])
 
-  return html(fmt"""
+  fmt"""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name of character in Star Wars" />
     <${Show} when=${isDisplay} fallback=${
       html`
@@ -173,9 +174,9 @@ proc StarWarsSearchComponent():Component {.exportc.} =
         </tbody>
       </table>
     <//>
-  """)
+  """
 
-let starWarkSearchCode {.exportc.} :cstring = """
+let starWarkSearchCode {.jso.} :cstring = """
 proc StarWarsSearchComponent():Component {.exportc.} =
   let (name, setName) = useState("")
   let (users {.exportc.}, setUsers) = useState(newJsObject())
@@ -234,10 +235,10 @@ proc StarWarsSearchComponent():Component {.exportc.} =
   \"\"")
 """
 
-proc ApiAccessPage*(props:ComponentProps):Component {.exportc.} =
+component ApiAccessPage:
   document.title = "API Access / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>API Access</h1>
@@ -267,4 +268,4 @@ proc ApiAccessPage*(props:ComponentProps):Component {.exportc.} =
         <${StarWarsSearchComponent} />
       <//>
     <//>
-  """)
+  """

@@ -3,8 +3,9 @@ import std/jsffi
 import ../../../src/palladian
 import ../components/text_body
 import ../consts
+include ../../../src/palladian/sugar
 
-let generatedHtml {.exportc.} :cstring = """
+let generatedHtml {.jso.} :cstring = """
 <!DOCTYPE html>
 <html lang="en" data-theme="halloween">
   <head>
@@ -25,10 +26,10 @@ let generatedHtml {.exportc.} :cstring = """
 </html>
 """
 
-proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
+component GettingStartPage:
   document.title = "Getting start / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>Getting Start</h1>
@@ -95,4 +96,4 @@ palladian_cli dev
         <//>
       <//>
     <//>
-  """)
+  """

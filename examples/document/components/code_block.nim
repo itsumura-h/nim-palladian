@@ -4,10 +4,12 @@ import std/strutils
 import ../../../src/palladian
 import ../libs/highlight
 
+include ../../../src/palladian/sugar
 
-proc CodeBlock(props:ComponentProps):Component {.exportc.} =
-  let codeRef {.exportc.} = useRef()
-  let lang {.exportc.} = props.lang
+
+component CodeBlock:
+  let codeRef {.jso.} = useRef()
+  let lang {.jso.} = props.lang
 
   useLayoutEffect(proc() =
     var code = $props.children
@@ -16,7 +18,7 @@ proc CodeBlock(props:ComponentProps):Component {.exportc.} =
     highlightAll()
   , [])
 
-  return html(fmt"""
+  fmt"""
     <pre><code class="language-${lang}" ref=${codeRef}>
     </code></pre>
-  """)
+  """
