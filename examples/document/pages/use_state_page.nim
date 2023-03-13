@@ -6,19 +6,20 @@ import ../components/text_body
 import ../components/code_block
 import ../libs/highlight
 import ../consts
+include ../../../src/palladian/sugar
 
 
-proc BoolStateComponent():Component {.exportc.} =
-  let (boolState {.exportc.}, setBoolState) = useState(false)
+component BoolStateComponent:
+  let (boolState {.jso.}, setBoolState) = useState(false)
 
-  proc updateState(e:Event) {.exportc.} =
+  proc updateState(event) {.jso.} =
     setBoolState(not boolState)
 
-  return html(fmt"""
+  fmt"""
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${boolState.toString()}</button> </p>
-  """)
+  """
 
-let boolStateCode {.exportc.} :cstring = """
+let boolStateCode {.jso.} :cstring = """
   proc BoolStateComponent():Component {.exportc.} =
     let (boolState {.exportc.}, setBoolState) = useState(false)
 
@@ -32,17 +33,17 @@ let boolStateCode {.exportc.} :cstring = """
 
 
 
-proc IntStateComponent():Component {.exportc.} =
-  let (intState {.exportc.}, setIntState) = useState(0)
+component IntStateComponent:
+  let (intState {.jso.}, setIntState) = useState(0)
 
-  proc updateState(e:Event) {.exportc.} =
+  proc updateState(event) {.jso.} =
     setIntState(intState + 1)
 
-  return html(fmt"""
+  fmt"""
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${intState}</button> </p>
-  """)
+  """
 
-let intStateCode {.exportc.} :cstring = """
+let intStateCode {.jso.} :cstring = """
 proc IntStateComponent():Component {.exportc.} =
   let (intState {.exportc.}, setIntState) = useState(0)
 
@@ -55,17 +56,17 @@ proc IntStateComponent():Component {.exportc.} =
 """
 
 
-proc FloatStateComponent():Component {.exportc.} =
-  let (floatState {.exportc.}, setFloatState) = useState(0.0)
+component FloatStateComponent:
+  let (floatState {.jso.}, setFloatState) = useState(0.0)
 
-  proc updateState(e:Event) {.exportc.} =
+  proc updateState(event) {.jso.} =
     setFloatState(round(floatState + 0.1, 1))
 
-  return html(fmt"""
+  fmt"""
     <p>Click here --> <button class="btn btn-primary" onClick=${updateState}>${floatState}</button> </p>
-  """)
+  """
 
-let floatStateCode {.exportc.} :cstring = """
+let floatStateCode {.jso.} :cstring = """
 import std/math
 
 proc FloatStateComponent():Component {.exportc.} =
@@ -80,18 +81,18 @@ proc FloatStateComponent():Component {.exportc.} =
 """
 
 
-proc StringStateComponent():Component {.exportc.} =
-  let (stringState {.exportc.}, setStringState) = useState("")
+component StringStateComponent:
+  let (stringState {.jso.}, setStringState) = useState("")
 
-  proc updateState(e:Event) {.exportc.} =
+  event updateState:
     setStringState(e.target.value)
 
-  return html(fmt"""
+  fmt"""
     <input type="text" oninput=${updateState} placeholder="Type here" class="input w-full" />
     <p>${stringState}</p>
-  """)
+  """
 
-let stringStateCode {.exportc.} :cstring = """
+let stringStateCode {.jso.} :cstring = """
 proc StringStateComponent():Component {.exportc.} =
   let (stringState {.exportc.}, setStringState) = useState("")
 
@@ -105,10 +106,10 @@ proc StringStateComponent():Component {.exportc.} =
 """
 
 
-proc UseStatePage*(props:ComponentProps):Component {.exportc.} =
+component UseStatePage:
   document.title = "useState / Nim Palladian"
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${Article}>
         <h1>useState</h1>
@@ -150,4 +151,4 @@ proc UseStatePage*(props:ComponentProps):Component {.exportc.} =
         <${StringStateComponent} />
       <//>
     <//>
-  """)
+  """
