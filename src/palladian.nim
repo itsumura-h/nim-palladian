@@ -7,7 +7,7 @@ when defined(doc):
   import ./palladian/cli/palladian_cli
 
 {.emit:"""
-import {h, render} from 'https://esm.sh/preact@10.12.1';
+import {h, render} from 'https://esm.sh/preact@10.17.0';
 import htm from 'https://esm.sh/htm@3.1.1';
 import {
   useState,
@@ -16,10 +16,10 @@ import {
   useMemo,
   useRef,
   useCallback
-} from 'https://esm.sh/preact@10.12.1/hooks';
-import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3?deps=preact@10.12.1';
-import { Router } from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.12.1';
-import { Link } from 'https://esm.sh/preact-router@4.1.0/match?deps=preact@10.12.1';
+} from 'https://esm.sh/preact@10.17.0/hooks';
+import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3?deps=preact@10.17.0';
+import { Router } from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.17.0';
+import { Link } from 'https://esm.sh/preact-router@4.1.0/match?deps=preact@10.17.0';
 const html = htm.bind(h);
 """.}
 
