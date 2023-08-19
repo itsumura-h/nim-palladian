@@ -17,7 +17,7 @@ import {
   useRef,
   useCallback
 } from 'https://esm.sh/preact@10.17.0/hooks';
-import { signal, Signal } from 'https://esm.sh/@preact/signals@1.1.3?deps=preact@10.17.0';
+import { signal, Signal } from 'https://esm.sh/@preact/signals@1.2.1?deps=preact@10.17.0';
 import { Router } from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.17.0';
 import { Link } from 'https://esm.sh/preact-router@4.1.0/match?deps=preact@10.17.0';
 const html = htm.bind(h);
