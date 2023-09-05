@@ -7,10 +7,11 @@ import ../components/code_block
 import ../components/scroll_top
 import ../libs/highlight
 import ../consts
+include ../../../src/palladian/sugar
 
-proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
-  let props {.exportc.} = props
-  return html(fmt"""
+component PalladianHero:
+  let props {.jso.} = props
+  fmt"""
     <div class="hero">
       <div class="hero-content text-center">
         <article>
@@ -24,35 +25,35 @@ proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
         </article>
       </div>
     </div>
-  """)
+  """
 
-proc Title(props:ComponentProps):Component {.exportc.} =
-  let children {.exportc.} = props.children
+component Title:
+  let children {.jso.} = props.children
 
-  return html(fmt"""
+  fmt"""
     <p class="font-extrabold">${children}</p>
-  """)
+  """
 
-proc Counter():Component {.exportc.} =
-  let (value {.exportc.}, setValue) = useState(0);
+component Counter():
+  let (value {.jso.}, setValue) = useState(0);
 
-  proc increment(e:Event) {.exportc.} =
+  event increment:
     setValue(value + 1)
 
-  proc decrement(e:Event) {.exportc.} =
+  event decrement:
     setValue(value - 1)
 
-  return html(fmt"""
+  fmt"""
     <${Title}>Hello Nim Palladian<//>
     <div>Counter: ${value}</div>
     <p><button onClick=${increment} class="btn btn-primary">Increment</button></p>
     <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
-  """)
+  """
 
-proc TopPage*(props:ComponentProps):Component {.exportc.} =
+component TopPage*:
   document.title = "Top / Nim Palladian"
 
-  let sampleCode {.exportc.} :cstring = """
+  let sampleCode {.jso.} :cstring = """
     proc Title(props:ComponentProps):Component {.exportc.} =
       let children {.exportc.} = props.children
 
@@ -77,7 +78,7 @@ proc TopPage*(props:ComponentProps):Component {.exportc.} =
       \"\"")
   """
 
-  return html(fmt"""
+  fmt"""
     <${ScrollTop}>
       <${PalladianHero} />
       <${Article}>
@@ -106,4 +107,4 @@ proc TopPage*(props:ComponentProps):Component {.exportc.} =
         </p>
       <//>
     <//>
-  """)
+  """
