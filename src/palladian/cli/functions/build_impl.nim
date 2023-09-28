@@ -15,7 +15,14 @@ proc build*(baseUrl="") =
   removeDir("dist")
   createDir("dist")
   copyDir("public", "dist/public")
-  echo execProcess("nim js -d:release -d:nimExperimentalAsyncjsThen -o:dist/public/app.js app")
+  echo execProcess("nim js -d:release -d:nimExperimentalAsyncjsThen -o:dist/public/app.js app.nim")
+  echo execProcess("bun build ./dist/public/app.js --outdir ./dist/public --format esm --minify")
+
+  var appJs = readFile("./dist/public/app.js")
+  appJs = appJs.replace("html`\"", "html`")
+  appJs = appJs.replace("\"`;", "`;")
+  writeFile("./dist/public/app.js", appJs)
+
   copyFile("index.html", "dist/index.html")
   block:
     var content = readFile("dist/index.html")

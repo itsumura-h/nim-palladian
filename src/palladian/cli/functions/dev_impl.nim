@@ -3,6 +3,7 @@ import std/os
 import std/osproc
 import std/re
 import std/strformat
+import std/strutils
 import std/tables
 import std/terminal
 import std/times
@@ -30,10 +31,29 @@ setControlCHook(ctrlC)
 
 proc buildCommand() =
   try:
-    let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app"
+    var cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app.nim"
     echo cmd
     if execShellCmd(cmd) > 0:
       raise newException(Exception, "")
+
+    block:
+      var appJs = readFile("./public/app.js")
+      # html`"a"`; => html`a`;
+      appJs = appJs.replace("html`\"", "html`")
+      appJs = appJs.replace("\"`;", "`;")
+      # arr["a"]        => arr["a"]
+      # arr[\\\"a\\\"]  => arr[\\\"a\\\"]
+      # arr[\"a\"]      => arr["a"]
+      appJs = appJs.replace(re(""" \[(?<!\\)\\{1}"  """.strip()), "[\"")
+      appJs = appJs.replace(re(""" (?<!\\)\\{1}"\]  """.strip()), "\"]")
+
+      writeFile("./public/app.js", appJs)
+
+    cmd = "bun build ./public/app.js --outfile ./public/app.js --format esm"
+    echo cmd
+    if execShellCmd(cmd) > 0:
+      raise newException(Exception, "")
+
     echoMsg(bgGreen, &"Running dev server at http://localhost:{port}")
     echoMsg(bgGreen, "[SUCCESS] Building JavaScript application")
   except:

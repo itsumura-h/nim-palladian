@@ -32,7 +32,7 @@ proc Article*(props:ComponentProps):Component {.exportc.} =
 
 proc Ul*(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
-  return html("""
+  return html(fmt"""
     <ul class="list-disc list-outside pl-6">
       ${props.children}
     </ul>

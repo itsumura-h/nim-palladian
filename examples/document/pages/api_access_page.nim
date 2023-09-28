@@ -73,13 +73,13 @@ proc ApiAccessComponent():Component {.exportc.} =
   let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
 
   useEffect(proc() {.async.}=
-    let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json".cstring)
+    let res = await fetch(\"https://api.coindesk.com/v1/bpi/currentprice.json\".cstring)
     let json = await res.json()
     let btcPrice = BtcPrice{
-      usd: json["bpi"]["USD"]["rate_float"].to(float),
-      eur: json["bpi"]["EUR"]["rate_float"].to(float),
-      gbp: json["bpi"]["GBP"]["rate_float"].to(float),
-      time: json["time"]["updatedISO"].to(cstring)
+      usd: json[\"bpi\"][\"USD\"][\"rate_float\"].to(float),
+      eur: json[\"bpi\"][\"EUR\"][\"rate_float\"].to(float),
+      gbp: json[\"bpi\"][\"GBP\"][\"rate_float\"].to(float),
+      time: json[\"time\"][\"updatedISO\"].to(cstring)
     }.toJs()
     setBtcPrice(btcPrice)
   , [])
@@ -88,7 +88,7 @@ proc ApiAccessComponent():Component {.exportc.} =
     return btcPrice.len > 0
   , @[btcPrice])
 
-  return html(fmt\"\""
+  return html(fmt\"\"\"
     <${Show} when=${isFetched} fallback=${html`<p>...loading</p>`}>
       <p>updated ${btcPrice["time"]}</p>
       <table class="table w-full">
@@ -101,20 +101,20 @@ proc ApiAccessComponent():Component {.exportc.} =
         <tbody>
           <tr>
           <td>USD</td>
-            <td>${btcPrice["usd"]}</td>
+            <td>${btcPrice[\"usd\"]}</td>
           </tr>
           <tr>
             <td>Euro</td>
-            <td>${btcPrice["eur"]}</td>
+            <td>${btcPrice[\"eur\"]}</td>
           </tr>
           <tr>
             <td>GBP</td>
-            <td>${btcPrice["gbp"]}</td>
+            <td>${btcPrice[\"gbp\"]}</td>
           </tr>
         </tbody>
       </table>
     <//>
-  \"\"")
+  \"\"\")
 """
 
 

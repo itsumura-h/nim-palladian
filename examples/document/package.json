@@ -1,0 +1,17 @@
+{
+  "name": "document",
+  "module": "app.js",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@preact/signals": "^1.2.1",
+    "htm": "^3.1.1",
+    "preact": "^10.17.1",
+    "preact-router": "^4.1.2"
+  }
+}

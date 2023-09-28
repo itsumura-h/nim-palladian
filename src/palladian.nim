@@ -1,14 +1,19 @@
+## bun init
+## palladial_cli install
+## palladial_cli new .
+
 import std/asyncjs
 import std/dom
 import std/jsffi
 import std/macros
+import std/strutils
 
 when defined(doc):
   import ./palladian/cli/palladian_cli
 
-{.emit:"""
-import {h, render} from 'https://esm.sh/preact@10.17.0';
-import htm from 'https://esm.sh/htm@3.1.1';
+{.emit: """
+import {h, render} from 'preact';
+import htm from 'htm';
 import {
   useState,
   useEffect,
@@ -16,16 +21,17 @@ import {
   useMemo,
   useRef,
   useCallback
-} from 'https://esm.sh/preact@10.17.0/hooks';
-import { signal, Signal } from 'https://esm.sh/@preact/signals@1.2.1?deps=preact@10.17.0';
-import { Router } from 'https://esm.sh/preact-router@4.1.0?deps=preact@10.17.0';
-import { Link } from 'https://esm.sh/preact-router@4.1.0/match?deps=preact@10.17.0';
+} from 'preact/hooks';
+import {signal, Signal} from "@preact/signals"
+import { Router, Link } from 'preact-router';
 const html = htm.bind(h);
 """.}
 
+
 type Component* = JsObject
 
-proc html*(arg:cstring):Component {.importjs:"eval('html`' + # + '`')".}
+# proc html*(arg:cstring):Component {.importjs:"eval('html`' + # + '`')".}
+proc html*(arg:cstring):Component {.importjs:"html`#`".}
 template html*(arg:string):Component = html(arg.cstring)
 
 
@@ -34,15 +40,16 @@ function renderApp(component, dom){
   render(html``<${component} />``, dom)
 }
 """.}
-proc renderApp*(component: proc():Component, dom: Element) {.importjs: "renderApp(#, #)".}
+proc renderApp*(component: proc():Component, dom: Element) {.importjs:"renderApp(#, #)".}
 
 
 type ComponentProps* = JsObject
 proc children*(self:ComponentProps):cstring {.importjs:"#.children".}
 
 
-proc fmt*(arg:cstring):cstring {.importjs: "#".}
+proc fmt*(arg:cstring):cstring {.importjs:"#".}
   ## for just easy to look JSX in IDE with no effect.
+
 template fmt*(arg:string):cstring = fmt(arg.cstring)
   ## for just easy to look JSX in IDE with no effect.
 

@@ -12,4 +12,4 @@ proc ScrollTop*(props:ComponentProps):Component {.exportc.} =
     el.scrollTo(0, 0)
   , [])
 
-  return html("${props.children}")
+  return html(fmt"${props.children}")
