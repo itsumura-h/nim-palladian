@@ -4,7 +4,8 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    # branches: ["main"]
+    branches: ["fix-github-page"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,6 +41,8 @@ jobs:
         run: |
           curl -fsSL https://bun.sh/install | bash
           echo "~/.bun/bin" >> $GITHUB_PATH
+          whitch bun
+          echo $GITHUB_PATH
       - name: Build palladian
         run: |
           cd examples/document
