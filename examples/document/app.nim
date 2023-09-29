@@ -1,9 +1,8 @@
 import std/dom
+import std/jsffi
 import ../../src/palladian
-import ./consts
 import ./components/header
 import ./components/drawer
-import ./components/scroll_top
 import ./pages/top_page
 import ./pages/getting_start_page
 import ./pages/how_to_create_component_page
@@ -15,9 +14,6 @@ import ./pages/api_access_page
 
 
 proc App():Component {.exportc.} =
-  drawerContentRef = useRef()
-  drawerStatusRef = useRef()
-
   return html(fmt"""
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
@@ -30,8 +26,8 @@ proc App():Component {.exportc.} =
             <${GettingStartPage} path="${BaseUrl}/getting-start" />
             <${HowToCreateComponentPage} path="${BaseUrl}/how-to-create-component" />
             <${UseStatePage} path="${BaseUrl}/use-state" />
-            <${SignalPage} path="${BaseUrl}/signal" />
             <${EffectSystemPage} path="${BaseUrl}/effect-system" />
+            <${SignalPage} path="${BaseUrl}/signal" />
             <${ControllFlowPage} path="${BaseUrl}/controll-flow" />
             <${ApiAccessPage} path="${BaseUrl}/api-access" />
           <//>
@@ -44,6 +40,5 @@ proc App():Component {.exportc.} =
       </div>
     </div>
   """)
-
 
 renderApp(App, document.getElementById("app"))

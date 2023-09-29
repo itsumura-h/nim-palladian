@@ -3,6 +3,8 @@ import std/jsffi
 import std/json
 import ../../../src/palladian
 import ../components/code_block
+import ../components/scroll_top
+import ../components/text_body
 import ../consts
 
 type User = object
@@ -28,9 +30,7 @@ proc ForControllComponent*():Component {.exportc.} =
       </thead>
       <tbody>
         <${For} each=${users}>
-          ${user=>
-            html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`
-          }
+          ${user=> html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`}
         <//>
       </tbody>
     </table>
@@ -60,8 +60,8 @@ proc ForControllComponent*():Component {.exportc.} =
       </thead>
       <tbody>
         <${For} each=${users}>
-          ${user=>
-            html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`
+          ${user=>\
+            html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`\
           }
         <//>
       </tbody>

@@ -90,7 +90,7 @@ proc ApiAccessComponent():Component {.exportc.} =
 
   return html(fmt\"\"\"
     <${Show} when=${isFetched} fallback=${html`<p>...loading</p>`}>
-      <p>updated ${btcPrice["time"]}</p>
+      <p>updated ${btcPrice[\"time\"]}</p>
       <table class="table w-full">
         <thead>
           <tr>
@@ -147,11 +147,9 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
   return html(fmt"""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name of character in Star Wars" />
-    <${Show} when=${isDisplay} fallback=${
-      html`
-        <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
-      `
-    }>
+    <${Show} when=${isDisplay} fallback=${html`
+      <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
+    `}>
       <table>
         <thead>
           <tr>
@@ -161,15 +159,15 @@ proc StarWarsSearchComponent():Component {.exportc.} =
         </thead>
         <tbody>
           <${For} each=${users}>
-          ${user=>
-            html`
-              <tr>
-                <td>${user.name}</td>
-                <td>${user.birth_year}</td>
-              </tr>
-            `
-          }
-        <//>
+            ${user=>
+              html`
+                <tr>
+                  <td>${user.name}</td>
+                  <td>${user.birth_year}</td>
+                </tr>
+              `
+            }
+          <//>
         </tbody>
       </table>
     <//>
@@ -195,7 +193,7 @@ proc StarWarsSearchComponent():Component {.exportc.} =
       let res = await fetch(url & name)
       let resJson = await res.json()
       if not ignore:
-        setUsers(resJson["results"])
+        setUsers(resJson[\"results\"])
 
     discard getCharactor()
 
@@ -205,10 +203,10 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
   return html(fmt\"\""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name" />
-    <${Show} when=${hasUsers} fallback=${
-      html`
+    <${Show} when=${hasUsers} fallback=${\
+      html`\
         <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
-      `
+      `\
     }>
       <table>
         <thead>
@@ -219,13 +217,13 @@ proc StarWarsSearchComponent():Component {.exportc.} =
         </thead>
         <tbody>
           <${For} each=${users}>
-          ${user=>
-            html`
+          ${user=>\
+            html`\
               <tr>
                 <td>${user.name}</td>
                 <td>${user.birth_year}</td>
               </tr>
-            `
+            `\
           }
         <//>
         </tbody>

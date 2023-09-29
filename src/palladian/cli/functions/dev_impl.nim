@@ -53,6 +53,9 @@ proc buildCommand() =
       # arr[\"a\"]      => arr["a"]
       appJs = appJs.replace(re(""" \[(?<!\\)\\{1}"  """.strip()), "[\"")
       appJs = appJs.replace(re(""" (?<!\\)\\{1}"\]  """.strip()), "\"]")
+      ## ${user=> html`<p>${user.name}</p>`}
+      appJs = appJs.replace("=>\\n", "=>")
+      appJs = appJs.replace("`\\n", "`")
 
       writeFile("./dist/public/app.js", appJs)
     
@@ -86,7 +89,7 @@ proc dev*(portArg=3000) =
   while true:
     sleep sleepTime * 1000
     for f in walkDirRec(currentDir, {pcFile}):
-      if f.find(re"(\.nim|\.nims|\.html)$") > -1:
+      if not f.contains("dist") and f.find(re"(\.nim|\.nims|\.html)$") > -1:
         var modTime: Time
         try:
           modTime = getFileInfo(f).lastWriteTime

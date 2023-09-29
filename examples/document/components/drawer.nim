@@ -2,6 +2,7 @@ import std/dom
 import std/jsffi
 import ../../../src/palladian
 import ../consts
+import std/jsconsole
 
 
 proc Drawer*(props:ComponentProps):Component {.exportc.} =

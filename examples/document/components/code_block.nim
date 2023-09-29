@@ -5,13 +5,14 @@ import ../../../src/palladian
 import ../libs/highlight
 
 
-proc CodeBlock(props:ComponentProps):Component {.exportc.} =
+proc CodeBlock*(props:ComponentProps):Component {.exportc.} =
   let codeRef {.exportc.} = useRef()
   let lang {.exportc.} = props.lang
 
   useLayoutEffect(proc() =
     var code = $props.children
-    code = code.replace("\\", "").dedent()
+    code = code.replace("\\", "")
+    code = code.dedent()
     codeRef.current.textContent = code
     highlightAll()
   , [])
