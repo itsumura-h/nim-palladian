@@ -40,7 +40,7 @@ jobs:
         run: |
           curl -fsSL https://bun.sh/install | bash
           echo "~/.bun/bin" >> $GITHUB_PATH
-          whitch bun
+          which bun
           echo $GITHUB_PATH
       - name: Build palladian
         run: |
