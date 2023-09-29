@@ -73,13 +73,13 @@ proc ApiAccessComponent():Component {.exportc.} =
   let (btcPrice {.exportc.}, setBtcPrice) = useState(newJsObject())
 
   useEffect(proc() {.async.}=
-    let res = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json".cstring)
+    let res = await fetch(\"https://api.coindesk.com/v1/bpi/currentprice.json\".cstring)
     let json = await res.json()
     let btcPrice = BtcPrice{
-      usd: json["bpi"]["USD"]["rate_float"].to(float),
-      eur: json["bpi"]["EUR"]["rate_float"].to(float),
-      gbp: json["bpi"]["GBP"]["rate_float"].to(float),
-      time: json["time"]["updatedISO"].to(cstring)
+      usd: json[\"bpi\"][\"USD\"][\"rate_float\"].to(float),
+      eur: json[\"bpi\"][\"EUR\"][\"rate_float\"].to(float),
+      gbp: json[\"bpi\"][\"GBP\"][\"rate_float\"].to(float),
+      time: json[\"time\"][\"updatedISO\"].to(cstring)
     }.toJs()
     setBtcPrice(btcPrice)
   , [])
@@ -88,9 +88,9 @@ proc ApiAccessComponent():Component {.exportc.} =
     return btcPrice.len > 0
   , @[btcPrice])
 
-  return html(fmt\"\""
+  return html(fmt\"\"\"
     <${Show} when=${isFetched} fallback=${html`<p>...loading</p>`}>
-      <p>updated ${btcPrice["time"]}</p>
+      <p>updated ${btcPrice[\"time\"]}</p>
       <table class="table w-full">
         <thead>
           <tr>
@@ -101,20 +101,20 @@ proc ApiAccessComponent():Component {.exportc.} =
         <tbody>
           <tr>
           <td>USD</td>
-            <td>${btcPrice["usd"]}</td>
+            <td>${btcPrice[\"usd\"]}</td>
           </tr>
           <tr>
             <td>Euro</td>
-            <td>${btcPrice["eur"]}</td>
+            <td>${btcPrice[\"eur\"]}</td>
           </tr>
           <tr>
             <td>GBP</td>
-            <td>${btcPrice["gbp"]}</td>
+            <td>${btcPrice[\"gbp\"]}</td>
           </tr>
         </tbody>
       </table>
     <//>
-  \"\"")
+  \"\"\")
 """
 
 
@@ -161,15 +161,15 @@ proc StarWarsSearchComponent():Component {.exportc.} =
         </thead>
         <tbody>
           <${For} each=${users}>
-          ${user=>
-            html`
-              <tr>
-                <td>${user.name}</td>
-                <td>${user.birth_year}</td>
-              </tr>
-            `
-          }
-        <//>
+            ${user=>
+              html`
+                <tr>
+                  <td>${user.name}</td>
+                  <td>${user.birth_year}</td>
+                </tr>
+              `
+            }
+          <//>
         </tbody>
       </table>
     <//>
@@ -195,7 +195,7 @@ proc StarWarsSearchComponent():Component {.exportc.} =
       let res = await fetch(url & name)
       let resJson = await res.json()
       if not ignore:
-        setUsers(resJson["results"])
+        setUsers(resJson[\"results\"])
 
     discard getCharactor()
 
@@ -205,10 +205,10 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
   return html(fmt\"\""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name" />
-    <${Show} when=${hasUsers} fallback=${
-      html`
+    <${Show} when=${hasUsers} fallback=${\
+      html`\
         <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
-      `
+      `\
     }>
       <table>
         <thead>
@@ -219,13 +219,13 @@ proc StarWarsSearchComponent():Component {.exportc.} =
         </thead>
         <tbody>
           <${For} each=${users}>
-          ${user=>
-            html`
+          ${user=>\
+            html`\
               <tr>
                 <td>${user.name}</td>
                 <td>${user.birth_year}</td>
               </tr>
-            `
+            `\
           }
         <//>
         </tbody>

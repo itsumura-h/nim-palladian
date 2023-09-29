@@ -46,6 +46,14 @@ proc GettingStartPage*(props:ComponentProps):Component {.exportc.} =
           <//>
         </p>
 
+        <h2>Install Bun</h2>
+        <p>
+          <${CodeBlock} lang="shell">
+            curl -fsSL https://bun.sh/install | bash
+          <//>
+          See more details. <a href="https://bun.sh/docs/installation" target="_blank">https://bun.sh/docs/installation</a>
+        </p>
+
         <h2>Creating project</h2>
         <p>
           Creating project using <code>new</code> command.<br/>
@@ -62,12 +70,24 @@ palladian_cli new .
           <//>
         </p>
 
+        <h2>Initialize Bun</h2>
+        <${CodeBlock} lang="shell">
+          cd sample_project
+bun init
+        <//>
+
+        <h2>Install dependencies from package.json</h2>
+        <${CodeBlock} lang="shell">
+          palladian_cli install
+  or
+bun install
+        <//>
+
         <h2>Start the development server</h2>
         <p>
           You can start the development server using <code>dev</code> command<br/>
           <${CodeBlock} lang="shell">
-            cd sample_project
-palladian_cli dev
+            palladian_cli dev
           <//>
           By default, the development server starts on port 3000. You can also change the port number to start using the <code>-p</code> option.<br/>
           <${CodeBlock} lang="shell">

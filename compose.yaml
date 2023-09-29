@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app-ubuntu:
+    build:
+      context: .
+      dockerfile: ./docker/ubuntu/Dockerfile
+    tty: true
+    volumes:
+      - .:/root/project
+    ports:
+      - 3000:3000

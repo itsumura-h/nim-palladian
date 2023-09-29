@@ -15,7 +15,7 @@ proc runServe*(routes:seq[Route], port=8080) {.async.} =
   proc cb(req: Request) {.async, gcsafe.} =
     try:
       if req.url.path.contains("."):
-        let filepath = getCurrentDir() / req.url.path
+        let filepath = getCurrentDir() / "dist" / req.url.path
         if fileExists(filepath):
           let file = openAsync(filepath, fmRead)
           let data = file.readAll().await

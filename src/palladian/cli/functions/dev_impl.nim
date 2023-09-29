@@ -3,6 +3,7 @@ import std/os
 import std/osproc
 import std/re
 import std/strformat
+import std/strutils
 import std/tables
 import std/terminal
 import std/times
@@ -30,10 +31,40 @@ setControlCHook(ctrlC)
 
 proc buildCommand() =
   try:
-    let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app"
-    echo cmd
-    if execShellCmd(cmd) > 0:
-      raise newException(Exception, "")
+    block:
+      removeDir("dist")
+      createDir("dist")
+      copyDir("public", "dist/public")
+      copyFile("./index.html", "dist/index.html")
+
+    block:
+      let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./dist/public/app.js app.nim"
+      echo cmd
+      if execShellCmd(cmd) > 0:
+        raise newException(Exception, "")
+
+    block:
+      var appJs = readFile("./dist/public/app.js")
+      # html`"a"`; => html`a`;
+      appJs = appJs.replace("html`\"", "html`")
+      appJs = appJs.replace("\"`;", "`;")
+      # arr["a"]        => arr["a"]
+      # arr[\\\"a\\\"]  => arr[\\\"a\\\"]
+      # arr[\"a\"]      => arr["a"]
+      appJs = appJs.replace(re(""" \[(?<!\\)\\{1}"  """.strip()), "[\"")
+      appJs = appJs.replace(re(""" (?<!\\)\\{1}"\]  """.strip()), "\"]")
+      ## ${user=> html`<p>${user.name}</p>`}
+      appJs = appJs.replace("=>\\n", "=>")
+      appJs = appJs.replace("`\\n", "`")
+
+      writeFile("./dist/public/app.js", appJs)
+    
+    block:
+      let cmd = "bun build ./dist/public/app.js --outfile ./dist/public/app.js --format esm"
+      echo cmd
+      if execShellCmd(cmd) > 0:
+        raise newException(Exception, "")
+
     echoMsg(bgGreen, &"Running dev server at http://localhost:{port}")
     echoMsg(bgGreen, "[SUCCESS] Building JavaScript application")
   except:
@@ -58,7 +89,7 @@ proc dev*(portArg=3000) =
   while true:
     sleep sleepTime * 1000
     for f in walkDirRec(currentDir, {pcFile}):
-      if f.find(re"(\.nim|\.nims|\.html)$") > -1:
+      if not f.contains("dist") and f.find(re"(\.nim|\.nims|\.html)$") > -1:
         var modTime: Time
         try:
           modTime = getFileInfo(f).lastWriteTime

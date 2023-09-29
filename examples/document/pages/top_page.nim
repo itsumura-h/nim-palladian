@@ -1,14 +1,13 @@
 import std/dom
 import std/jsffi
-import std/strutils
 import ../../../src/palladian
-import ../components/text_body
 import ../components/code_block
 import ../components/scroll_top
-import ../libs/highlight
+import ../components/text_body
 import ../consts
 
-proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
+
+proc PalladianHero(props:ComponentProps):Component {.exportc.} =
   let props {.exportc.} = props
   return html(fmt"""
     <div class="hero">
@@ -26,12 +25,14 @@ proc PalladianHero*(props:ComponentProps):Component {.exportc.} =
     </div>
   """)
 
+
 proc Title(props:ComponentProps):Component {.exportc.} =
   let children {.exportc.} = props.children
 
   return html(fmt"""
     <p class="font-extrabold">${children}</p>
   """)
+
 
 proc Counter():Component {.exportc.} =
   let (value {.exportc.}, setValue) = useState(0);
@@ -49,7 +50,8 @@ proc Counter():Component {.exportc.} =
     <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
   """)
 
-proc TopPage*(props:ComponentProps):Component {.exportc.} =
+
+proc TopPage*():Component {.exportc.} =
   document.title = "Top / Nim Palladian"
 
   let sampleCode {.exportc.} :cstring = """
@@ -86,8 +88,7 @@ proc TopPage*(props:ComponentProps):Component {.exportc.} =
           <li>Easy syntax thanks to Nim.</li>
           <li>Extensive assets by JavaScript.</li>
           <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
-          <li>The evolution of CDN that allow development without NodeJS.</li>
-          <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
+          <li>Resolving library dependencies thanks to <a href="https://bun.sh/" target="_blank">Bun</a> without NodeJS.</li>
         <//>
         <${CodeBlock} lang="nim">
           ${sampleCode}
@@ -95,14 +96,24 @@ proc TopPage*(props:ComponentProps):Component {.exportc.} =
         <${Counter} />
       <//>
       <${Article}>
+        <h2>Why using Bun?</h2>
+        <p>
+          When building a front-end framework with Nim, the difficult part was resolving the dependencies of each library.
+          NPM packages can be called from CDNs, but as the number of libraries increases, it is difficult to manually resolve the dependencies.
+          Therefore, we decided to use Bun as a fast library manager, because it is easy to install and can also build JavaScript.
+        </p>
+      <//>
+      <${Article}>
         <h2>Why using Preact?</h2>
         <p>
-          In creating a front-end framework made by Nim, we needed something that did not require a NodeJS environment
-          and did not require transpiling using Babel or other software.
-          Preact can use all of its features with a CDN call, and has a very compact library size of 3KB.
+          In this age when React has become the de facto standard for front-end development, the knowledge of variable management and side-effects brought by React has become commonplace as other frameworks have and also adopted it.
+          However, React as an SPA is no longer used, and in the NextJS era, the ever-growing API and high learning costs are problematic.
         </p>
         <p>
-          Furthermore, unlike React, Preact can use the browser standard API for DOM manipulation.
+          Preact is highly compatible with React in terms of knowledge, but with a very restrained and minimal API.
+        </p>
+        <p>
+          And unlike react-dom, it uses browser standard features and is only 3KB in size.
         </p>
       <//>
     <//>

@@ -1,6 +1,8 @@
 import std/os
 import std/osproc
+import std/re
 import std/strutils
+
 
 proc build*(baseUrl="") =
   ## Build app.nim for production.
@@ -15,7 +17,26 @@ proc build*(baseUrl="") =
   removeDir("dist")
   createDir("dist")
   copyDir("public", "dist/public")
-  echo execProcess("nim js -d:release -d:nimExperimentalAsyncjsThen -o:dist/public/app.js app")
+  echo execProcess("nim js -d:release -d:nimExperimentalAsyncjsThen -o:dist/public/app.js app.nim")
+
+  block:
+    var appJs = readFile("./dist/public/app.js")
+    # html`"a"`; => html`a`;
+    appJs = appJs.replace("html`\"", "html`")
+    appJs = appJs.replace("\"`;", "`;")
+    # arr["a"]        => arr["a"]
+    # arr[\\\"a\\\"]  => arr[\\\"a\\\"]
+    # arr[\"a\"]      => arr["a"]
+    appJs = appJs.replace(re(""" \[(?<!\\)\\{1}"  """.strip()), "[\"")
+    appJs = appJs.replace(re(""" (?<!\\)\\{1}"\]  """.strip()), "\"]")
+    ## ${user=> html`<p>${user.name}</p>`}
+    appJs = appJs.replace("=>\\n", "=>")
+    appJs = appJs.replace("`\\n", "`")
+
+    writeFile("./dist/public/app.js", appJs)
+
+  echo execProcess("bun build ./dist/public/app.js --outdir ./dist/public --format esm --minify")
+
   copyFile("index.html", "dist/index.html")
   block:
     var content = readFile("dist/index.html")
