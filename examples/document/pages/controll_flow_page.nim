@@ -30,7 +30,11 @@ proc ForControllComponent*():Component {.exportc.} =
       </thead>
       <tbody>
         <${For} each=${users}>
-          ${user=> html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`}
+          ${user=>
+            html`
+              <tr> <td>${user.id}</td> <td>${user.name}</td> </tr>
+            `
+          }
         <//>
       </tbody>
     </table>
@@ -61,7 +65,9 @@ proc ForControllComponent*():Component {.exportc.} =
       <tbody>
         <${For} each=${users}>
           ${user=>\
-            html`<tr> <td>${user.id}</td> <td>${user.name}</td> </tr>`\
+            html`\
+              <tr> <td>${user.id}</td> <td>${user.name}</td> </tr>
+            `\
           }
         <//>
       </tbody>
