@@ -39,9 +39,9 @@ jobs:
       - name: Install Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          echo "~/.bun/bin" >> $GITHUB_PATH
-          which bun
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
           echo $GITHUB_PATH
+          which bun
       - name: Build palladian
         run: |
           cd examples/document
