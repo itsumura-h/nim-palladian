@@ -1,7 +1,3 @@
-## bun init
-## palladial_cli install
-## palladial_cli new .
-
 import std/asyncjs
 import std/dom
 import std/jsffi
@@ -23,7 +19,8 @@ import {
   useCallback
 } from 'preact/hooks';
 import {signal, Signal} from "@preact/signals"
-import { Router, Link } from 'preact-router';
+import { Router } from 'preact-router';
+import { Link } from 'preact-router/match';
 const html = htm.bind(h);
 """.}
 

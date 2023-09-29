@@ -18,7 +18,7 @@ proc build*(baseUrl="") =
   createDir("dist")
   copyDir("public", "dist/public")
   echo execProcess("nim js -d:release -d:nimExperimentalAsyncjsThen -o:dist/public/app.js app.nim")
-
+  
   block:
     var appJs = readFile("./dist/public/app.js")
     # html`"a"`; => html`a`;
@@ -40,8 +40,6 @@ proc build*(baseUrl="") =
   copyFile("index.html", "dist/index.html")
   block:
     var content = readFile("dist/index.html")
-    var f = open("dist/index.html" , fmWrite)
-    defer: close(f)
     echo getEnv("PRODUCTION_BASE_URL")
     content = content.replace("{% BASE_URL %}", baseUrl)
-    f.write(content)
+    writeFile("dist/index.html", baseUrl)
