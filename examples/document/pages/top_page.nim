@@ -77,8 +77,6 @@ proc TopPage*():Component {.exportc.} =
         <p><button onClick=${increment} class="btn btn-primary">Increment</button></p>
         <p><button onClick=${decrement} class="btn btn-primary">Decrement</button></p>
       \"\"")
-
-    echo arr[\"a\"]
   """
 
   return html(fmt"""
