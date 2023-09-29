@@ -69,19 +69,6 @@ palladian_cli new .
           <//>
         </p>
 
-        <h2>Initialize Bun</h2>
-        <${CodeBlock} lang="shell">
-          cd sample_project
-bun init
-        <//>
-
-        <h2>Install dependencies from package.json</h2>
-        <${CodeBlock} lang="shell">
-          palladian_cli install
-  or
-bun install
-        <//>
-
         <h2>Start the development server</h2>
         <p>
           You can start the development server using <code>dev</code> command<br/>

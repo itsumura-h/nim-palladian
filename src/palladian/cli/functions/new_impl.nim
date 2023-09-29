@@ -1,4 +1,5 @@
 import std/os
+import std/osproc
 import std/strutils
 import std/strformat
 import std/terminal
@@ -275,8 +276,7 @@ proc TopPage*():Component {.exportc.} =
             <li>Easy syntax thanks to Nim.</li>
             <li>Extensive assets by JavaScript.</li>
             <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
-            <li>The evolution of CDN that allow development without NodeJS.</li>
-            <li>Resolving library dependencies thanks to <a href="https://esm.sh/" target="_blank">esm.sh</a> without NodeJS and <code>package.json</code>.</li>
+            <li>Resolving library dependencies thanks to <a href="https://bun.sh/" target="_blank">Bun</a> without NodeJS.</li>
           </ul>
         </div>
       </section>
@@ -406,6 +406,22 @@ Successfully created a new palladian project "{packageName}"
 ├── {packageName}.nimble
 └── tests
 """
+
+    block:
+      setCurrentDir(dirPath)
+      echo execProcess("yes | bun init")
+      removeFile("./y")
+      removeFile("./tsconfig.json")
+      removeFile("readme.md")
+
+    block:
+      var packageJson = readFile("./package.json")
+      packageJson = packageJson.replace("\"y\"", &"\"{packageName}\"")
+      writeFile("./package.json", packageJson)
+
+    block:
+      echo execProcess("bun add preact htm @preact/signals preact-router")
+
 
     return 0
   except:
