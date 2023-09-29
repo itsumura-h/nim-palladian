@@ -147,11 +147,9 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
   return html(fmt"""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name of character in Star Wars" />
-    <${Show} when=${isDisplay} fallback=${
-      html`
-        <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
-      `
-    }>
+    <${Show} when=${isDisplay} fallback=${html`
+      <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
+    `}>
       <table>
         <thead>
           <tr>
@@ -205,11 +203,9 @@ proc StarWarsSearchComponent():Component {.exportc.} =
 
   return html(fmt\"\""
     <input type="text" oninput=${updateName} class="w-full" placeholder="Type name" />
-    <${Show} when=${hasUsers} fallback=${\
-      html`\
-        <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
-      `\
-    }>
+    <${Show} when=${hasUsers} fallback=${html`\
+      <p class="bg-pink-300 text-red-500 font-bold">Character not found</p>
+    `}>
       <table>
         <thead>
           <tr>
