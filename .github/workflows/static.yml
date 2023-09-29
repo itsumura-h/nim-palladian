@@ -40,13 +40,10 @@ jobs:
         run: |
           curl -fsSL https://bun.sh/install | bash
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
-          echo $GITHUB_PATH
-          cat $GITHUB_PATH
-      - name: Install npm packages
-        run: palladian_cli install
       - name: Build palladian
         run: |
           cd examples/document
+          palladian_cli install
           palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
           cp 404.html dist/
       - name: Setup Pages
