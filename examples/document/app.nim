@@ -11,9 +11,13 @@ import ./pages/effect_system_page
 import ./pages/signal_page
 import ./pages/controll_flow_page
 import ./pages/api_access_page
+import ./consts
 
 
 proc App():Component {.exportc.} =
+  drawerContentRef = useRef()
+  drawerStatusRef = useRef()
+
   return html(fmt"""
     <div class="min-h-screen max-h-screen overflow-hidden">
       <${Header} />
