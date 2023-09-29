@@ -33,7 +33,9 @@ jobs:
       - name: Install Nim
         # You may pin to the exact commit or the version.
         # uses: iffy/install-nim@560f0647083257e632182be888862d69eeb6f2c4
-        uses: iffy/install-nim@v4.5.0
+        uses: iffy/install-nim@v5
+        with:
+          version: 1.6.14
       - name: Install palladian
         run: nimble install -y
       - name: Install Bun
