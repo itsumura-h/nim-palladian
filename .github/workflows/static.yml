@@ -36,6 +36,8 @@ jobs:
         uses: iffy/install-nim@v4.5.0
       - name: Install palladian
         run: nimble install -y
+      - name: Install Bun
+        run: curl -fsSL https://bun.sh/install | bash
       - name: Build palladian
         run: |
           cd examples/document
