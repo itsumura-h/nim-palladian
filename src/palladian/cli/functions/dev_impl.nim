@@ -31,13 +31,20 @@ setControlCHook(ctrlC)
 
 proc buildCommand() =
   try:
-    var cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./public/app.js app.nim"
-    echo cmd
-    if execShellCmd(cmd) > 0:
-      raise newException(Exception, "")
+    block:
+      removeDir("dist")
+      createDir("dist")
+      copyDir("public", "dist/public")
+      copyFile("./index.html", "dist/index.html")
 
     block:
-      var appJs = readFile("./public/app.js")
+      let cmd = "nim js -d:nimExperimentalAsyncjsThen -o:./dist/public/app.js app.nim"
+      echo cmd
+      if execShellCmd(cmd) > 0:
+        raise newException(Exception, "")
+
+    block:
+      var appJs = readFile("./dist/public/app.js")
       # html`"a"`; => html`a`;
       appJs = appJs.replace("html`\"", "html`")
       appJs = appJs.replace("\"`;", "`;")
@@ -47,12 +54,13 @@ proc buildCommand() =
       appJs = appJs.replace(re(""" \[(?<!\\)\\{1}"  """.strip()), "[\"")
       appJs = appJs.replace(re(""" (?<!\\)\\{1}"\]  """.strip()), "\"]")
 
-      writeFile("./public/app.js", appJs)
-
-    cmd = "bun build ./public/app.js --outfile ./public/app.js --format esm"
-    echo cmd
-    if execShellCmd(cmd) > 0:
-      raise newException(Exception, "")
+      writeFile("./dist/public/app.js", appJs)
+    
+    block:
+      let cmd = "bun build ./dist/public/app.js --outfile ./dist/public/app.js --format esm"
+      echo cmd
+      if execShellCmd(cmd) > 0:
+        raise newException(Exception, "")
 
     echoMsg(bgGreen, &"Running dev server at http://localhost:{port}")
     echoMsg(bgGreen, "[SUCCESS] Building JavaScript application")
