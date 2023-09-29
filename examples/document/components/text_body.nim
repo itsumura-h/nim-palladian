@@ -1,4 +1,4 @@
-import std/jsffi
+# import std/jsffi
 import ../../../src/palladian
 
 proc Hero*(props:ComponentProps):Component {.exportc.} =

@@ -1,4 +1,3 @@
-import std/jsffi
 import std/dom
 import std/math
 import ../../../src/palladian

@@ -1,5 +1,4 @@
 import std/dom
-import std/jsffi
 import ../../../src/palladian
 import ../consts
 

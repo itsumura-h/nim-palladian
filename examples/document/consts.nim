@@ -1,5 +1,5 @@
-import std/dom
 import ../../src/palladian
+
 
 let BaseUrl* {.exportc.} :cstring = "/nim-palladian"
 let PalladianLogoUrl* {.exportc.} :cstring =

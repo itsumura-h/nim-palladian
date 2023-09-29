@@ -1,5 +1,5 @@
 import ../../../src/palladian
-import ../consts
+
 
 proc Header*():Component {.exportc.} =
   return html(fmt"""

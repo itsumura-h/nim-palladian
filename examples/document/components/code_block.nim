@@ -13,7 +13,7 @@ proc CodeBlock*(props:ComponentProps):Component {.exportc.} =
     var code = $props.children
     code = code.replace("\\", "")
     code = code.dedent()
-    codeRef.current.textContent = code
+    codeRef.current.textContent = code.cstring
     highlightAll()
   , [])
 

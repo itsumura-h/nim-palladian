@@ -1,8 +1,7 @@
 import std/dom
-import std/jsffi
 import ../../../src/palladian
 import ../components/text_body
-import ../consts
+
 
 let generatedHtml {.exportc.} :cstring = """
 <!DOCTYPE html>
