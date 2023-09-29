@@ -1,6 +1,5 @@
 import std/dom
 import std/jsffi
-import std/jsconsole
 import ../../../src/palladian
 import ../components/code_block
 import ../components/scroll_top

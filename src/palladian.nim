@@ -31,7 +31,7 @@ const html = htm.bind(h);
 type Component* = JsObject
 
 # proc html*(arg:cstring):Component {.importjs:"eval('html`' + # + '`')".}
-proc html*(arg:cstring):Component {.importjs:"html`#`".}
+proc html*(arg:cstring):Component {.importjs: "html`#`".}
 template html*(arg:string):Component = html(arg.cstring)
 
 
@@ -40,14 +40,14 @@ function renderApp(component, dom){
   render(html``<${component} />``, dom)
 }
 """.}
-proc renderApp*(component: proc():Component, dom: Element) {.importjs:"renderApp(#, #)".}
+proc renderApp*(component: proc():Component, dom: Element) {.importjs: "renderApp(#, #)".}
 
 
 type ComponentProps* = JsObject
-proc children*(self:ComponentProps):cstring {.importjs:"#.children".}
+proc children*(self:ComponentProps):cstring {.importjs:" #.children".}
 
 
-proc fmt*(arg:cstring):cstring {.importjs:"#".}
+proc fmt*(arg:cstring):cstring {.importjs: "#".}
   ## for just easy to look JSX in IDE with no effect.
 
 template fmt*(arg:string):cstring = fmt(arg.cstring)
