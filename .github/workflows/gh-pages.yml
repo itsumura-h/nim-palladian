@@ -49,10 +49,6 @@ jobs:
           palladian_cli install
           palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
           cp 404.html dist/
-      - name: check generated files
-        run: |
-          cd examples/document
-          cat dist/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
