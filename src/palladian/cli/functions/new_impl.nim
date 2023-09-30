@@ -431,7 +431,7 @@ Successfully created a new palladian project "{packageName}"
 
 
 proc new*(args:seq[string]):int =
-  ## Create new project
+  ## Create a new project
   var
     message:string
     packageName:string
