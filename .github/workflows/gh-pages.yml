@@ -1,10 +1,10 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy GitHub Pages dependencies preinstalled
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: [$default-branch]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,9 +49,16 @@ jobs:
           palladian_cli install
           palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
           cp 404.html dist/
+      - name: check generated files
+        run: |
+          pwd
+          cd examples/document
+          ls -laR dist/
+          cat dist/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
+        run: pwd
         with:
           path: examples/document/dist/
 
