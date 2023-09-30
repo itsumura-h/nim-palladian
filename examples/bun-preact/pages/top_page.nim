@@ -18,7 +18,7 @@ proc TopPage*():Component {.exportc.} =
             <li>Easy syntax thanks to Nim.</li>
             <li>Extensive assets by JavaScript.</li>
             <li>Static typing and compile-time checks for JavaScript thanks to Nim make it a type-safe development experience and easier to understand type mismatch than TypeScript.</li>
-            <li>Resolving library dependencies thanks to <a href="https://bun.sh/" target="_blank">Bun</a></li>
+            <li>Resolving library dependencies thanks to <a href="https://bun.sh/" target="_blank">Bun</a> without NodeJS.</li>
           </ul>
         </div>
       </section>
