@@ -1,6 +1,5 @@
 import std/dom
 import std/jsffi
-import std/jsconsole
 import palladian
 import ./pages/top_page
 import ./pages/about_page
@@ -42,6 +41,5 @@ proc App():Component {.exportc.} =
       <${AboutPage} path="/about" />
     <//>
   """)
-
 
 renderApp(App, document.getElementById("app"))
