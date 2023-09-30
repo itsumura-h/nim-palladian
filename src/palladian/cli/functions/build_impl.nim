@@ -42,4 +42,4 @@ proc build*(baseUrl="") =
     var content = readFile("dist/index.html")
     echo getEnv("PRODUCTION_BASE_URL")
     content = content.replace("{% BASE_URL %}", baseUrl)
-    writeFile("dist/index.html", baseUrl)
+    writeFile("dist/index.html", content)
