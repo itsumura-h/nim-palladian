@@ -31,29 +31,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         
-      - name: Install Nim
-        # You may pin to the exact commit or the version.
-        # uses: iffy/install-nim@560f0647083257e632182be888862d69eeb6f2c4
-        uses: iffy/install-nim@v5
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          version: 1.6.14
-      - name: Install palladian
-        run: nimble install -y
-      - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> $GITHUB_PATH
-      - name: Build palladian
-        run: |
-          cd examples/document
-          palladian_cli install
-          palladian_cli build -b="https://itsumura-h.github.io/nim-palladian"
-          cp 404.html dist/
-
+          source: ./
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
-        with:
-          path: examples/document/dist/
 
   # Deployment job
   deploy:
