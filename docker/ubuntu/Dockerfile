@@ -31,3 +31,6 @@ RUN curl -fsSL https://bun.sh/install | bash
 ENV PATH $PATH:/root/.bun/bin
 
 WORKDIR /root/project
+RUN git config --global --add safe.directory /root/project
+COPY ./palladian.nimble .
+RUN nimble install -y -d
