@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app-ubuntu:
+  app-ubuntu-v2:
     build:
       context: .
       dockerfile: ./docker/ubuntu/Dockerfile
