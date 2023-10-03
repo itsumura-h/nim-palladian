@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/ubuntu/Dockerfile
+      args:
+        VERSION: 2.0.0
     tty: true
     volumes:
       - .:/root/project
-    ports:
-      - 3000:3000
